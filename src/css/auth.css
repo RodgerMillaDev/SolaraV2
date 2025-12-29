@@ -42,9 +42,7 @@
     src: url(../media/montserrat-font/MontserratRegular-RpK6l.otf);
 }
 
-.fonNavIcon{
-    display: none;
-}
+
 body{
     font-family: Mont;
 }
@@ -209,7 +207,13 @@ input:focus{
     width: calc(100% - 40px);
     color: var(--grey-text);
     font-family: Mont;
-    font-size: .8rem !important;
+    font-size: .9rem !important;
+    height: 100%;
+}
+
+.authInputWrap input::placeholder{
+
+    font-size: .9rem !important;
     height: 100%;
 }
 #authLoader{

@@ -16,7 +16,7 @@ function Navbar() {
       openFonMenu();
     }
     const toAuth=()=>{
-      navigate("/")
+      navigate("/auth")
     }
   
 
@@ -42,15 +42,15 @@ function Navbar() {
          
         </div>
         <div className="fonNavIcon" onClick={showFon}>
-          <Icon className="faIcon" icon="solar:widget-linear" />
+                    <Icon className="faIcon" icon="solar:widget-linear" />
+
         </div>
         <div className="navBtns">
           <div className="navBtn">
+
             <button onClick={toAuth}>Sign In</button>
           </div>
-          {/* <div className="navProfIcon">
-            <Icon className="faIcon" icon="solar:user-rounded-linear" />
-          </div> */}
+
         </div>
       </div>
     </nav>

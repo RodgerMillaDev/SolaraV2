@@ -70,9 +70,9 @@ function Auth(){
                     accountBalance:0
                     
                 }
-                    await setDoc(doc(db , user.uid), userData).then(()=>{
+                    await setDoc(doc(db, "Users",user.uid), userData).then(()=>{
                         Swal.fire("","Verification email sent.Please check your inbox.").then(()=>{
-                                                          signBtn.current.style.display="block"
+                                signBtn.current.style.display="block"
                                 signLoader.current.style.display="none"
                             toLog()
                         })

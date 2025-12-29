@@ -4,7 +4,10 @@ import logo1 from "../media/whiteFav.png";
 import logo2 from "../media/favIcon.png";
 import Lenis from '@studio-freight/lenis';
 import Aos from "aos";
+import Lottie from "lottie-web";
 import "aos/dist/aos.css";
+import loadAnimation from '../media/load2.json'; // Import directly
+
 import logo3 from "../media/darkLogo.png"
 import "../css/landing.css";
 import blob from "../media/blob.svg";
@@ -45,6 +48,7 @@ function Landing() {
   const unlockleft = useRef(null);
   const unlockright = useRef(null);
   const cardsRef = useRef([])
+  const loaderCover = useRef(null)
   const cardsCont = useRef(null)
   const cardsContFixed = useRef(null)
   const fonMenu = useRef(null)
@@ -55,57 +59,48 @@ function Landing() {
   const fonMenuDrawer = useStore((s)=> s.fonMenuDrawer)
   const countTwo = useMotionValue(0);
   const navigate = useNavigate()
+  const loadContAnim = useRef(null)
 
   const cnclFon = () =>{
     closeFonMenu();
   }
 
    const toAuth=()=>{
-      navigate("/")
+    console.log("i")
+
+      navigate("/auth")
     }
   
 
   useEffect(()=>{
     Aos.init({duration:1000})
+   
+  const animation = Lottie.loadAnimation({
+    container: loadContAnim.current,
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    animationData: loadAnimation // Use imported JSON
+  });
+     window.addEventListener("load", ()=>{
+      loaderCover.current.style.display="none"
+    })
+    return () => animation.destroy();
+
+ 
+
 
   },[])
 
 
 
-useEffect(() => {
 
-  const path = svgLine.current?.querySelector('path');
-  const container = ContHeight.current;
-  
-  if (!path || !container) return;
-
-  const length = path.getTotalLength();
-  
-  // Direct fromTo with ScrollTrigger
-  gsap.fromTo(path, 
-    {
-      strokeDasharray: length,
-      strokeDashoffset: length
-    },
-    {
-      strokeDashoffset: 0,
-      duration: 1,
-      ease: "none",
-      scrollTrigger: {
-        trigger: container,
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 1, 
-        // toggleActions: "play none none reverse" // Alternative
-      }
-    }
-  );
-
-}, []);
 
   window.addEventListener("mousemove", (e) => {
     const posX = e.clientX;
     const posY = e.clientY;
+
+    if(!cursorDot.current) return;
 
     cursorDot.current.style.left = `${posX}px`;
     cursorDot.current.style.top = `${posY}px`;
@@ -164,6 +159,8 @@ useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          if(!navCont.current) return;
+
           if (entry.isIntersecting) {
             navCont.current.classList.remove("navContWhite");
           } else {
@@ -236,6 +233,7 @@ useEffect(() => {
 useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
+        if(!unlock.current) return;
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             unlockleft.current.style.position = "sticky";
@@ -289,6 +287,10 @@ splitTypes.forEach((char, i)=>{
 
   return (
     <div>
+      <div className="loaderCover" ref={loaderCover}>
+        <div className="loadContAnim" ref={loadContAnim}></div>
+        
+      </div>
 
       <div className={`fonMenu ${fonMenuDrawer ? "fonMenuActive" : ""}`} >
         <img src={logo1} alt="" />
