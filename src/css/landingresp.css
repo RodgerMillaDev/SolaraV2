@@ -249,9 +249,7 @@ a{
     padding: 7% 0;
     
 }
-.faqRight{
-    
-}
+
 .svgCont{
     height: 100%;
 }
@@ -289,7 +287,7 @@ footer{
     color: var(--sec1-color);
 }
 }
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 992px){
     .fonMenu{
         display: flex;
         transition: .3s ease;
@@ -298,6 +296,7 @@ footer{
         flex-direction: column;
         width: 100vw;
         height: 100vh;
+        overflow: hidden;
         background: var(--sec5-color);
         position: fixed;
         top: 0;
@@ -306,11 +305,22 @@ footer{
 
 
     }
+    .fonMenu img{
+        width: 150vw;
+        height: 150vw;
+        opacity: .1;
+        position: absolute;
+        top: -35%;
+        left: -55%;
+        z-index: 1;
+    }
     .fonMenuActive{
         right: 0%;
     }
     .sideMenuPlacer{
         width: 90%;
+        position: relative;
+        z-index: 2;
         height: 80%;
         justify-content: start;
         align-items: end;
@@ -631,53 +641,77 @@ input::placeholder{
 .faqRightT{
     margin-bottom: 30px;
 }
-.faqCard {
-    height: 400px;
-}
-.faqCard .faqCardCont{
-    width: 100%;
-}
+
+
 .faqCardCont p{
     width: 95%;
 }
+
 .realFaq{
     padding-top: 14%;
 }
-.realFaqPlacer{
-    height: fit-content;
-    padding: 0;
-    margin: 0;
+
+
+
+.cardImgTL{
+    position: absolute;
+    width: 250px;
+    left: -100px;
+    opacity: .1;
+    top: -20%;
 }
-.rfCont{
-    height: 70vh;
+.cardImgBL{
+    position: absolute;
+    width: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: .1;
+    top: -20%;
+}
+.cardImgBR{
+    width: 400px;
+    right: -200px;
+    position: absolute;
+        opacity: .1;
+
+    bottom: -100px;
+    rotate: 90deg;
+}
+.cardImgTR{
+    width: 500px;
+    right: -20%;
+    position: absolute;
+    opacity: .1;
+    rotate: 90deg;
+    top: -50%;
 }
 .faqCard1{
 
     z-index: 1;
-    top: calc(50% - 35vh);
+    top: calc(50% - 36vh);
     background: var(--sec1-color);
 }
 .faqCard2{
 
     z-index: 2;
-    top: calc(50% - 30vh);
+    top: calc(50% - 34vh);
     background: var(--sec4-color);
 }
 .faqCard3{
     z-index: 3;
-    top: calc(50% - 25vh);
+    top: calc(50% - 32vh);
     background: var(--sec2-color);
 }
 .faqCard4{
 
     z-index: 4;
-        top: calc(50% - 20vh);
+        top: calc(50% - 30vh);
 
     background: var(--sec3-color);
 }
 .Affiliate{
     height: fit-content;
-    padding-top: 24%;
+    padding-top:14%;
 }
 .affPlacer{
     width: 95%;

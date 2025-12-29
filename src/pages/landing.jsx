@@ -3,7 +3,8 @@ import Navbar from "../components/nav";
 import logo1 from "../media/whiteFav.png";
 import logo2 from "../media/favIcon.png";
 import Lenis from '@studio-freight/lenis';
-
+import Aos from "aos";
+import "aos/dist/aos.css";
 import logo3 from "../media/darkLogo.png"
 import "../css/landing.css";
 import blob from "../media/blob.svg";
@@ -26,10 +27,12 @@ import SplitType from 'split-type'; // ← ADD THIS LINE
 
 
 import useStore from "../store.jsx/zustandstore";
+import { useNavigate } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 gsap.registerPlugin(useGSAP);
+
 
 
 
@@ -51,31 +54,23 @@ function Landing() {
   const closeFonMenu = useStore((s)=> s.closeFonMenu)
   const fonMenuDrawer = useStore((s)=> s.fonMenuDrawer)
   const countTwo = useMotionValue(0);
+  const navigate = useNavigate()
 
   const cnclFon = () =>{
     closeFonMenu();
-    console.log("yes")
   }
 
-
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      smooth: true,
-    });
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
+   const toAuth=()=>{
+      navigate("/")
     }
+  
 
-    requestAnimationFrame(raf);
+  useEffect(()=>{
+    Aos.init({duration:1000})
 
-    return () => {
-      lenis.destroy();
-    };
+  },[])
 
-  }, []);
+
 
 useEffect(() => {
 
@@ -100,7 +95,7 @@ useEffect(() => {
         trigger: container,
         start: "top top",
         end: "bottom bottom",
-        scrub: 1, // ✅ This was missing
+        scrub: 1, 
         // toggleActions: "play none none reverse" // Alternative
       }
     }
@@ -138,29 +133,29 @@ useEffect(() => {
         id:1,
         cardImgL:"cardImgTL",
         cardImgR:"cardImgBR",
-        cardQ:"Is Solara accessible worldwide",
-        cardA:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates magnam accusamus esse consequatur, cumque magni deleniti dolorem atque temporibus quidem!"
+        cardQ:"What is your service?",
+        cardA:"We provide digital task solutions."
     },
     {    
         id:2,
         cardImgL:"cardImgBL",
         cardImgr:"cardImgTR",
-        cardQ:"Is Solara accessible worldwide",
-        cardA:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates magnam accusamus esse consequatur, cumque magni deleniti dolorem atque temporibus quidem!"
+        cardQ:"How do I get paid?",
+        cardA:"Payments are processed after approval."
     },
     {    
         id:3,
           cardImgL:"cardImgTL",
         cardImgR:"cardImgBR",
-        cardQ:"Is Solara accessible worldwide",
-        cardA:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates magnam accusamus esse consequatur, cumque magni deleniti dolorem atque temporibus quidem!"
+        cardQ:"Is this remote?",
+        cardA:"Yes, all tasks are done online."
     },
     {    
         id:4,
    cardImgL:"cardImgBL",
         cardImgr:"cardImgTR",
-        cardQ:"Is Solara accessible worldwide",
-        cardA:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates magnam accusamus esse consequatur, cumque magni deleniti dolorem atque temporibus quidem!"
+        cardQ:"When can I withdraw?",
+        cardA:"After reaching the minimum payout."
     }
 
   ]
@@ -185,50 +180,58 @@ useEffect(() => {
   }, []);
 
 
-useEffect(() => {
-  const cards = cardsRef.current;
 
-  if (!cards.length) return;
 
-  // 1️⃣ Set initial stacked state
-  gsap.set(cards, {
-    y: 0,
-    // rotation: (i) => -5 * i,
-    zIndex: (i) => cards.length - i,
-  });
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const cards = cardsRef.current;
 
-  // 2️⃣ Build timeline
-  const tl = gsap.timeline();
+      // Initial state
+      cards.forEach((card, index) => {
+        gsap.set(card, {
+          yPercent: index === 0 ? 0 : 100,
+          scale: 1,
+          transformOrigin: "center center"
+        });
+      });
 
-  cards.forEach((card, i) => {
-    if (i === cards.length - 1) return; // keep last card
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: cardsCont.current,
+          pin: true,
+          start: "top top",
+          end: `+=${cards.length * 100}%`,
+          scrub: 1,
+        },
+        defaults: { ease: "none" }
+      });
 
-    tl.to(card, {
-      y: "-120vh",
-      // rotation: -48,
-      ease: "none",
-    });
-  });
-const CARD_SCROLL = window.innerHeight * 1;
-const TOTAL_SCROLL = CARD_SCROLL * (cards.length - 1);
+      cards.forEach((card, index) => {
+        if (index === 0) return;
 
-ScrollTrigger.create({
-  trigger: cardsCont.current,
-  start: "top top",
-  end: `+=${TOTAL_SCROLL}`,
-  pin: cardsContFixed.current,
-  scrub: true,
-  animation: tl,
-  anticipatePin: 1,
-  // markers: true
-});
+        // Bring current card in
+        tl.to(card, {
+          yPercent: 0,
+          duration: 1
+        });
 
-  ScrollTrigger.refresh();
+        // Scale previous card
+        tl.to(
+          cards[index - 1],
+          {
+            scale: 0.9,
+            borderRadius: "12px",
+            duration: 1
+          },
+          "<"
+        );
+      });
+    }, cardsCont);
 
-  return () => {
-    ScrollTrigger.killAll();
-  };
-}, []);
+    return () => ctx.revert();
+  }, []);
+
+
 
 useEffect(() => {
     const observer = new IntersectionObserver(
@@ -260,15 +263,7 @@ useEffect(() => {
     const controls = animate(countOne, 14, { duration: 3 });
     return () => controls.stop();
   }, []);
-  // const roundedCount2 = useTransform(countTwo, (value) => Math.round(value));
 
-  //  // This creates a string that updates with countOne
-  // const countTwoDis = useMotionTemplate`${roundedCount2}k +`;
-  
-  // useEffect(() => {
-  //   const controls2 = animate(countTwo, 300, { duration: 5 });
-  //   return () => controls2.stop();
-  // }, []);
 
   useEffect(()=>{
 const splitTypes = document.querySelectorAll(".reveal-type")
@@ -282,7 +277,6 @@ splitTypes.forEach((char, i)=>{
       end: "top 20%",
       scrub: true,
       markers:false,
-
            
     },
     opacity:0.1,
@@ -297,6 +291,7 @@ splitTypes.forEach((char, i)=>{
     <div>
 
       <div className={`fonMenu ${fonMenuDrawer ? "fonMenuActive" : ""}`} >
+        <img src={logo1} alt="" />
         <div className="sideMenuPlacer">
           <div className="fonMenuX" onClick={cnclFon}>
                 
@@ -306,15 +301,14 @@ splitTypes.forEach((char, i)=>{
 
             <p>Job Opportunities</p>
             <p>Dashboard</p>
-            <p>Referrals</p>
+            <p>Referral Programme</p>
             <p>About Us</p>
-            <button>Get Started</button>
+            <button onClick={toAuth}>Get Started</button>
 
           </div>
           
         </div>
       </div>
-
       <div className="cursorDot" ref={cursorDot} data-cursor-dot></div>
       <div className="cursorCircle" ref={cursorCircle} data-cursor-circle></div>
       <section className="hero" ref={hero}>
@@ -342,14 +336,14 @@ splitTypes.forEach((char, i)=>{
             <div className="heroContImg">
               <img className="blob1" src={blob} alt="" />
 
-              <div className="heroUsersCont">
+              <div className="heroUsersCont" data-aos="fade-left">
                 <div className="heroUsers">
                   <img src={userP} alt="" />
                   <img src={userP} alt="" />
                   <img src={userP2} alt="" />
                 </div>
            <div className="heroUserActCont">
-      <motion.span>{countOneDis}</motion.span> {/* ✅ Works! */}
+      <motion.span >{countOneDis}</motion.span> {/* ✅ Works! */}
       <p>Freelancers online</p>
     </div>
               </div>
@@ -369,7 +363,7 @@ splitTypes.forEach((char, i)=>{
             </p>
           </div>
           <div className="actBoxed">
-            <div className="actBox1">
+            <div className="actBox1" data-aos="fade-up">
               <div className="actBoxCont">
                 <div className="ab1T">
                   <h3>Instant Transfers</h3>
@@ -379,7 +373,7 @@ splitTypes.forEach((char, i)=>{
                 </div>
               </div>
             </div>
-            <div className="actBox2">
+            <div className="actBox2" data-aos="fade-up">
               <div className="actBox2Cont">
                 <div className="actBoxIcon">
                   <Icon
@@ -394,7 +388,7 @@ splitTypes.forEach((char, i)=>{
                 </p>
               </div>
             </div>
-            <div className="actBox3">
+            <div className="actBox3" data-aos="fade-up">
               <div className="actBox2Cont">
                 <div className="actBox3Cont">
                   <div className="actBoxIcon">
@@ -408,7 +402,7 @@ splitTypes.forEach((char, i)=>{
                 </div>
               </div>
             </div>
-            <div className="actBox4">
+            <div className="actBox4" data-aos="fade-up">
               <div className="actBox3Cont">
                 <div className="actBox2Cont">
                   <div className="actBoxIcon">
@@ -441,10 +435,10 @@ splitTypes.forEach((char, i)=>{
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem
                 consectetur illum beatae ea nobis voluptate.
               </p>
-              <button>Sign Up</button>
+              <button onClick={toAuth}>Sign Up</button>
             </div>
             <div className="actUnlockRight" ref={unlockright}>
-              <div className="unlockGrid">
+              <div className="unlockGrid" data-aos="fade-up">
                 <div className="ug1">
                   <div className="ugcont">
                     <p>
@@ -541,7 +535,7 @@ splitTypes.forEach((char, i)=>{
       <section className="abstract">
         <div className="abstractPlacer">
 
-            <div className="abstractBox">
+            <div className="abstractBox" data-aos="fade-up">
                 <div className="abstractBoxWrap">
                      <img src={blob} alt="" />
 
@@ -562,14 +556,8 @@ splitTypes.forEach((char, i)=>{
 
 
       </section>
-
       <div className="ContHeight" ref={ContHeight}>
-           <div className="svgCont">
-        <svg ref={svgLine} width="1036" height="1998" viewBox="0 0 1036 1998" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M53.3082 0.180923C53.3082 0.180923 -43.7593 246.141 25.3082 376.181C149.322 609.673 439.068 158.87 689.308 244.181C786.69 277.38 863.536 288.466 917.308 376.181C1012.97 532.225 596.481 546.435 689.308 704.181C738.529 787.825 822.927 954.788 917.308 932.181C974.493 918.484 1024.03 894.246 1033.31 836.181C1044.14 768.415 980.482 730.988 917.308 704.181C774.882 643.744 706.846 874.459 689.308 1028.18C676.939 1136.6 666.557 1233.98 753.308 1300.18C852.733 1376.05 861.162 1150.94 965.308 1220.18C1106.74 1314.22 874.843 1454.19 709.308 1492.18C503.994 1539.3 357.403 1242.7 185.308 1364.18C115.119 1413.73 66.3377 1352.7 25.3082 1428.18C-24.2315 1519.32 47.956 1576.58 53.3082 1680.18C67.8594 1961.83 573.308 1768.18 629.308 1764.18C685.308 1760.18 653.308 1620.18 533.308 1636.18C413.308 1652.18 591.876 2013.32 497.308 1940.18C483.328 1929.37 481.435 1915.41 465.308 1908.18C433.276 1893.82 482.949 2024.21 497.308 1992.18" stroke="#5EA7FA" strokeWidth={"10"}/>
-</svg>
-
-      </div>
+         
       <section className="penDraw" >
         <div className="penDrawPlacer">
             <div className="penDrawIntro">
@@ -621,7 +609,7 @@ splitTypes.forEach((char, i)=>{
                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto praesentium ad magni libero quia deserunt optio enim? A, magnam velit?</p>
                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto praesentium ad magni libero quia deserunt optio enim? A, magnam velit?</p>
                 </div>
-                <div className="faqRightB">
+                <div className="faqRightB" data-aos="fade-up">
                     <div className="faqRightBCont">
                         <h2>45%</h2>
                         <p>Lorem ipsum dolor sit.</p>
@@ -635,37 +623,29 @@ splitTypes.forEach((char, i)=>{
 
       </section>
       </div>
-
-      <section className="realFaq" ref={cardsCont}>
-        <div className="realFaqPlacer" ref={cardsContFixed}>
-        <div className="rfIntro">
-            <span>Know More</span>
-            <h2>Lorem ipsmet conse.</h2>
-            </div>    
-            <div className="rfCont" >
-
+      <section className="realFaq" >
+            <div className="rfCont" ref={cardsCont} >
                 {
                     faqCards.map((card, index)=>(
-   <div key={index} className={`faqCard faqCard${card.id}`} ref={(el) =>(cardsRef.current[index] = el)}>
+                      <div 
+                      key={index.id}
+                       className={`faqCard faqCard${card.id}`} 
+                      ref={(el) => (cardsRef.current[index] = el)}
+                      >
                         <div className="faqCardCont">
- <img className={card.cardImgL} src={logo1} alt="" />
+                                  <img className={card.cardImgL} src={logo1} alt="" />
                         <h3>
                             {card.cardQ}
                         </h3>
                         <p>
                             {card.cardA}
                         </p>
- <img className={"cardImgBR"} src={logo1} alt="" />
-
+                            <img className={"cardImgBR"} src={logo1} alt="" />
                         </div>
-                       
                     </div>
                     ))
                 }
-
             </div>
-       </div> 
-
       </section>
       <section className="Affiliate">
         <div className="affPlacer">

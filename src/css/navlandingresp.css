@@ -82,7 +82,7 @@ a{
 }
 
 
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 992px){
  .fonNavIcon{
   display: flex;
   width: 40px;
@@ -98,7 +98,7 @@ a{
 
  }
  .navLogo img{
-  width: 30px;
+  width: 35px;
  }
  .fonNavIcon .faIcon{
   color: aliceblue;

@@ -3,15 +3,20 @@ import logo1 from "../media/favIcon.png";
 import logo2 from "../media/fullLogoTrans.png";
 import "../css/navlanding.css";
 import "../css/navlandingresp.css"
+import { useNavigate } from "react-router-dom";
 import useStore from "../store.jsx/zustandstore";
 
 function Navbar() {
 
   const openFonMenu = useStore((s)=> s.openFonMenu);
+  const navigate = useNavigate()
 
 
     const showFon = () =>{
       openFonMenu();
+    }
+    const toAuth=()=>{
+      navigate("/")
     }
   
 
@@ -41,7 +46,7 @@ function Navbar() {
         </div>
         <div className="navBtns">
           <div className="navBtn">
-            <button>Sign In</button>
+            <button onClick={toAuth}>Sign In</button>
           </div>
           {/* <div className="navProfIcon">
             <Icon className="faIcon" icon="solar:user-rounded-linear" />
