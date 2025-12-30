@@ -70,12 +70,13 @@ button{
 }
 a{
     font-size: 1rem;
+    font-family: Telex;
 }
 
 input{
     border: none;
     background: none;
-    font-family: Mont;
+    font-family: Telex;
 }
 input:focus{
     outline: none;
@@ -162,9 +163,10 @@ input:focus{
 .authIntro h3{
     margin-bottom: 15px;
     color: var(--black-text);
-    color: rgb(19, 10, 49);
+    color: var(--sec3-color);
 
     font-size: 1.5rem;
+    font-family: Mont;
 }
 .authIntro p{
     font-weight: 100;
@@ -180,7 +182,7 @@ input:focus{
     width: 100%;
     height: 50px;
     border: 1px solid rgba(128, 128, 128, 0.1);
-    border-radius: 8px;
+    border-radius: 60px;
     margin-bottom: 12px;
     background: aliceblue;
     overflow: hidden;
@@ -206,7 +208,7 @@ input:focus{
 
     width: calc(100% - 40px);
     color: var(--grey-text);
-    font-family: Mont;
+    font-family: Telex;
     font-size: .9rem !important;
     height: 100%;
 }
@@ -236,9 +238,10 @@ input:focus{
     cursor: pointer;
     border: none;
     transition: .3s ease;
+    font-family: Telex;
     color: aliceblue;
     font-size: 1rem;
-    border-radius: 10px;
+    border-radius: 60px;
 }
 .authBtn button:hover{
     transform: scale(.92);
@@ -246,7 +249,7 @@ input:focus{
 .authRight{
     display: flex;
     justify-content: center;
-    background-image: radial-gradient(circle, var(--ter1-color) 10%, var(--ter2-color) 100%);
+    background-image: linear-gradient(205deg, rgba(236, 236, 236,0.02) 0%, rgba(236, 236, 236,0.02) 13%,transparent 13%, transparent 64%,rgba(55, 55, 55,0.02) 64%, rgba(55, 55, 55,0.02) 71%,rgba(239, 239, 239,0.02) 71%, rgba(239, 239, 239,0.02) 100%),linear-gradient(205deg, rgba(8, 8, 8,0.02) 0%, rgba(8, 8, 8,0.02) 1%,transparent 1%, transparent 60%,rgba(9, 9, 9,0.02) 60%, rgba(9, 9, 9,0.02) 80%,rgba(198, 198, 198,0.02) 80%, rgba(198, 198, 198,0.02) 100%),linear-gradient(153deg, rgba(134, 134, 134,0.02) 0%, rgba(134, 134, 134,0.02) 30%,transparent 30%, transparent 43%,rgba(85, 85, 85,0.02) 43%, rgba(85, 85, 85,0.02) 47%,rgba(103, 103, 103,0.02) 47%, rgba(103, 103, 103,0.02) 100%),linear-gradient(284deg, rgba(178, 178, 178,0.02) 0%, rgba(178, 178, 178,0.02) 8%,transparent 8%, transparent 47%,rgba(161, 161, 161,0.02) 47%, rgba(161, 161, 161,0.02) 61%,rgba(19, 19, 19,0.02) 61%, rgba(19, 19, 19,0.02) 10%),linear-gradient(125deg, #6ab3d8,#5d16ae);
 
     align-items: center;
 }

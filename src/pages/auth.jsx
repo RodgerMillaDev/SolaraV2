@@ -10,7 +10,7 @@ import "ldrs/react/Jelly.css";
 import useStore from "../store.jsx/zustandstore";
 import { useNavigate } from "react-router-dom";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 function Auth(){
 
     const showLogAuth = useStore((s)=> s.showLogAuth)
@@ -29,6 +29,15 @@ function Auth(){
     const logLoader = useRef(null)
     const logEm = useRef(null)
     const logPass = useRef(null)
+    const hideScreenLoader = useStore((s)=> s.hideScreenLoader)
+
+
+    useEffect(()=>{
+
+        hideScreenLoader();
+
+    },[hideScreenLoader])
+
 
     const toLog = () =>{
         showLogAuth()
@@ -36,8 +45,6 @@ function Auth(){
     const toSign = () =>{
         showSignAuth()
     }
-
-
 
     const resetPass =()=>{
 

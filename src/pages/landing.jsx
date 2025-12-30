@@ -4,31 +4,22 @@ import logo1 from "../media/whiteFav.png";
 import logo2 from "../media/favIcon.png";
 import Lenis from '@studio-freight/lenis';
 import Aos from "aos";
-import Lottie from "lottie-web";
 import "aos/dist/aos.css";
-import loadAnimation from '../media/load2.json'; // Import directly
-
-import logo3 from "../media/darkLogo.png"
+import Footer from "../components/footer";
 import "../css/landing.css";
 import blob from "../media/blob.svg";
 import userP from "../media/pexels-tima-miroshnichenko-5198252.jpg";
 import userP2 from "../media/user.png";
 import lines from "../media/lines.webp";
-import sideport from "../media/fotografia-editorial-XiKj4-d3hYo-unsplash.jpg"
 import zigzag from "../media/zigzag.svg";
-import dfon from "../media/fonImg2.png";
 import { useRef, useState, useEffect, forwardRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import ScrollSmoother from "gsap/ScrollSmoother";
-import { path, svg } from "motion/react-client";
 import { motion, useTransform, animate, useMotionValue, useMotionTemplate } from "motion/react";
 import "../css/landingresp.css"
-import { type } from "@testing-library/user-event/dist/type";
 import SplitType from 'split-type'; // ← ADD THIS LINE
-
-
 import useStore from "../store.jsx/zustandstore";
 import { useNavigate } from "react-router-dom";
 
@@ -57,43 +48,29 @@ function Landing() {
   const countOne = useMotionValue(0);
   const closeFonMenu = useStore((s)=> s.closeFonMenu)
   const fonMenuDrawer = useStore((s)=> s.fonMenuDrawer)
+  const screenLoader = useStore((s)=> s.screenLoader)
   const countTwo = useMotionValue(0);
   const navigate = useNavigate()
   const loadContAnim = useRef(null)
+
+      const hideScreenLoader = useStore((s)=> s.hideScreenLoader)
+
+
+    useEffect(()=>{
+
+        hideScreenLoader();
+
+    },[hideScreenLoader])
 
   const cnclFon = () =>{
     closeFonMenu();
   }
 
    const toAuth=()=>{
-    console.log("i")
 
       navigate("/auth")
     }
-  
-
-  useEffect(()=>{
-    Aos.init({duration:1000})
-   
-  const animation = Lottie.loadAnimation({
-    container: loadContAnim.current,
-    renderer: 'svg',
-    loop: true,
-    autoplay: true,
-    animationData: loadAnimation // Use imported JSON
-  });
-     window.addEventListener("load", ()=>{
-      loaderCover.current.style.display="none"
-    })
-    return () => animation.destroy();
-
- 
-
-
-  },[])
-
-
-
+     
 
 
   window.addEventListener("mousemove", (e) => {
@@ -287,10 +264,7 @@ splitTypes.forEach((char, i)=>{
 
   return (
     <div>
-      <div className="loaderCover" ref={loaderCover}>
-        <div className="loadContAnim" ref={loadContAnim}></div>
-        
-      </div>
+     
 
       <div className={`fonMenu ${fonMenuDrawer ? "fonMenuActive" : ""}`} >
         <img src={logo1} alt="" />
@@ -301,10 +275,10 @@ splitTypes.forEach((char, i)=>{
           </div>
           <div className="fonMenuLinks">
 
-            <p>Job Opportunities</p>
-            <p>Dashboard</p>
-            <p>Referral Programme</p>
-            <p>About Us</p>
+             <a href="/Jobs">Job Opportunities</a>
+             <a href="/">Dashbboard</a>
+             <a href="/">AI Tasks</a>
+             <a href="/">Referral Programme</a>
             <button onClick={toAuth}>Get Started</button>
 
           </div>
@@ -684,83 +658,7 @@ splitTypes.forEach((char, i)=>{
           </div>
         </div>
       </section>
-      <footer>
-        <div className="footerPlacer">
-          <div className="footerTop">
-            <div className="ftLeft">
-              <div className="ftTT">
-                <img src={logo3} alt="" />
-              </div>
-              <div className="ftBB">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim accusantium unde alias.</p>
-
-              </div>
-
-            </div>
-            <div className="ftMid">
-              <div className="ftMidLeft">
-                     <div className="ftTT">
-                      <p>Links</p>
-                      </div>
-
-                <div className="ftBB">
-                               <p>Home                  
-                                 <Icon className="faIcon" icon="solar:arrow-right-up-linear" /></p>
-                <p>Referral Program   <Icon className="faIcon" icon="solar:arrow-right-up-linear" /></p>
-                <p>Dashboard   <Icon className="faIcon" icon="solar:arrow-right-up-linear" /></p>
-                <p>About Us   <Icon className="faIcon" icon="solar:arrow-right-up-linear" /></p>
-                </div>
-                
-              </div>
-              <div className="ftMidRight">
-                     <div className="ftTT">
-                      <p>Socials</p>
-                      </div>
-
-                <div className="ftBB">
-                <p>Instagram   <Icon className="faIcon" icon="solar:arrow-right-up-linear" /></p>
-                <p>Twitter   <Icon className="faIcon" icon="solar:arrow-right-up-linear" /></p>
-                <p>Dashboard   <Icon className="faIcon" icon="solar:arrow-right-up-linear" /></p>
-                <p>About Us  <Icon className="faIcon" icon="solar:arrow-right-up-linear" /></p>
-                </div>
-                
-              </div>
-           
-              
-            </div>
-      <div className="ftRight">
-                   <div className="ftTT">
-                      <p>NewsLetter</p>
-                      </div>
-
-                <div className="ftBB">
-                <p>Receive news on jobs posted, updates and early access.</p>
-
-                <div className="newsLetterWrap">
-                  <div className="nlInput">
-                    <input type="email" placeholder="Enter your email" />
-
-                  </div>
-                  <div className="nLBtn">
-                  <Icon className="faIcon" icon="solar:plain-3-linear" />
-
-                  </div>
-                </div>
-              
-                </div>
-
-              </div>
-
-            
-          </div>
-          <div className="footerBtm">
-            <span> &copy; 2026 Solara Jobs. All rights reserved. </span>
-
-          </div>
-
-        </div>
-
-      </footer>
+      <Footer />
     </div>
   );
 }

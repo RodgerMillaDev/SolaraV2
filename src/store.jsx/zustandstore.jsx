@@ -5,6 +5,7 @@ const useStore = create((set) =>({
     fonMenuDrawer: false,
     signActive:false,
     logActive:true,
+    screenLoader:true,
 
     openFonMenu: () => set({fonMenuDrawer:true}),
     closeFonMenu: () => set({fonMenuDrawer: false}),
@@ -12,6 +13,8 @@ const useStore = create((set) =>({
     hideLogAuth: () => set({logActive: false}),
     showSignAuth: () => set({signActive: true, logActive: false}), // Set both
     hideSignAuth: () => set({signActive: false}),
+    hideScreenLoader: () => set({screenLoader: false}),
+    showScrenLoader: () =>set({screenLoader:true})
 }))
 
 

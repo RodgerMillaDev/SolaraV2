@@ -12,6 +12,10 @@
     font-family: Mont ;
     src: url(../media/montserrat-font/MontserratRegular-RpK6l.otf);
 }
+@font-face {
+    font-family: Telex ;
+    src: url(../media/Telex/Telex-Regular.ttf);
+}
 :root {
     --pri-Color: #8140cc;
     --pri-ColorDark: #5a00c0;
@@ -26,7 +30,8 @@
     display: none;
 }
 body{
-    font-family: Mont;
+    font-family: Telex;
+    font-weight: 100;
 }
 h1{
     font-size: 5rem;
@@ -45,6 +50,7 @@ h3{
 p{
     font-size: 1rem;
     line-height:28px;
+    font-family: Telex !important;
 }
 a{
     font-size: 1rem;
@@ -102,12 +108,12 @@ nav{
     height: 100%;
 }
 .navBtns button{
-    border-radius: 50px;
+    border-radius: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 40px;
-    font-family: Mont;
+    font-family: Telex;
     width: 150px;
     font-size: 1rem;
    color: aliceblue;
@@ -180,12 +186,12 @@ nav{
     height: 100%;
 }
 .navContWhite .navBtns button{
-    border-radius: 50px;
+    border-radius: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 30px;
-    font-family: Mont;
+    font-family: Telex;
     width: 110px;
     font-size: 1rem;
    color: rgb(30, 31, 32);

@@ -28,17 +28,18 @@ function Navbar() {
         </div>
         <div className="navLinks">
           <div className="navLink">
-            <a href="/about">Job Opportunities</a>
+            <a href="/Jobs">Job Opportunities</a>
           </div>
           <div className="navLink">
-            <a href="/about">Dashboard</a>
+            <a href="/Jobs">Dashboard</a>
           </div>
           <div className="navLink">
-            <a href="/about">Referrals</a>
+            <a href="/about">AI Tasks</a>
           </div>
           <div className="navLink">
-            <a href="/about">About Us</a>
+            <a href="/">Referrals</a>
           </div>
+          
          
         </div>
         <div className="fonNavIcon" onClick={showFon}>

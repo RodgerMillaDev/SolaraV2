@@ -12,24 +12,14 @@
     font-family: Mont ;
     src: url(../media/montserrat-font/MontserratRegular-RpK6l.otf);
 }
+@font-face {
+    font-family: Telex ;
+    src: url(../media/Telex/Telex-Regular.ttf);
+}
 ::-webkit-scrollbar{
     display: none;
 }
-.loaderCover{
-    width: 100%;
-    height: 100vh;
-    z-index: 13;
-    position: fixed;
-    top: 0;
-    background:#ffffff;
-    display: flex;
-    overflow: hidden;
-    justify-content: center;
-    align-items: center;
-}
-.loadContAnim{
-    transform: scale(.8);
-}
+
 body{
     overflow-x: hidden;
 
@@ -88,8 +78,8 @@ body{
 }
 .navContWhite{   
      width: 70%;
-             box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.2);
-
+    box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 20px 20px;
     background: rgb(255, 255, 255);
 
     
@@ -147,8 +137,8 @@ body{
 .heroRCont button{
     width: 200px;
     height:  45px;
-    border-radius: 50px;
-    font-family: Mont;
+    border-radius: 60px;
+    font-family: Telex;
     border: none;
     background: var(--sec5-color);
     color: aliceblue;
@@ -289,9 +279,9 @@ body{
 .boxIntro .miniIntroIntro{
     color: var(--sec1-color);
     padding: 10px;
+    font-family: Mont;
     
     border-left: 1px solid var(--sec1-color);
-    /* border-radius: 10px; */
 }
 .boxIntro h2{
     margin: 30px 0;
@@ -333,6 +323,7 @@ body{
 }
 .actBoxCont h3{
     color: aliceblue;
+    font-family: Telex;
 }
 .ab1B{
     width: 120px;
@@ -376,8 +367,9 @@ body{
 .actBox2 .actBox2Cont span{
     margin: 20px 0;
     color: aliceblue;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 900;
+    font-family: Telex;
 }
 
 .actBox2 .actBox2Cont p{
@@ -472,11 +464,11 @@ body{
     margin-top: 30px;
     width: 150px;
     height: 45px;
-    border-radius: 50px;
+    border-radius: 60px;
     background: var(--sec5-color);
     border: none;
     color: aliceblue;
-    font-family: Mont;
+    font-family: Telex;
 }
 .unlockGrid{
     width: 100%;
@@ -687,7 +679,7 @@ flex-direction: row;
 .penSol span{
     margin-top: 12px;
     margin-right: 50px;
-    font-family: Mont;
+    font-family: Telex;
 }
 .penSol h2{
     transition: .3s ease;
@@ -1108,7 +1100,7 @@ flex-direction: row;
 .afLeft button{
     width: 200px;
     height: 50px;
-    font-family: Mont;
+    font-family: Telex;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -1117,7 +1109,7 @@ flex-direction: row;
     margin-top: 20px;
     color: aliceblue;
     font-size: .9rem;
-    border-radius: 40px;
+    border-radius: 60px;
     background: var(--sec5-color);
 }
 
@@ -1127,7 +1119,7 @@ flex-direction: row;
 }
 footer{
     width: 100vw;
-    height: 50vh;
+    height: fit-content;
     padding: 7% 0 0 0;
     background: #f2f4f5;
 
@@ -1140,9 +1132,10 @@ footer{
 
 }
 .footerTop{
-    height: 40vh;
+    height: fit-content;
     width: 100%;
     display: flex;
+    margin-bottom: 50px;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -1188,7 +1181,9 @@ footer{
     width: 100%;
     justify-content: center;
 
-
+}
+.ftTT p{
+    font-family: Mont !important;
 }
 .ftBB p{ 
     color: black;
@@ -1232,8 +1227,8 @@ footer{
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    height: 45px;
-    border-radius: 50px;
+    height: 55px;
+    border-radius: 60px;
     background-color: white;
         box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.1);
 
@@ -1243,22 +1238,22 @@ footer{
     color: aliceblue;
     justify-content: center;
     align-items: center;
-    width: 70px;
+    width: 45px;
     cursor: pointer;
-    height:100%;
+    height: 45px;
     /* color: var(--sec1-color); */
     font-size: 20px;
     background: var(--sec5-color);
-    border-radius: 50px;
+    border-radius: 60px;
 }
 .nlInput{
-    width: calc(100% - 70px);
+    width: calc(100% - 50px);
     overflow: hidden;
 }
 .nlInput input{
     width: 100%;
     padding-left: 20px;
-    font-family: Mont;
+    font-family: Telex;
     outline: none;
     border: none;
 
