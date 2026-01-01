@@ -1,0 +1,90 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+
+ .adminWrap{
+    width: 100vw;
+    height: 100vh;
+    
+            background: #F3F3F3;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.adminMenuWrap{
+    border-radius: 0 30px 30px 0;
+
+    width: 18%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: rgb(255, 255, 255);
+    box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.1);
+
+
+}
+
+.adminDash{
+    width: 80%;
+    height: 95%;
+    margin-left: 2%;
+}
+.adminDashTop{
+      width: 98%;
+    height: 100px;
+    border-radius: 20px;
+        display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.adminDashDrawer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 100px);
+}
+.adminDashTop span{
+  font-family: Telex;
+  font-size: 1.5rem;
+  color: var(--sec3-color);
+  letter-spacing: .01px;
+
+}
+.adnotify{
+    width: 45px;
+    height: 45px;
+     background: rgb(255, 255, 255);
+    box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.1); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: relative;
+    font-size: 23px;
+
+
+}
+.newAlert{
+    width: 10px;
+    height: 10px;
+    background: rgb(1, 206, 1);
+    top: 5%;
+    right: 5%;
+    position: absolute;
+    border-radius: 50%;
+
+}
+.admin-Dash{
+    width: 98%;
+    height:100% ;
+    
+}

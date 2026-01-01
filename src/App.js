@@ -7,6 +7,7 @@ import Auth from './pages/auth';
 import Jobs from './pages/jobs';
 import useStore from './store.jsx/zustandstore';
 import Loader from './components/loader';
+import Admin from './pages/admin';
 
 function App() {
   const screenLoader = useStore((s)=> s.screenLoader)
@@ -19,6 +20,7 @@ function App() {
         <Route path='/' element={<Landing/>} />
         <Route path='/Auth' element={<Auth/>} />
         <Route path='/Jobs' element={<Jobs/>} />
+        <Route path='/Admin' element={<Admin/>} />
        </Routes>
         
     

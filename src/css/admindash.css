@@ -1,0 +1,177 @@
+.adminDashDrawerPulled{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.admin-dashLeft{
+    width: 300px;
+    height: 100%;
+}
+
+
+.ad-miniWallet{
+    width: 100%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(255, 255, 255);
+    box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.1); 
+       height: 200px;
+}
+.adMiniPlacer{
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    position: relative;
+    z-index: 2;
+
+}
+.miniCashBlc{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.miniCashBlc span{
+    font-weight: 100;
+    font-family: Mont;
+    font-size: 3rem;
+
+}
+
+.miniCashBlc p{
+    color: green;
+}
+.miniBlcActions{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+}
+.miniBlcActions button{
+    height: 40px;
+    width: 45%;
+    border: none;
+    background:var(--sec3-color);
+    border-radius: 40px;
+    color: aliceblue;
+    font-family: Telex;
+
+
+}
+
+.ad-miniStatus{
+    width: 100%;
+    height: calc(100% - 220px);
+    margin-top: 20px;
+    border-radius: 20px;
+    background: rgb(255, 255, 255);
+    background: var(--sec3-color);
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.1); 
+
+}
+.adMiniPlacer img{
+    width: 100px;
+}
+.adminBlob{
+    width: 400px;
+    position: absolute;
+    z-index: 1;
+    bottom: -30%;
+    right: -50%;
+    opacity: .2;
+}
+.adMiniPlacer img{
+  width: 150px;
+}
+.statusTxt{
+    font-size: 1.2rem;
+    line-height: 40px;
+    color:var(--sec3-color);
+    font-family: Mont !important;
+    color: aliceblue;
+}
+
+.admin-dashRight{
+    height: 100%;
+    width: 100%;
+    margin-left: 20px;
+    width: calc(100% - 320px);
+ 
+
+}
+.adminGraph{
+    background: rgb(255, 255, 255);
+    box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.1); 
+    border-radius: 20px;
+    width: 100%;
+    height: 400px;
+}
+.adminApplicants{
+    width: 100%;
+     background: rgb(255, 255, 255);
+    box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.1); 
+    height: calc(100% - 420px);
+    border-radius: 20px;
+    margin-top: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.adminApplicant{
+    width: 98%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 60px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.156);
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+.apName{
+    width: 35%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.apProf{
+    width: 35%;
+    height: 100%;
+     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.apDate{
+    width: 15%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.apAction{
+    width: 15%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.apAction p{
+    color: green;
+    padding: 3px 15px;
+    background: rgba(0, 128, 0, 0.1);
+    border-radius: 20px;
+    
+}

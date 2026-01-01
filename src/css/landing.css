@@ -228,17 +228,16 @@ body{
     position: fixed;
     border-radius: 50%;
     width: 40px;
-      pointer-events: none; /* This allows clicks to pass through */
-
+    pointer-events: none; /* This allows clicks to pass through */
     height: 40px;
     background: none;
     content: '';
     left: 50%;
-    border: 2px solid var(--sec5-color);
+    border: 1px solid var(--sec5-color);
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
-      transition: .7s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+    transition: 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
 
 }
 .boxed{

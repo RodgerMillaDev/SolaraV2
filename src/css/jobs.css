@@ -77,7 +77,8 @@
 .jobsActCont{
     height: calc(100% - 60px);
     background: rgb(255, 255, 255);
-    border-radius: 20px;
+    border-radius:10px;
+    padding-top: 10px;
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -171,7 +172,7 @@
     font-family: Telex;
     font-weight: 600;
     overflow: hidden;
-    font-size: 1.25rem;
+    font-size: 1rem;
        white-space: nowrap;
     text-overflow: ellipsis;
 }
@@ -181,21 +182,16 @@
     align-items: center;
     justify-content: start;
     color: rgba(0, 0, 0, 0.6);
-  
-
     width: 100%;
 
 }
 .jobDetdesc p{
-    font-size: 1rem ;
-        overflow: hidden; 
-    /* white-space: nowrap; */
+    font-size: .9rem ;
+    overflow: hidden; 
     -webkit-line-clamp: 2;
     text-overflow: ellipsis;
-    
     display: -webkit-box;
--webkit-box-orient: vertical;
-
+    -webkit-box-orient: vertical;
 }
 .actJobBtm{
     height: fit-content;
@@ -203,11 +199,13 @@
     flex-direction: column;
     align-items: start;
     width: 100%;
+    margin-top: 10px;
 
 }
 .fidiProf{
     padding: 5px ;
     border-radius:5px;
+    margin-top: 10px;
     color: rgb(19, 106, 177);
     background: rgba(96, 152, 255, 0.1);
 }
@@ -242,6 +240,7 @@
 .miniApplicants p{
     margin-top: 3px;
         color: #67aeff;
+        font-weight: 900;
 
     font-size: 1rem;
     font-family: Mont !important;

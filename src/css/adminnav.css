@@ -1,0 +1,171 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+@font-face {
+    font-family: MontBold;
+    src: url(../media/montserrat-font/MontserratExtrabold-VGO60.ttf);
+}
+@font-face {
+    font-family: Mont ;
+    src: url(../media/montserrat-font/MontserratRegular-RpK6l.otf);
+}
+@font-face {
+    font-family: Telex ;
+    src: url(../media/Telex/Telex-Regular.ttf);
+}
+:root {
+    --pri-Color: #8140cc;
+    --pri-ColorDark: #5a00c0;
+    --sec1-color:#5EA7FA;
+    --sec2-color:#5a00c0;
+    --sec3-color:#130F32;
+    --sec4-color:#C35EC1;
+    --sec5-color:#9E00FF;
+    --sec6-color:#2332DF;
+}
+.fonNavIcon{
+    display: none;
+}
+body{
+    font-family: Telex;
+    font-weight: 100;
+}
+h1{
+    font-size: 5rem;
+    font-family: MontBold;
+
+}
+h2{
+    font-size: 3.5rem;
+    font-family: MontBold;
+}
+h3{
+    font-size: 2.1rem;
+    font-family: MontBold;
+
+}
+p{
+    font-size: 1rem;
+    line-height:28px;
+    font-family: Telex !important;
+}
+a{
+    font-size: 1rem;
+}
+
+.adminSidemenu{
+    height: 95%;
+    width: 95%;
+}
+
+.asmLogo{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 100px;
+}
+.asmLogo img{
+    width: 130px;
+    width: 60px;
+}
+.asmLinks{
+    height: calc(100% - 200px);
+}
+.asmAuth{
+ height: 100px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+}.asmAuthBox{
+    width: 90%;
+    overflow: hidden;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.asmAuth img{
+    width: 50px;
+    margin-right: 10px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.asmAuthCont{
+    overflow: hidden;
+
+}
+.asmAuthCont span{
+    font-size: .8rem;
+    opacity: .6;
+}
+
+.asmlLink{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    color: rgb(0, 0, 0);
+    margin-bottom: 5px;
+    border-radius: 50px;
+    cursor: pointer;
+      position: relative;
+  overflow: hidden;
+    transition: 1s ease-in-out;
+
+}
+
+.asmlLink::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--sec2-color), var(--sec1-color));
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: 0;
+}
+
+.asmlLink:hover::before {
+  opacity: 1;
+}
+
+.asmlLink > * {
+  position: relative;
+  z-index: 1;
+}
+.asmlLink p{
+
+ opacity: .7;
+}
+.asmlLink .faIcon{
+ opacity: .7;
+
+}
+.asmlLink:hover{
+    
+  color: aliceblue;
+}
+.asmlLink:hover p,
+.asmlLink:hover .faIcon{
+    opacity: 1;
+  color: aliceblue;
+}
+
+.asmIcon{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+
+    align-items: center;
+}
+.asmIcon .faIcon{
+    font-size: 22px;
+}

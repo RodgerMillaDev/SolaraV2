@@ -25,8 +25,6 @@ function Jobs() {
   };
 
   const toAuth = () => {
-    console.log("i");
-
     navigate("/auth");
   };
 
