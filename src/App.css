@@ -13,3 +13,8 @@
 .loadContAnim{
     transform: scale(.8);
 }
+select:focus,
+input:focus,
+textarea:focus{
+    outline: none;
+}

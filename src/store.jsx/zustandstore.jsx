@@ -6,6 +6,8 @@ const useStore = create((set) =>({
     signActive:false,
     logActive:true,
     screenLoader:true,
+    isAdminDashActive: true,
+    isAItaskActive: false,
 
     openFonMenu: () => set({fonMenuDrawer:true}),
     closeFonMenu: () => set({fonMenuDrawer: false}),
@@ -14,7 +16,11 @@ const useStore = create((set) =>({
     showSignAuth: () => set({signActive: true, logActive: false}), // Set both
     hideSignAuth: () => set({signActive: false}),
     hideScreenLoader: () => set({screenLoader: false}),
-    showScrenLoader: () =>set({screenLoader:true})
+    showScrenLoader: () =>set({screenLoader:true}),
+    showAdminDashboard:() => set({isAdminDashActive:true, isAItaskActive:false}),
+    hideAdminDashboard: () => set({isAdminDashActive:false,}),
+    showAiTask:() => set({isAItaskActive:true, isAdminDashActive:false}),
+    hideAiTask: () => set({isAItaskActive:false})
 }))
 
 

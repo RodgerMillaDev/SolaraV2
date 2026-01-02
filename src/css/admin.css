@@ -10,6 +10,7 @@
     height: 100vh;
     
             background: #F3F3F3;
+            overflow: hidden;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -49,6 +50,7 @@
 .adminDashDrawer{
     width: 100%;
     display: flex;
+    position: relative;
     flex-direction: column;
     height: calc(100% - 100px);
 }
@@ -86,5 +88,31 @@
 .admin-Dash{
     width: 98%;
     height:100% ;
+    transition: .3s ease-in-out;
+    position: absolute;
+    background: #F3F3F3;
     
+    right: -105%;
+    
+}
+.admin-AITask{
+    width: 98%;
+    height:100% ;
+    transition: .3s ease-in-out;
+    position: absolute;
+        right: -105%;
+
+    background: #F3F3F3;
+    border-radius: 20px;
+     background: rgb(255, 255, 255);
+    box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.admin-DashActive,
+.admin-AITaskActive{
+  right:2%;
 }

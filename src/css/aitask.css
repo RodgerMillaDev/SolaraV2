@@ -1,0 +1,84 @@
+.AIjobswrap{
+    width: 95%;
+    height: 95%;
+
+}
+.aiJobType{
+    width: 100%;
+    height: 85px;
+    margin-bottom: 30px;
+}
+.taskPrice{
+    width: 100%;
+    height: 85px;
+    margin-top: 30px;
+}
+.contentInput{
+
+}
+.aiJobType p{
+    height: 35px;
+    overflow: hidden;
+}
+.aitaskselector{
+    width: 100%;
+    height: 35px;
+
+}
+.contentReviewAiJobWrap{
+    height: calc(100% - 230px);
+    width: 100%;
+}
+.contentInput{
+    height: 100%;
+    width: 100%;
+}
+.ciTxtArea{
+    width: 100%;
+    height: calc(100% - 35px);
+}
+.ciTxtArea textarea{
+  width: 100%;
+  font-family: Telex;
+  height: 100%;
+  border: none;
+     border-radius: 20px;
+    padding-left: 10px;
+    padding-top: 10px;
+     background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  
+}
+.aitaskselector select,
+.taskPrice input{
+    width: 100%;
+    border-radius: 40px;
+    border: none;
+    font-family: Telex;
+    height: 50px;
+    border-radius: 20px;
+    padding-left: 10px;
+     background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+.aiBtnUpload{
+    height: 50px;
+    width: 100%;
+    border-radius: 50px;
+    margin-top: 20px;
+
+}
+.aiBtnUpload button{
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 50px;
+    color: aliceblue;
+    font-family: Telex;
+    background: linear-gradient(90deg, var(--sec2-color), var(--sec1-color));
+    background: var(--sec2-color);
+}
+.aijobInputs{
+    width: 100%;
+    height: calc(100% - 70px);
+}

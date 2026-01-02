@@ -2,17 +2,31 @@
 import Logo1 from "../../media/favIcon.png"
 import { Icon } from "@iconify/react";
 import "../../css/adminnav.css"
+import useStore from "../../store.jsx/zustandstore";
 import user from "../../media/user.png"
-import { use } from "react";
 function AdminMenu(){
+
+    const showAdminDashboard=useStore((s)=>s.showAdminDashboard)
+    const hideAdminDashboard=useStore((s)=>s.hideAdminDashboard)
+    const showAiTask=useStore((s)=>s.showAiTask)
+    const hideAiTask=useStore((s)=>s.hideAiTask)
+
+
+    const toDash =() =>{
+        showAdminDashboard()
+    }
+    const toAi =()=>{
+        showAiTask()
+    }
+
     return(
         <div className="adminSidemenu">
             <div className="asmLogo">
                 <img src={Logo1} alt="" />
             </div>
             <div className="asmLinks">
-                <div className="asmlLink">
-                    <div className="asmIcon">
+                <div className="asmlLink" onClick={toDash}>
+                    <div className="asmIcon" >
                            <Icon className="faIcon" icon="solar:armchair-2-linear"/>
                     </div>
                     <p>Dashboard</p>
@@ -49,7 +63,7 @@ function AdminMenu(){
                     <p>New Job</p>
 
                 </div>
-                <div className="asmlLink">
+                <div className="asmlLink" onClick={toAi}>
                     <div className="asmIcon">
                      <Icon className="faIcon" icon="solar:case-round-outline"/>
                     </div>
