@@ -1,0 +1,155 @@
+.userDashNav{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+
+}
+.userBtmNavCover{
+    position: absolute;
+    z-index: 1;
+    height: 100px;
+    width: 100%;
+    bottom: -5%;
+    height: calc(100% - 150px);
+    background: #1F2C4F;
+    border-radius: 0 70px 0 0;
+}
+.userDashBtm{
+    position: relative;
+    z-index: 2;
+}
+.userProfile{
+    height:150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+}
+.userProfileImg{
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+.userProfileImg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    align-items: center;
+    border-radius: 50%;
+    justify-content: center;
+}
+.userProfDataMini{
+    display: flex;
+    height: 80px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.userProfDataMini .udname{
+    font-size: 1.3rem;
+    font-family: Telex;
+    letter-spacing: -.5px;
+    color: aliceblue;
+}
+.udacctype{
+    padding: 4px 20px ;
+    color: aliceblue;
+    font-size: .8rem;
+    border-radius: 20px;
+    margin-top: 10px;
+    background: var(--sec1-color);
+    color: var(--sec4-color);
+    background: #5ea7fa27;
+}
+.userDashBtm{
+    height: calc(100% - 200px);
+    width: 100%;
+    border-radius: 0 50px 0 0;
+    margin-top: 50px;
+}
+.userDashLinks{
+    height: calc(100% - 100px);
+    width: 80%;
+    margin: 0 auto;
+}
+.userDashBbtm{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.usdbLogout{
+    width: 80%;
+    height: 100%;
+    background: var(--sec31-color);
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    justify-content: center;
+    align-items: start;
+}
+.usdbLogout span,
+.usdbLogout p
+{
+   padding-left: 20px;
+   color: aliceblue;
+}
+.usdbLogout span{
+    opacity: .7;
+    font-size: .7rem;
+    margin-bottom: 10px;
+}
+.udlLink{
+    width: 100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    cursor: pointer;
+    margin-bottom: 7px;
+}
+.udlLinkIcon{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+
+}
+.udlLinkIcon .faIcon{
+    font-size: 23px;
+    color: aliceblue;
+    opacity: .6;
+    transition: .3s ease;
+}
+.udlLinkMenu{
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    opacity: .6;
+     transition: .3s ease;
+    color: aliceblue;
+    width: calc(100% - 50px);
+}
+.udlLinkActive .udlLinkIcon .faIcon{
+  opacity: 1;
+    /* color: var(--sec1-color); */
+
+}
+.udlLinkActive .udlLinkMenu{
+  opacity: 1;
+  /* color: var(--sec1-color); */
+}

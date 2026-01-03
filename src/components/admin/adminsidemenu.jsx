@@ -2,15 +2,24 @@
 import Logo1 from "../../media/favIcon.png"
 import { Icon } from "@iconify/react";
 import "../../css/adminnav.css"
-import useStore from "../../store.jsx/zustandstore";
+import useStore from "../../store/zustandstore";
 import user from "../../media/user.png"
+import { useEffect, useRef } from "react";
+import usefbStore from "../../store/firebasestore";
 function AdminMenu(){
 
     const showAdminDashboard=useStore((s)=>s.showAdminDashboard)
     const hideAdminDashboard=useStore((s)=>s.hideAdminDashboard)
     const showAiTask=useStore((s)=>s.showAiTask)
     const hideAiTask=useStore((s)=>s.hideAiTask)
+    const adminNameRef = useRef(null)
+    const adminName = usefbStore((s)=>s.adminName)
+    
 
+    useEffect(()=>{
+       adminNameRef.current.innerText=adminName
+    },[adminName])
+    
 
     const toDash =() =>{
         showAdminDashboard()
@@ -84,7 +93,7 @@ function AdminMenu(){
                 <div className="asmAuthBox">
                     <img src={user} alt="" />
                     <div className="asmAuthCont">
-                        <p>Rodger Milla</p>
+                        <p ref={adminNameRef}></p>
                         <span>Administrator</span>
                     </div>
                 </div>

@@ -1,0 +1,237 @@
+
+.mdlminiContWrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.mainDashLeft{
+    width: 65%;
+    height: 100%;
+}
+.mainDashRight{
+    margin-left:20px ;
+    width: calc(35% - 20px);
+    height: 100%;
+
+}
+.mdrIntro{
+    height: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    margin-bottom: 10px;
+
+}
+.mdrCont{
+       background: rgb(255, 255, 255);
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.2 );
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: calc(100% - 40px);
+        justify-content: center;
+        align-items: center;
+}
+.mdlTop{
+    height: 250px;
+        margin-bottom: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr );
+        grid-template-rows: repeat(1, 1fr );
+        gap: 20px;
+
+}
+.mdlCard1{
+    grid-area: 1/1/2/2;
+    background: #5A5DF5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+.mdlCard2{
+    grid-area: 1/2/2/3;
+       background: rgb(255, 255, 255);
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.2 );
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+.mdlCard1Cont{
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+.mdlCard1Cont img{
+    width: 70px;
+    opacity: .8;
+}
+.mdlcardTitle{
+    font-size: 1.1rem;
+    margin-top: 10px;
+    color: aliceblue;
+}
+.mdlCard1Income{
+    font-size: 2.2rem;
+    color: aliceblue;
+    font-weight: 700;
+        margin: 20px 0;
+
+    font-family: Mont;
+}
+.mdlminisum{
+    padding: 7px 10px;
+    color: aliceblue;
+    font-size: .7rem;
+    border-radius: 20px;
+    background: #0d0a2245;
+}
+.percentEarn{
+    color: rgb(93, 237, 93);
+}
+
+
+.mdlBtm{
+    width: 100%;
+    height: calc(100% - 270px) !important;
+    display: flex;
+    flex-direction: column;
+}
+.mdlBtmAITasksAssigned{
+    width: 100%;
+    background: rgb(255, 255, 255);
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.2 );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 20px;
+}
+.mdlBtmAITasksAssigned img{
+    width: 150px;
+}
+.mdlBtmIntro{
+    margin-bottom: 10px;
+}
+.mdlBtmAITasksAssigned span{
+    font-weight: 100;
+    width: 40%;
+    margin: 0 auto;
+    font-size: .7rem;
+    opacity: .7;
+    margin-top: 10px;
+    text-align: center;
+}
+.mdlcard2Wrap{
+   width: 80%;
+   height: 80%;
+   display: flex;
+   justify-content: space-between;
+   align-items: start;
+   flex-direction: column;
+}
+.mdlminicard{
+    width: 100%;
+    height: 70px;
+    background: #5a5df51c;
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+}
+.mdlminicardCont{
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    align-items: center;
+}
+.mdlminiCardBox{
+    width: 55px;
+        margin: 0 10px;
+        border-radius: 10px;
+
+    height: 55px;
+background: #5A5DF5;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.mdlminiCardBox .faIcon{
+    font-size: 30px;
+    color: aliceblue;
+}
+.mdlminiCardBox .projTaken{
+    font-size: 25px;
+    font-family: Mont;
+    color: aliceblue;
+}
+.mdlminicard2{
+    height: calc(100% - 80px);
+        width: 100%;
+    background: #5a5df51c;
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+}
+.mdlminicardContData{
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+}
+.mdlminicardContData span{
+    opacity: .7;
+    font-size: .7rem;
+}
+.mdlminicardCont2{
+     display: flex;
+    justify-content: start;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+.mdlcboxT{
+    flex-direction: row;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    height: calc(100% - 50px);
+}
+.mdlcboxB{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    
+}
+.mdlcboxB button{
+    border: none;
+    font-size: .7rem;
+    color: var(--sec2-color);
+    padding: 6px 10px;
+    background: #a9a0e345;
+    cursor: pointer;
+    border-radius: 20px;
+    
+}
+.mdrCont img{
+    width: 100px;
+}
+.mdrCont span{
+    margin-top: 10px;
+    opacity: .7;
+    font-size: .7rem;
+    text-align: center;
+}

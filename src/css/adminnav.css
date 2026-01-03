@@ -26,9 +26,6 @@
     --sec5-color:#9E00FF;
     --sec6-color:#2332DF;
 }
-.fonNavIcon{
-    display: none;
-}
 body{
     font-family: Telex;
     font-weight: 100;

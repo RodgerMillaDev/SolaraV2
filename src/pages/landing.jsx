@@ -20,7 +20,7 @@ import ScrollSmoother from "gsap/ScrollSmoother";
 import { motion, useTransform, animate, useMotionValue, useMotionTemplate } from "motion/react";
 import "../css/landingresp.css"
 import SplitType from 'split-type'; // ← ADD THIS LINE
-import useStore from "../store.jsx/zustandstore";
+import useStore from "../store/zustandstore";
 import { useNavigate } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);

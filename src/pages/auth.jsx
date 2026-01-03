@@ -7,9 +7,8 @@ import { createUserWithEmailAndPassword, getAuth, sendEmailVerification,signInWi
 import { doc,setDoc } from "firebase/firestore";
 import { db, auth } from "../firebase/firebase";
 import "ldrs/react/Jelly.css";
-import useStore from "../store.jsx/zustandstore";
+import useStore from "../store/zustandstore";
 import { useNavigate } from "react-router-dom";
-
 import { useEffect, useRef } from "react";
 function Auth(){
 
@@ -19,7 +18,6 @@ function Auth(){
     const showSignAuth = useStore((s)=> s.showSignAuth)
     const signEm = useRef(null)
     const signNm = useRef(null)
-    const signName = useRef(null)
     const navigate = useNavigate()
     const signPass = useRef(null)
     const signCpass = useRef(null)
@@ -53,6 +51,7 @@ function Auth(){
 
     
   const SignUp = () =>{
+    const fn = signNm.current.value
     const em = signEm.current.value
     const pass = signPass.current.value
     const cpass = signCpass.current.value
@@ -67,8 +66,8 @@ function Auth(){
             var user = userCred.user;
             sendEmailVerification(user).then(async ()=>{
                 const userData = {
-                    name:"",
-                    em:"em",
+                    name:fn,
+                    em:em,
                     uid:user.uid,
                     fonReg:"",
                     sexReg:"",

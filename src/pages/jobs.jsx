@@ -3,10 +3,10 @@ import { Icon } from "@iconify/react";
 import "../css/jobs.css";
 import logo1 from "../media/favIcon.png";
 import logo2 from "../media/whiteFav.png";
-import manTab from "../media/manTab.png";
+import man from "../media/undraw_in-the-office_e7pg.svg";
 import "../css/jobsresp.css";
 import "../css/landing.css";
-import useStore from "../store.jsx/zustandstore";
+import useStore from "../store/zustandstore";
 import "../css/landingresp.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -413,7 +413,7 @@ function Jobs() {
           </div>
         </div>
         <div className="jobRightUi">
-          <img src={manTab} alt="" />
+          <img src={man} alt="" />
           <p>Select a job to preview</p>
         </div>
       </div>

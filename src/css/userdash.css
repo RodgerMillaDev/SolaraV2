@@ -1,0 +1,86 @@
+
+:root {
+    --pri-Color: #8140cc;
+    --pri-ColorDark: #5a00c0;
+    --sec1-color:#5EA7FA;
+    --sec2-color:#5a00c0;
+    --sec3-color:#0d0a21;
+    --sec31-color:#191E38;
+    --sec4-color:#C35EC1;
+    --sec5-color:slateblue;
+    --sec6-color:#2332DF;
+    --sec7-color:#1F2C4F;
+}
+.userDashWrap{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+            background: #EDF0F8;
+}
+.userDashNavWrap{
+    width: 18%;
+    background: rgb(255, 255, 255);
+    box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 0px 20px 20px 0;
+    background:var(--sec31-color);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    align-items: center;
+}
+.userWholeDash{
+    width: 82%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.userWholeDashCont{
+    width: 95%;
+    height: 95%;
+    margin: 0 auto;
+}
+.userDashminiNav{
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.userDashminiNav span{
+    font-size: 1.6rem;
+    font-weight: 900;
+}
+
+.userDashShortName{
+     font-size: 1.6rem;
+    font-weight: 100 !important;
+    opacity: .7;
+}
+.udnbell{
+    width: 45px;
+    height: 45px;
+     background: rgb(255, 255, 255);
+    box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.udnbell .faIcon{
+    font-size: 23px;
+}
+.user-dashDrawerWrap{
+    width: 100%;
+    height: calc(100% - 70px);
+}
+.mainDashCont{
+    width: 100%;
+    height: 100%;
+}

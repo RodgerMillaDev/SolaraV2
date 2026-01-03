@@ -82,3 +82,10 @@
     width: 100%;
     height: calc(100% - 70px);
 }
+.aiBtnUploadLoad{
+    display: none;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}

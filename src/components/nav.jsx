@@ -4,7 +4,7 @@ import logo2 from "../media/fullLogoTrans.png";
 import "../css/navlanding.css";
 import "../css/navlandingresp.css"
 import { useNavigate } from "react-router-dom";
-import useStore from "../store.jsx/zustandstore";
+import useStore from "../store/zustandstore";
 
 function Navbar() {
 
@@ -31,7 +31,7 @@ function Navbar() {
             <a href="/Jobs">Job Opportunities</a>
           </div>
           <div className="navLink">
-            <a href="/Jobs">Dashboard</a>
+            <a href="/dashboard">Dashboard</a>
           </div>
           <div className="navLink">
             <a href="/about">AI Tasks</a>

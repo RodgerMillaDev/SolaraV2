@@ -4,10 +4,20 @@ import ApexCharts from "apexcharts"
 
 import heartRobot from "../../media/heartRobot.png"
 import { useEffect, useRef } from "react"
-import useStore from "../../store.jsx/zustandstore"
+import usefbStore from "../../store/firebasestore"
+import useStore from "../../store/zustandstore"
 function AdminDashDrawer(){
 
     const adminGraph = useRef(null)
+        const adminNameRef = useRef(null)
+    const adminName = usefbStore((s)=>s.adminName)
+    
+
+    useEffect(()=>{
+       
+
+       adminNameRef.current.innerText= (adminName.split(" "))[0]
+    },[adminName])
 
     useEffect(()=>{
     var options = {
@@ -70,7 +80,7 @@ chart.render();
                     <img className="adminBlob" src={bubble} alt="" />
                     <div className="adMiniPlacer">
                         <img src={heartRobot} alt="" />
-                        <p className="statusTxt">We are cruising on nicely Rodger! Kudos.</p>
+                        <p className="statusTxt">We are cruising on nicely <span ref={adminNameRef}></span>! Kudos.</p>
                     </div>
 
                 </div>
