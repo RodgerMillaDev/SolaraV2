@@ -8,6 +8,8 @@ const useStore = create((set) =>({
     screenLoader:true,
     isAdminDashActive: true,
     isAItaskActive: false,
+    isUserProfileActive: false,
+    isUserDashboardActive: true,
 
     openFonMenu: () => set({fonMenuDrawer:true}),
     closeFonMenu: () => set({fonMenuDrawer: false}),
@@ -20,7 +22,12 @@ const useStore = create((set) =>({
     showAdminDashboard:() => set({isAdminDashActive:true, isAItaskActive:false}),
     hideAdminDashboard: () => set({isAdminDashActive:false,}),
     showAiTask:() => set({isAItaskActive:true, isAdminDashActive:false}),
-    hideAiTask: () => set({isAItaskActive:false})
+    hideAiTask: () => set({isAItaskActive:false}),
+    showUserProfile: () => set({isUserProfileActive: true, isUserDashboardActive:false}),
+    hideUserProfilw: ()=> set({isUserProfileActive: false}),
+    showUserDashboard: ()=> set({isUserDashboardActive: true, isUserProfileActive:false}),
+    hideUserDashboard: ()=> set({isUserDashboardActive: false})
+
 }))
 
 

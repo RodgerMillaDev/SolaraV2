@@ -1,8 +1,27 @@
 import "../../css/userdashmenu.css"
 import user from "../../media/user.png"
 import { Icon } from "@iconify/react"
+import useStore from "../../store/zustandstore"
 
 function Userdashmenu(){
+    const isUserProfileActive = useStore((s)=>s.isUserProfileActive)
+    const showUserProfile = useStore((s)=>s.showUserProfile)
+    const hideUserProfile = useStore((s)=>s.hideUserProfile)
+
+    const isUserDashboardActive = useStore((s)=>s.isUserDashboardActive)
+    const showUserDashboard = useStore((s)=>s.showUserDashboard)
+    const hideUserDashboard = useStore((s)=>s.hideUserDashboard)
+
+    const toUserDash=()=>{
+        showUserDashboard()
+    }
+
+    const toProfile=()=>{
+        showUserProfile()
+    }
+
+
+
     return(
         <div className="userDashNav">
                    <div className="userProfile">
@@ -16,8 +35,8 @@ function Userdashmenu(){
        
                    </div>
                    <div className="userDashBtm">
-                       <div className="userDashLinks">
-                           <div className="udlLink udlLinkActive">
+                       <div className="userDashLinks" >
+                           <div onClick={toUserDash} className={`udlLink ${isUserDashboardActive ? "udlLinkActive" : ""}`}>
                                <div className="udlLinkIcon">
                                        <Icon className="faIcon" icon="solar:armchair-2-outline"/>
        
@@ -35,10 +54,9 @@ function Userdashmenu(){
                                    <p>Contracts</p>
                                </div>
                            </div>
-                           <div className="udlLink">
+                           <div onClick={toProfile} className={`udlLink ${isUserProfileActive ? "udlLinkActive" : ""}`}>
                                <div className="udlLinkIcon">
                                        <Icon className="faIcon" icon="solar:user-linear"/>
-       
                                </div>
                                <div className="udlLinkMenu">
                                    <p>My Profile</p>

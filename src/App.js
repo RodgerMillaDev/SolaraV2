@@ -11,6 +11,9 @@ import Admin from './pages/admin';
 import Userdash from './pages/userdash';
 import Protected from './components/protected';
 import AuthProvider from './firebase/authprovider';
+import WorkPopUp from './components/workpage/workpagepopup';
+import Workspace from './pages/work';
+import Completetask from './pages/complete';
 function App() {
   const screenLoader = useStore((s)=> s.screenLoader)
   return (
@@ -24,8 +27,9 @@ function App() {
         <Route path='/auth' element={<Auth/>} />
         <Route path='/jobs' element={<Jobs/>} />
         <Route path='/admin' element={<Admin/>} />
-
-
+        <Route path='/workpopup' element={<WorkPopUp/>} />
+        <Route path='/workspace' element={<Workspace/>} />
+        <Route path='/complete' element={<Completetask/>} />
         <Route path='/dashboard' element={
           <Protected>
           <Userdash/>

@@ -154,8 +154,6 @@ function Landing() {
   }, []);
 
 
-
-
   useEffect(() => {
     const ctx = gsap.context(() => {
       const cards = cardsRef.current;

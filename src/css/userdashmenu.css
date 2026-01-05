@@ -10,7 +10,7 @@
 }
 .userBtmNavCover{
     position: absolute;
-    z-index: 1;
+    z-index: -11;
     height: 100px;
     width: 100%;
     bottom: -5%;
@@ -56,10 +56,10 @@
     flex-direction: column;
 }
 .userProfDataMini .udname{
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-family: Telex;
     letter-spacing: -.5px;
-    color: aliceblue;
+    color: var(--sec3-color);
 }
 .udacctype{
     padding: 4px 20px ;
@@ -68,8 +68,7 @@
     border-radius: 20px;
     margin-top: 10px;
     background: var(--sec1-color);
-    color: var(--sec4-color);
-    background: #5ea7fa27;
+    background: var(--sec1-color);
 }
 .userDashBtm{
     height: calc(100% - 200px);
@@ -112,12 +111,13 @@
 }
 .udlLink{
     width: 100%;
-    height: 45px;
+    height: 40px;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: start;
     cursor: pointer;
-    margin-bottom: 7px;
+    margin-bottom: 5px;
 }
 .udlLinkIcon{
     width: 40px;
@@ -125,13 +125,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 10px;
+    margin-right: 5px;
 
 }
 .udlLinkIcon .faIcon{
-    font-size: 23px;
-    color: aliceblue;
-    opacity: .6;
+    font-size: 22px;
+    color: black;
+    opacity: .5;
     transition: .3s ease;
 }
 .udlLinkMenu{
@@ -141,7 +141,7 @@
     align-items: center;
     opacity: .6;
      transition: .3s ease;
-    color: aliceblue;
+    color: black;
     width: calc(100% - 50px);
 }
 .udlLinkActive .udlLinkIcon .faIcon{

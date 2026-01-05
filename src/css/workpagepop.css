@@ -1,0 +1,164 @@
+.workPopUpWrap{
+ background: #EDF0F8;
+ width: 100vw;
+ height: 100vh; 
+ display: flex;
+ justify-content: center;
+ align-items: center;
+
+}
+.workPopUpPlacer{
+    width: 400px;
+    height: 485px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background: rgb(255, 255, 255);
+    box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+.workPopCont{
+    width: 90%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+
+
+}
+.wpcancel{
+    width: 45px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    align-items: center;
+    height: 45px;
+}
+.wpcancel .faIcon{
+    color: var(--sec2-color);
+    font-size: 25px;
+}
+.wpcimg{
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wpcimg img{
+    width: 180px;
+}
+.wpcInstructions{
+    height: 300px;
+    width: 100%;
+    overflow-x: auto;
+}
+.wpcInstructionsComplete{
+    height: 200px !important;
+    width: 100%;
+    overflow: hidden;
+}
+.wpcInstructions span{
+    font-family: Mont;
+    font-weight: 600;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    height: 60px;
+    align-items: center;
+    font-size: 1.3rem;
+    width: 100%;
+
+}
+.wpcInstructionsComplete span{
+    font-family: Mont;
+    font-weight: 600;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    height: 60px;
+    align-items: center;
+    font-size: 1.3rem;
+    width: 100%;
+
+}
+.wpcInstructions ul{
+   margin-top: 20px;
+
+}
+
+.wpcInstructions ul{
+    font-size: .9rem;
+    margin-left: 20px;
+}
+.wpcInstructions ul li{
+    margin-bottom: 10px;
+    line-height: 20px;
+    opacity: .9;
+}
+.wpcBUttons{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+.wpcBUttons button{
+    cursor: pointer;
+    width: 48%;
+    border: none;
+    border-radius: 40px;
+    font-size: .9rem;
+
+    height: 40px;
+}
+.wpcBUttons button:nth-child(1){
+    border: 1px solid var(--sec5-color);
+    color: var(--sec5-color);
+    background: none;
+}
+.wpcBUttons button:nth-child(2){
+    color: var(--sec3-color);
+    color: aliceblue;
+    background: var(--sec5-color);
+}
+.wpcTaskSubmitResult{
+  width: 100%;
+  height: 100%;
+}
+.wpcInstructionsComplete .wpcTaskSubmitResult{
+  width: 100%;
+  height: 100px ;
+}
+
+.taskScore,
+.taskReward{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.trPlast{
+    color: green;
+    font-family: Mont !important;
+}
+.trPlastP{
+    font-family: Mont !important;
+}
+
+@media only screen and (max-width: 992px){
+.workPopUpPlacer{
+    width: 90%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background: rgb(255, 255, 255);
+    box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+}
