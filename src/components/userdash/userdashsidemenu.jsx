@@ -2,15 +2,36 @@ import "../../css/userdashmenu.css"
 import user from "../../media/user.png"
 import { Icon } from "@iconify/react"
 import useStore from "../../store/zustandstore"
+import { useRef,useEffect } from "react"
+
+import usefbStore from "../../store/firebasestore"
 
 function Userdashmenu(){
     const isUserProfileActive = useStore((s)=>s.isUserProfileActive)
     const showUserProfile = useStore((s)=>s.showUserProfile)
+       const hideScreenLoader = useStore((s)=>s.hideScreenLoader)
+
     const hideUserProfile = useStore((s)=>s.hideUserProfile)
 
     const isUserDashboardActive = useStore((s)=>s.isUserDashboardActive)
     const showUserDashboard = useStore((s)=>s.showUserDashboard)
     const hideUserDashboard = useStore((s)=>s.hideUserDashboard)
+ const userName = usefbStore((s)=>s.userName)
+ const authStatus = usefbStore((s)=>s.authStatus)
+ const accountLevel = usefbStore((s)=>s.accountLevel)
+
+ useEffect(()=>{
+    if(authStatus === 'authenticated' && userName != null){
+              hideScreenLoader()
+
+    }
+    return;
+
+
+
+ },[authStatus, userName])
+
+
 
     const toUserDash=()=>{
         showUserDashboard()
@@ -29,8 +50,8 @@ function Userdashmenu(){
                          <img src={user} alt="" />
                     </div>
                     <div className="userProfDataMini">
-                     <span className="udname">Rodger Milla</span>
-                     <span className="udacctype">Pro </span>
+                     <span className="udname" >{userName}</span>
+                     <span className="udacctype" >{accountLevel} </span>
                     </div>
        
                    </div>

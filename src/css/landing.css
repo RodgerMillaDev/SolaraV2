@@ -200,6 +200,7 @@ body{
 .heroUserActCont span{
     color: aliceblue;
     font-size: 2rem;
+    font-family: Mont;
     transition: .3s ease;
 }
 .heroUserActCont p{

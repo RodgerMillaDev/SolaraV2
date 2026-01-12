@@ -47,7 +47,7 @@
 
     align-items: center;
 }
-.wspnLeft a{
+.wspnLeft p{
     text-decoration: none;
     align-items: center;
     color: var(--sec31-color);

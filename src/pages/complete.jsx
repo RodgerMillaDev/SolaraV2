@@ -50,11 +50,6 @@ function Completetask(){
                 </div>
             </div>
 
-
-
-
-
-
         </div>
     )
 }

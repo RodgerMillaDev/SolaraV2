@@ -6,13 +6,42 @@
 
 .swal2-title{
     font-size: 2rem;
-    font-family: Mont;
+    font-family: Telex;
     font-weight: 400;
     letter-spacing: -1px;
 }
 .swal2-popup{
-    font-family: Mont;
+    font-family: Telex;
 }
+.swal2-cancel{
+    background: #6a5acd;
+    color: aliceblue;
+    /* border: 1px solid #6a5acd; */
+}
+.swal2-cancel{
+    background: #6a5acd;
+    color: aliceblue;
+    border: none;
+    font-family: Telex;
+    border-radius: 40px;
+}
+.swal2-confirm:focus{
+    outline: none;
+}
+.swal2-confirm:hover{
+    color: #6a5acd;
+    background: none;
+}
+.swal2-confirm{
+    background: none;
+        font-family: Telex;
+            border-radius: 40px;
+
+
+    color: #6a5acd;
+    border: 1px solid #6a5acd;
+}
+
 :root{
     --pri-color:#9E00FF;
     --sec-color:rgb(14, 0, 77);

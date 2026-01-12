@@ -33,7 +33,6 @@ function Admin(){
                 if(userSnap.exists()){
                     var name = userSnap.data().name;
                     setAdminName(name)
-                    
                     hideScreenLoader();
                 }else{
                     console.log("no such doc")
@@ -42,7 +41,6 @@ function Admin(){
           
             }else{
                 // navigate("/")
-                console.log("Not admin")
             }
         })
 

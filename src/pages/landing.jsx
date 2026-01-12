@@ -55,6 +55,10 @@ function Landing() {
 
       const hideScreenLoader = useStore((s)=> s.hideScreenLoader)
 
+      const toJobs=()=>{
+        navigate("/jobs")
+      }
+
 
     useEffect(()=>{
 
@@ -305,7 +309,7 @@ splitTypes.forEach((char, i)=>{
                 molestias? Corrupti saepe recusandae provident? Necessitatibus
                 ipsa dolorum deserunt beatae unde?
               </p>
-              <button>Get Job</button>
+              <button onClick={toJobs}> Get Job</button>
             </div>
             <div className="heroContImg">
               <img className="blob1" src={blob} alt="" />
@@ -603,7 +607,7 @@ splitTypes.forEach((char, i)=>{
                     faqCards.map((card, index)=>(
                       <div 
                       key={index.id}
-                       className={`faqCard faqCard${card.id}`} 
+                      className={`faqCard faqCard${card.id}`} 
                       ref={(el) => (cardsRef.current[index] = el)}
                       >
                         <div className="faqCardCont">

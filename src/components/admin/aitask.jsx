@@ -26,7 +26,7 @@ function Aitask(){
             try {
                 aiBtnUploadRef.current.style.display="none"
                 aiBtnUploadLoadRef.current.style.display="flex"
-                const url = "http://localhost:3322/uploadAITask"
+                const url = "https://solaraback-g1bm.onrender.com/uploadAITask"
                 const data = new FormData()
                 data.append("taskType",jt)
                 data.append("content",cr)
@@ -72,13 +72,13 @@ function Aitask(){
                     <div className="aitaskselector">
                          <select name="" id="" ref={jobType}>
                         <option value="">Task Type</option>
-                        <option value="content-review">Content Review</option>
-                        <option value="data-labeling">Data Labeling</option>
-                        <option value="ai--image-taging">AI Image Taging</option>
-                        <option value="fact-check">Fact Check</option>
-                        <option value="resume-snippet-evaluation">Resume Snippet Evaluation</option>
-                        <option value="translation-review">Translation Review</option>
-                        <option value="website-sability">Website Usability</option>
+                        <option value="Content Review">Content Review</option>
+                        <option value="Data Labelling">Data Labeling</option>
+                        <option value="AI Image Taging">AI Image Taging</option>
+                        <option value="Fact Check">Fact Check</option>
+                        <option value="Resume Snippet Evaluation">Resume Snippet Evaluation</option>
+                        <option value="Translation Review">Translation Review</option>
+                        <option value="Website Usability">Website Usability</option>
                     </select>
                     </div>
              

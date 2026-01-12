@@ -73,7 +73,10 @@ function Auth(){
                     sexReg:"",
                     photoUrl:"",
                     profUpdate:false,
-                    accountBalance:0
+                    accountBalance:0,
+                    jobEligibility:true,
+                    dailyTaskTaken:0,
+                    accountLevel:"Beginner"
                     
                 }
                     await setDoc(doc(db, "Users",user.uid), userData).then(()=>{

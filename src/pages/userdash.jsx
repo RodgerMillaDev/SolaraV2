@@ -2,15 +2,38 @@
 import { Icon } from "@iconify/react";
 import "../css/userdash.css"
 import useStore from "../store/zustandstore";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Maindash from "../components/userdash/usermaindash";
 import Userdashmenu from "../components/userdash/userdashsidemenu";
 import Userprofile from "../components/userdash/userprofile";
-
+import usefbStore from "../store/firebasestore";
+import { useSocketStore } from "../store/socketstore";
 function Userdash(){
 
     const isUserDashboardActive= useStore((s)=>s.isUserDashboardActive)
     const isUserProfileActive= useStore((s)=>s.isUserProfileActive)
+    const currentUserUid = usefbStore((s)=>s.userID)
+    const authStatus = usefbStore((s)=>s.authStatus)
+    const userName = usefbStore((s)=>s.userName)
+       const hideScreenLoader = useStore((s)=>s.hideScreenLoader)
+
+    
+    useEffect(()=>{
+
+        if(authStatus==="authenticated"){
+        useSocketStore.getState().setUid(currentUserUid)
+        useSocketStore.getState().connect()
+
+        }else{
+            console.log("waiting to authenticate user")
+            
+        }
+ 
+    },[authStatus])
+    
+
+
+
 
     return(
       <div className="userDashWrap">
