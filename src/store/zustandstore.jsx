@@ -41,7 +41,8 @@ const useStore = create((set) =>({
     showDesktopLeftDash: ()=>set({isDesktopLeftDashActive:true, isDesktopRightDashActive:false}),
     hideDesktopLeftDash: ()=>set({isDesktopLeftDashActive:false, isDesktopRightDashActive:true}),
     showPayments:()=>set({isUserProfileActive:true, userNavLinkActive:"Payments",isUserDashboardActive: false,leftProfActive:false,rightProfActive:true}),
-    removeAdminLoader: ()=>({adminLoader:false})
+    removeAdminLoader: ()=>set({adminLoader:false}),
+    setAdminLoader: ()=>set({adminLoader:true})
 }))
 
 

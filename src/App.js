@@ -17,7 +17,7 @@ import Workspace from "./pages/work";
 import Completetask from "./pages/complete";
 function App() {
   const screenLoader = useStore((s) => s.screenLoader);
-  const adminLoader = useStore((s)=>s.adminLoader)
+  const adminLoader = useStore((s) => s.adminLoader);
   return (
     <div className="App">
       <BrowserRouter>
@@ -27,16 +27,40 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/jobs" element={<Jobs />} />
+          <Route
+            path="/admin"
+            element={
+              <>
+                {adminLoader && <AdminLoader />}
+                <Admin />
+              </>
+            }
+          />
           <Route path="/complete" element={<Completetask />} />
-          <Route path="/dashboard" element={<Protected><Userdash/></Protected>} />
-          <Route path="/workpopup/:taskId" element={<Protected><WorkPopUp/></Protected>} />
-          <Route path="/workspace/:taskId" element={<Protected><Workspace/></Protected>} />
-        </Routes>
-
-        {adminLoader && <AdminLoader/>}
-        <Routes>
-          <Route path="/admin" element={<Admin />} />
-
+          <Route
+            path="/dashboard"
+            element={
+              <Protected>
+                <Userdash />
+              </Protected>
+            }
+          />
+          <Route
+            path="/workpopup/:taskId"
+            element={
+              <Protected>
+                <WorkPopUp />
+              </Protected>
+            }
+          />
+          <Route
+            path="/workspace/:taskId"
+            element={
+              <Protected>
+                <Workspace />
+              </Protected>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>

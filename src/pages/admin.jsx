@@ -19,7 +19,24 @@ function Admin(){
     const navigate = useNavigate()
     const setAdminName = usefbStore((s)=>s.setAdminName)
     const setUserID = usefbStore((s)=>s.setUserID)
-    const removeAdminLoader = useStore((s)=>s.removeAdminLoader)
+     const removeAdminLoader = useStore((s)=>s.removeAdminLoader)
+    const setAdminLoader = useStore((s)=>s.setAdminLoader)
+    const adminLoader = useStore((s)=>s.adminLoader)
+
+    useEffect(()=>{
+        const onResize =()=>{
+            console.log("i am checking orientation")
+            if(window.innerWidth > window.innerHeight){
+                removeAdminLoader()
+            }else{
+                setAdminLoader()
+            }
+        } 
+        onResize()
+        window.addEventListener("resize", onResize);
+        return ()=> window.removeEventListener("resize", onResize)
+
+    },[])
 
 
     useEffect(()=>{
@@ -44,7 +61,6 @@ function Admin(){
                 // navigate("/")
             }
         })
-
         return ()=> unsubscribe()
 
 
