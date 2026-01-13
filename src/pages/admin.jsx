@@ -19,6 +19,7 @@ function Admin(){
     const navigate = useNavigate()
     const setAdminName = usefbStore((s)=>s.setAdminName)
     const setUserID = usefbStore((s)=>s.setUserID)
+    const removeAdminLoader = useStore((s)=>s.removeAdminLoader)
 
 
     useEffect(()=>{

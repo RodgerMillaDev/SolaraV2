@@ -35,7 +35,7 @@ useEffect(() => {
 
   // Connect socket (with taskId from URL)
   if (!connected) {
-    connect(urlParam.taskId);
+    connect();
   }
 }, [userID, connected, urlParam.taskId, setUid, connect]);
     useEffect(()=>{

@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import adminLoader from "../components/admin/adminLoader";
 
 const useStore = create((set) =>({
 
@@ -9,7 +10,15 @@ const useStore = create((set) =>({
     isAdminDashActive: true,
     isAItaskActive: false,
     isUserProfileActive: false,
+    isContracts: false,
+    adminLoader:true,
     isUserDashboardActive: true,
+    isUserDashNavActive:false,
+    isDesktopLeftDashActive:true,
+    isDesktopRightDashActive:true,
+    userNavLinkActive:"Dashboard",
+    leftProfActive:true,
+    rightProfActive:true,
 
     openFonMenu: () => set({fonMenuDrawer:true}),
     closeFonMenu: () => set({fonMenuDrawer: false}),
@@ -23,11 +32,16 @@ const useStore = create((set) =>({
     hideAdminDashboard: () => set({isAdminDashActive:false,}),
     showAiTask:() => set({isAItaskActive:true, isAdminDashActive:false}),
     hideAiTask: () => set({isAItaskActive:false}),
-    showUserProfile: () => set({isUserProfileActive: true, isUserDashboardActive:false}),
-    hideUserProfilw: ()=> set({isUserProfileActive: false}),
-    showUserDashboard: ()=> set({isUserDashboardActive: true, isUserProfileActive:false}),
-    hideUserDashboard: ()=> set({isUserDashboardActive: false})
-
+    showUserProfile: () => set({userNavLinkActive:"MyStats",isUserProfileActive: true, isUserDashboardActive:false,rightProfActive:true, leftProfActive:true}),
+    showUserDashboard: ()=> set({userNavLinkActive:"Dashboard",isUserDashboardActive: true, isUserProfileActive:false, isDesktopLeftDashActive:true,isDesktopRightDashActive:true}),
+    showContracts: ()=> set({userNavLinkActive:"Contracts",isContracts:true,isUserDashboardActive: true, isUserProfileActive:false}),
+    hideUserDashboard: ()=> set({isUserDashboardActive: false}),
+    hideUserDashNav: ()=> set({isUserDashNavActive: false}),
+    showUserDashNav: ()=> set({isUserDashNavActive: true}),
+    showDesktopLeftDash: ()=>set({isDesktopLeftDashActive:true, isDesktopRightDashActive:false}),
+    hideDesktopLeftDash: ()=>set({isDesktopLeftDashActive:false, isDesktopRightDashActive:true}),
+    showPayments:()=>set({isUserProfileActive:true, userNavLinkActive:"Payments",isUserDashboardActive: false,leftProfActive:false,rightProfActive:true}),
+    removeAdminLoader: ()=>({adminLoader:false})
 }))
 
 

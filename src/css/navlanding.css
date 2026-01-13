@@ -178,7 +178,8 @@ nav{
     align-items: center;
 }
 .navContWhite .navBtns{
-    width: 20%;
+    width: 110px;
+    margin-left: 20px;
     display: flex;
     justify-content: end;
     align-items: center;

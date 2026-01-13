@@ -25,7 +25,6 @@
     background: rgb(255, 255, 255);
     box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.1);
     border-radius: 0px 20px 20px 0;
-    /* background:var(--sec31-color); */
     height: 100%;
     display: flex;
     justify-content: center;
@@ -53,8 +52,14 @@
     justify-content: space-between;
 }
 .userDashminiNav span{
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 100;
+}
+.userDashminiNavIcons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .udnbell{
@@ -68,7 +73,21 @@
     align-items: center;
 
 }
+.udnnavIcon{
+    width: 45px;
+    height: 45px;
+     background: rgb(255, 255, 255);
+    box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+}
 .udnbell .faIcon{
+    font-size: 23px;
+}
+.udnnavIcon .faIcon{
     font-size: 23px;
 }
 .user-dashDrawerWrap{
@@ -81,10 +100,72 @@
     position: absolute;
     right: -105%;
     transition: .3s ease;  
-                background: #EDF0F8;
- 
+    background: #EDF0F8;
     height: 100%;
 }
 .mainDashCont-Active{
     right: 0%;
+}
+
+
+@media only screen and (max-width:992px){
+    .userDashWrap{
+        position: relative;
+    }
+     .userDashNavWrap{
+        position: absolute;
+        left: -115% ;
+        z-index: 10;
+        width: 80%;
+        overflow: visible;
+        border-radius: 0;
+        justify-content: start;
+        transition: .3s ease;
+    }
+    .userDashNavWrapActive{
+        left: 0% !important;
+    
+    }
+
+     .userDashNavWrap::after{
+        width: 30%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.2);
+        content: "";
+        right: -30%;
+        position: absolute;
+    }
+    .userWholeDashCont{
+        height: 98%;
+    }
+    .userWholeDash{
+        width: 100%;
+        height: 100%;
+    }
+    .udnbell{
+    width: 45px;
+    height: 45px;
+     background: rgb(255, 255, 255);
+    box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+}
+.udnnavIcon{
+    width: 45px;
+    height: 45px;
+     background: rgb(255, 255, 255);
+    box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.userDashminiNav span{
+    font-size: 1.2rem;
+    font-weight: 100;
+}
 }

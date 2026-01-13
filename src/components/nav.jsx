@@ -34,7 +34,7 @@ function Navbar() {
             <a href="/dashboard">Dashboard</a>
           </div>
           <div className="navLink">
-            <a href="/about">AI Tasks</a>
+            <a href="/dashboard">AI Tasks</a>
           </div>
           <div className="navLink">
             <a href="/">Referrals</a>

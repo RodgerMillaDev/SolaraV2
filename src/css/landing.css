@@ -987,7 +987,7 @@ flex-direction: row;
 .orbit {
   width: 200px;
   height: 200px;
-  border: 1px solid rgba(0, 0, 0, 0.126);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   position: absolute;
   border-radius: 100%;
   top: calc(50% - 100px);
@@ -997,7 +997,7 @@ flex-direction: row;
 .orbit2 {
   width: 300px;
   height: 300px;
-  border: 1px solid rgba(0, 0, 0, 0.126);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   position: absolute;
   border-radius: 100%;
   top: calc(50% - 150px);
@@ -1007,7 +1007,7 @@ flex-direction: row;
 .orbit3 {
   width: 400px;
   height: 400px;
-  border: 1px solid rgba(0, 0, 0, 0.126);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   position: absolute;
   border-radius: 100%;
   top: calc(50% - 200px);
@@ -1017,7 +1017,7 @@ flex-direction: row;
 .orbit4 {
   width: 500px;
   height: 500px;
-  border: 1px solid rgba(0, 0, 0, 0.126);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   position: absolute;
   border-radius: 100%;
   top: calc(50% - 250px);

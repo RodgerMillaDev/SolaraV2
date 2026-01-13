@@ -587,7 +587,7 @@ splitTypes.forEach((char, i)=>{
                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto praesentium ad magni libero quia deserunt optio enim? A, magnam velit?</p>
                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto praesentium ad magni libero quia deserunt optio enim? A, magnam velit?</p>
                 </div>
-                <div className="faqRightB" data-aos="fade-up">
+                <div className="faqRightB" data-aos="fade-in">
                     <div className="faqRightBCont">
                         <h2>45%</h2>
                         <p>Lorem ipsum dolor sit.</p>

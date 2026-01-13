@@ -31,7 +31,6 @@ function AdminDashDrawer(){
         colors:[
             "#5EA7FA",
             "#2332DF"
-
         ],
           chart: {
           height: 400,
@@ -40,13 +39,23 @@ function AdminDashDrawer(){
         dataLabels: {
           enabled: false
         },
-        
-        stroke: {
-          curve: 'smooth'
+          stroke: {
+          curve: "smooth",
+          width: 1,
         },
+        
+        grid: {
+          show: false, // ❌ remove grid lines
+        },
+
+        legend: {
+          show: false, // ❌ remove series legend
+        },
+        
+      
         xaxis: {
           type: 'datetime',
-          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+          categories: ["01 Jan ","02 Jan","03 Jan", "04 Jan", "05 Jan", "06 Jan" , "07 Jan"]
         },
         tooltip: {
           x: {
@@ -94,6 +103,57 @@ chart.render();
 
                 </div>
                 <div className="adminApplicants">
+                    <div className="adminApplicant">
+                        <div className="apName">
+
+                            <p>Rodger Milla</p>
+
+
+                        </div>
+                        <div className="apProf">
+                            <p>Virtual Assistant</p>
+
+                        </div>
+                        <div className="apDate">
+                            <p>1st Jun '26</p>
+
+                        </div>
+                       
+                    </div>
+                    <div className="adminApplicant">
+                        <div className="apName">
+
+                            <p>Rodger Milla</p>
+
+
+                        </div>
+                        <div className="apProf">
+                            <p>Virtual Assistant</p>
+
+                        </div>
+                        <div className="apDate">
+                            <p>1st Jun '26</p>
+
+                        </div>
+                       
+                    </div>
+                    <div className="adminApplicant">
+                        <div className="apName">
+
+                            <p>Rodger Milla</p>
+
+
+                        </div>
+                        <div className="apProf">
+                            <p>Virtual Assistant</p>
+
+                        </div>
+                        <div className="apDate">
+                            <p>1st Jun '26</p>
+
+                        </div>
+                       
+                    </div>
                     <div className="adminApplicant">
                         <div className="apName">
 

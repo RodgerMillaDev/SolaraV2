@@ -5,12 +5,12 @@ import filesImg from "../../media/undraw_add-files_d04y.svg";
 import { Icon } from "@iconify/react";
 import Swal from "sweetalert2";
 import usefbStore from "../../store/firebasestore";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useSocketStore } from "../../store/socketstore";
 import { useNavigate } from "react-router-dom";
 import { doc, setDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
-
+import useStore from "../../store/zustandstore";
 function Maindash() {
   const userID = usefbStore((s) => s.userID);
   const taskResp = useRef(null);
@@ -20,6 +20,11 @@ function Maindash() {
   const taskRespStatus = useSocketStore((s) => s.taskRespStatus);
   const taskRespCont = useSocketStore((s) => s.taskRespCont);
   const taskArray = usefbStore((s) => s.taskArray);
+
+  const isDesktopLeftDashActive = useStore((s)=> s.isDesktopLeftDashActive)
+  const isDesktopRightDashActive = useStore((s)=> s.isDesktopRightDashActive)
+
+
 
   useEffect(() => {
     if (!userID) return;
@@ -61,10 +66,9 @@ function Maindash() {
   }, [taskRespCont]);
 
 
-
   return (
     <div className="mdlminiContWrapper">
-      <div className="mainDashLeft">
+      <div className={`mainDashLeft ${isDesktopLeftDashActive && isDesktopRightDashActive ? "allDashActive" : "" } ${isDesktopLeftDashActive ? "mainDashLeftFonActive-Desk" : "mainDashLeftFonInActive-Desk"}` }>
         <div className="mdlTop">
           <div className="mdlCard1">
             <div className="mdlCard1Cont">
@@ -162,13 +166,12 @@ function Maindash() {
           </div>
         </div>
       </div>
-      <div className="mainDashRight">
+      <div className={`mainDashRight ${isDesktopLeftDashActive && isDesktopRightDashActive ? "allDashActive" : "" } ${isDesktopRightDashActive ? "mainDashRightFonActive-Desk" : "mainDashLeftFonInActive-Desk"}` }>
         <div className="mdrIntro">
           <p>Applied Jobs</p>
         </div>
         <div className="mdrCont">
           <img src={filesImg} alt="" />
-
           <span>No job applications found</span>
         </div>
       </div>

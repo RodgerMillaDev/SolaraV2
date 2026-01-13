@@ -64,7 +64,7 @@ useEffect(() => {
             text:"Your progress will be lost!",
             icon:"warning",
             showConfirmButton:true,
-            confirmButtonText:"Yes, leave",
+            confirmButtonText:"Yes, Leave",
             showCancelButton:true,
             cancelButtonText:"Continue",
             cancelButtonColor:"#6a5acd"

@@ -6,14 +6,15 @@
 
 }
 .userProfLeft{
-    width: 60%;
+    width: calc(60% - 20px);
+    margin-right: 20px;
     height: 100%;
+    transition: .3s ease;
 }
 .uplTop{
     width: 100%;
     height: 40%;
         overflow: hidden;
- 
     position: relative;
     border-radius: 20px;
     background: rgb(255, 255, 255);
@@ -21,8 +22,6 @@
     box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.1);
          background-image: linear-gradient(205deg, rgba(236, 236, 236,0.02) 0%, rgba(236, 236, 236,0.02) 13%,transparent 13%, transparent 64%,rgba(55, 55, 55,0.02) 64%, rgba(55, 55, 55,0.02) 71%,rgba(239, 239, 239,0.02) 71%, rgba(239, 239, 239,0.02) 100%),linear-gradient(205deg, rgba(8, 8, 8,0.02) 0%, rgba(8, 8, 8,0.02) 1%,transparent 1%, transparent 60%,rgba(9, 9, 9,0.02) 60%, rgba(9, 9, 9,0.02) 80%,rgba(198, 198, 198,0.02) 80%, rgba(198, 198, 198,0.02) 100%),linear-gradient(153deg, rgba(134, 134, 134,0.02) 0%, rgba(134, 134, 134,0.02) 30%,transparent 30%, transparent 43%,rgba(85, 85, 85,0.02) 43%, rgba(85, 85, 85,0.02) 47%,rgba(103, 103, 103,0.02) 47%, rgba(103, 103, 103,0.02) 100%),linear-gradient(284deg, rgba(178, 178, 178,0.02) 0%, rgba(178, 178, 178,0.02) 8%,transparent 8%, transparent 47%,rgba(161, 161, 161,0.02) 47%, rgba(161, 161, 161,0.02) 61%,rgba(19, 19, 19,0.02) 61%, rgba(19, 19, 19,0.02) 10%),linear-gradient(125deg, var(--sec2-color),var(--sec4-color));
            background: linear-gradient(70deg,#4B35A2, #6a43a0);
-
-
     overflow: hidden;
 }
 .uplTop img{
@@ -67,8 +66,20 @@
 }
 .uplGRraph{
     height: calc(100% - 60px);
-    width: 96%;
+    width: 100%;
     
+}
+.apexcharts-xaxistooltip{
+    display: none !important;
+}
+.apexcharts-yaxis-texts-g text,
+.apexcharts-tooltip-title,
+.apexcharts-tooltip-text
+{
+    font-family: Mont !important;
+}
+.apexchartsprpl8hq9f{
+    width: 100% !important;
 }
 .uplBtm p{
     height: 60px;
@@ -80,15 +91,28 @@
 }
 
 .userProfRight{
-    width: calc(40% - 20px);
-    margin-left: 20px;
+    width: 40% ;
+    transition: .3s ease;
 
 
 }
+.leftProfInActive {
+    width: 0;
+    margin: 0;
+    opacity: .001;
+    overflow: hidden;
+}
+.allProfActive.rightProfActive{
+    width: 40% ;
+
+}
+.rightProfActive{
+    width: 100%;
+}
 
 .uprTop{
-    height: calc(100% - 170px);
-        background: rgb(255, 255, 255);
+    height: 100% ;
+    background: rgb(255, 255, 255);
     box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
     overflow: hidden;
@@ -147,15 +171,26 @@
     border-radius: 0 0 20px 20px;
     display: flex;
     justify-content: center;
+    transition: .3s ease;
     align-items: center;
     background: var(--sec3-color);
 
 }
+.apexcharts-toolbar{
+    display: none !important;
+}
+.allProfActive.rightProfActive .uprAccBlCont{
+  align-items: start;
+}
+.rightProfActive .uprAccBlCont{
+  align-items: center;
+}
 .uprAccBlCont { 
-  width: 80%;
+  width: calc(100% - 70px);
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: start;
+  transition: .3s ease;
   justify-content: center;
   height: 80%;
 }
@@ -189,7 +224,7 @@
 
 .recentTrx{
     height: calc(100% - 220px);
-    width: 90%;
+    width: calc(100% - 20px);
     margin: 0 auto;
     margin-top: 20px;
     overflow: hidden;
@@ -207,15 +242,20 @@
 .rtxTramsaction{
     width: 100%;
     height: 60px;
+    border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.19);
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.19); */
+}
+.rtxTramsaction:nth-child(odd){
+  background: rgba(0, 0, 0, 0.055);
 }
 .rtxTramsaction span:nth-child(1){
     width: 35%;
     font-size: .85rem;
     opacity: .7;
+    margin-left:10px ;
     
 }
 .rtxTramsaction span:nth-child(2){
@@ -231,4 +271,20 @@
     text-align: end;
     font-family: Mont;
     color: rgb(4, 174, 4);
+    margin-right: 10px;
+}
+
+@media only screen and (max-width:992px) {
+    .userProfWrap{
+        overflow: visible;
+    }
+    .allProfActive.leftProfActive {
+        width: 100% !important;
+        margin: 0;
+        overflow: visible;
+    }
+    .allProfActive.rightProfActive{
+        width: 0%;
+
+    }
 }

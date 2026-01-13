@@ -6,14 +6,41 @@
     flex-direction: row;
 }
 .mainDashLeft{
-    width: 65%;
+    width: calc(65% - 20px);
     height: 100%;
+    transition: .3s ease;
+    overflow: hidden;
+    margin-right:20px ;
+
 }
 .mainDashRight{
-    margin-left:20px ;
-    width: calc(35% - 20px);
+    transition: .3s ease;
+    width: 35% ;
     height: 100%;
+    transform: .3s ease;
+    overflow: hidden;
+}
+.mainDashLeftFonActive-Desk{
+    width: 100%;
+        overflow: visible;
 
+}
+.mainDashLeftFonInActive-Desk{
+    width: 0%;
+    opacity: .001;
+    margin: 0;
+}
+
+.allDashActive.mainDashLeftFonInActive-Desk{
+    margin-left: 20px;
+}
+.mainDashRightFonActive-Desk{
+    width:100% ;
+    overflow: visible;
+    
+}
+.mainDashRightFonInActive-Desk{
+    width: 0%;
 }
 .mdrIntro{
     height: 30px;
@@ -63,7 +90,7 @@
         align-items: center;
 }
 .mdlCard1Cont{
-    width: 80%;
+    width: calc(100% - 70px);
     height: 80%;
     display: flex;
     flex-direction: column;
@@ -145,8 +172,9 @@
     
 }
 .mdlcard2Wrap{
-   width: 80%;
-   height: 80%;
+   width: calc(100% - 40px);
+   margin: 0 auto;
+   height: 90%;
    display: flex;
    justify-content: space-between;
    align-items: start;
@@ -189,10 +217,8 @@ align-items: center;
 .mdlminicard2{
     height: calc(100% - 80px);
     width: 100%;
-    background: #5a5df51c;
     display: flex;
     flex-direction: row;
-    border-radius: 10px;
 }
 .mdlminicardContData{
     width: fit-content;
@@ -208,16 +234,21 @@ align-items: center;
 }
 .mdlminicardCont2{
      display: flex;
-    justify-content: start;
+    justify-content: space-between;
     width: 100%;
     flex-direction: column;
     align-items: center;
+    height: 100%;
 }
 .mdlcboxT{
     flex-direction: row;
     display: flex;
+        border-radius: 10px;
+
     justify-content: start;
     align-items: center;
+        background: #5a5df51c;
+
     width: 100%;
     height: calc(100% - 50px);
 }
@@ -226,15 +257,19 @@ align-items: center;
     justify-content: center;
     align-items: center;
     height: 50px;
+    width: 100%;
     
 }
 .mdlcboxB button{
     border: none;
     font-size: .7rem;
     color: var(--sec2-color);
-    padding: 6px 10px;
+    height: 35px;
     background: #a9a0e345;
     cursor: pointer;
+    background: #5A5DF5;
+    color: aliceblue;
+    width: 100%;
     border-radius: 20px;
     
 }
@@ -325,4 +360,52 @@ align-items: center;
     background: var(--sec2-color);
     color: aliceblue;
 
+}
+
+@media only screen and (max-width:992px) {
+    .mdlcboxB button{
+        padding: 0px !important;
+        height: 35px !important;
+    }
+    .mdlTop{
+        width: 100%;
+        overflow-x:auto;
+        border-radius: 20px;
+
+    }
+    .mdlCard1{
+        width: 75vw;
+    }
+    .mdlCard2{
+        width: 75vw;
+    }
+    .mdlminiContWrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+.mainDashLeft{
+    width: 100%;
+    margin: 0;
+}
+.allDashActive.mainDashRightFonActive-Desk{
+    width: 0% !important;
+}
+.allDashActive.mainDashRight{
+    width: 0%;
+    overflow: hidden;
+    transition: .3s ease;
+}
+.mainDashRightFonActive-Desk{
+        width: 100% !important;
+        overflow: visible;
+
+}
+.mainDashLeftFonInActive-Desk{
+        width: 0% !important;
+        overflow: hidden;
+
+}
 }
