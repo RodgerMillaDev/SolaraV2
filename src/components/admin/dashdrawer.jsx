@@ -9,13 +9,11 @@ import useStore from "../../store/zustandstore"
 function AdminDashDrawer(){
 
     const adminGraph = useRef(null)
-        const adminNameRef = useRef(null)
+    const adminNameRef = useRef(null)
     const adminName = usefbStore((s)=>s.adminName)
     
 
     useEffect(()=>{
-       
-
        adminNameRef.current.innerText= (adminName.split(" "))[0]
     },[adminName])
 
@@ -33,7 +31,7 @@ function AdminDashDrawer(){
             "#2332DF"
         ],
           chart: {
-          height: 400,
+          height: "100%",
           type: 'area'
         },
         dataLabels: {
@@ -88,7 +86,6 @@ chart.render();
                 <div className="ad-miniStatus">
                     <img className="adminBlob" src={bubble} alt="" />
                     <div className="adMiniPlacer">
-                        <img src={heartRobot} alt="" />
                         <p className="statusTxt">We are cruising on nicely <span ref={adminNameRef}></span>! Kudos.</p>
                     </div>
 

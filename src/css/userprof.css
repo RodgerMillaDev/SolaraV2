@@ -65,7 +65,7 @@
     box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.1);
 }
 .uplGRraph{
-    height: calc(100% - 60px);
+    height: calc(100% - 40px);
     width: 100%;
     
 }
@@ -82,7 +82,7 @@
     width: 100% !important;
 }
 .uplBtm p{
-    height: 60px;
+    height: 40px;
     width: 95%;
     display: flex;
     justify-content: start;
@@ -239,6 +239,28 @@
     overflow-x: hidden;
     overflow-y: auto;
 }
+.rtxWrapper::-webkit-scrollbar{
+    display: flex;
+    width: 5px;
+        border-radius: 10px;
+            background: transparent;
+
+
+}
+.rtxWrapper::-webkit-scrollbar-thumb{
+    display: flex;
+    background: rgba(0, 0, 0, 0.5);
+
+        width: 5px;
+
+    border-radius: 10px;
+}
+.rtxWrapper::-webkit-scrollbar-track{
+    background: transparent;
+    border-radius: 10px;
+        width: 5px;
+
+}
 .rtxTramsaction{
     width: 100%;
     height: 60px;
@@ -262,7 +284,6 @@
     width: 35%;
     text-align: center;
         opacity: .7;
-
         font-size: .85rem;
 
 }
@@ -272,6 +293,7 @@
     font-family: Mont;
     color: rgb(4, 174, 4);
     margin-right: 10px;
+    font-size: .85rem;
 }
 
 @media only screen and (max-width:992px) {
@@ -287,4 +309,29 @@
         width: 0%;
 
     }
+}
+@media (min-width:993px) and (max-width:1024px) {
+    .rtxTramsaction span:nth-child(1){
+    width: 35%;
+    font-size: .8rem;
+    opacity: .7;
+    margin-left:10px ;
+    
+}
+.rtxTramsaction span:nth-child(2){
+    width: 35%;
+    text-align: center;
+        opacity: .7;
+        font-size: .8rem;
+
+}
+.rtxTramsaction span:nth-child(3){
+    width: 30%;
+    text-align: end;
+    font-family: Mont;
+    color: rgb(4, 174, 4);
+    margin-right: 10px;
+        font-size: .85rem;
+
+}
 }

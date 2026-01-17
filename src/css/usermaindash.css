@@ -20,9 +20,9 @@
     transform: .3s ease;
     overflow: hidden;
 }
-.mainDashLeftFonActive-Desk{
-    width: 100%;
-        overflow: visible;
+.allDashActive.mainDashLeftFonActive-Desk{
+    overflow: visible;
+    width: calc(65% - 20px);
 
 }
 .mainDashLeftFonInActive-Desk{
@@ -30,9 +30,11 @@
     opacity: .001;
     margin: 0;
 }
-
 .allDashActive.mainDashLeftFonInActive-Desk{
     margin-left: 20px;
+}
+.allDashActive.mainDashRightFonActive-Desk{
+    width: 35% ;
 }
 .mainDashRightFonActive-Desk{
     width:100% ;
@@ -55,7 +57,7 @@
 .mdrCont{
        background: rgb(255, 255, 255);
         box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.2 );
-        border-radius: 20px;
+        border-radius: 10px;
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -124,8 +126,6 @@
 .percentEarn{
     color: rgb(93, 237, 93);
 }
-
-
 .mdlBtm{
     width: 100%;
     height: calc(100% - 270px) !important;
@@ -140,14 +140,15 @@
     justify-content: center;
     align-items: center;
     display: flex;
-    border-radius: 10px;
+    border-radius: 7px;
     flex-direction: column;
-    height: 100%;
+    height: calc(100% - 40px);
 }
 .mdlBtmAITasksAssigned img{
     width: 150px;
 }
 .mdlBtmIntro{
+    height: 30px;
     margin-bottom: 10px;
 }
 .mdlBtmAITasksAssigned span{
@@ -183,7 +184,6 @@
 .mdlminicard{
     width: 100%;
     height: 70px;
-    background: #5a5df51c;
     display: flex;
     flex-direction: row;
     border-radius: 10px;
@@ -196,7 +196,7 @@
 }
 .mdlminiCardBox{
     width: 55px;
-        margin: 0 10px;
+        margin: 0 10px 0 0;
         border-radius: 10px;
 
     height: 55px;
@@ -247,15 +247,13 @@ align-items: center;
 
     justify-content: start;
     align-items: center;
-        background: #5a5df51c;
-
     width: 100%;
     height: calc(100% - 50px);
 }
 .mdlcboxB{
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: end;
     height: 50px;
     width: 100%;
     
@@ -264,7 +262,7 @@ align-items: center;
     border: none;
     font-size: .7rem;
     color: var(--sec2-color);
-    height: 35px;
+    height: 30px;
     background: #a9a0e345;
     cursor: pointer;
     background: #5A5DF5;
@@ -291,18 +289,35 @@ align-items: center;
     border-radius: 15px;
     margin-bottom: 4px;
     border-radius: 10px;
+    scrollbar-width: 5px;
+    
+}
 
+.accTaskAssignedWrapper::-webkit-scrollbar {
+    width: 6px;
+    display: flex;
+    
+
+}
+
+.accTaskAssignedWrapper::-webkit-scrollbar-thumb {
+    background: #00000049;
+    border-radius: 10px;
+}
+
+.accTaskAssignedWrapper::-webkit-scrollbar-track {
+    background: transparent;
 }
 .aitaskassignedCard{
     width: 95%;
+    
     display: flex;
     margin: 0 auto;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    height: 70px;
+    height: 60px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-    margin-bottom:5px;
 }
 .aacTaskType{
     width: 40%;
@@ -324,6 +339,9 @@ align-items: center;
 .aacTaskPay p{
         font-size:.85rem ;
 
+}
+.aacTaskPay p span{
+    font-family: Mont;
 }
 .aacTaskAction{
     width: 20%;
@@ -351,18 +369,23 @@ align-items: center;
     color: black;
 }
 .acceptTaskBtn{
-    height: 30px;
+    height: 25px;
     border-radius: 5px;
     padding: 2px 10px;
     text-align: center;
     cursor: pointer;
-    font-size:0.8rem ;
+    font-size:0.7rem !important ;
     background: var(--sec2-color);
     color: aliceblue;
 
 }
 
 @media only screen and (max-width:992px) {
+    .mainDashLeftFonActive-Desk{
+    width: 100%;
+    overflow: visible;
+
+}
     .mdlcboxB button{
         padding: 0px !important;
         height: 35px !important;
@@ -393,6 +416,11 @@ align-items: center;
 .allDashActive.mainDashRightFonActive-Desk{
     width: 0% !important;
 }
+.allDashActive.mainDashLeftFonActive-Desk{
+    overflow: visible;
+    width: 100%;
+
+}
 .allDashActive.mainDashRight{
     width: 0%;
     overflow: hidden;
@@ -407,5 +435,54 @@ align-items: center;
         width: 0% !important;
         overflow: hidden;
 
+}
+}
+
+@media (min-width:993px) and (max-width:1024px) {
+    .userDashNav{
+        height: 95% !important;
+    }
+
+.userDashBtm {
+    height: calc(100% - 160px) !important;
+    width: 100%;
+    border-radius: 0 50px 0 0;
+    margin-top: 10px !important;
+}
+.userDashLinks{
+    width: 95% !important;
+}
+.udlLink {
+    height: 35px !important;
+}
+ .userDashminiNav{
+    height: 50px;
+
+}
+.userDashminiNav span{
+    font-size: 1rem;
+}
+.mdlTop{
+    height: 200px !important;
+}
+.mdlBtm{
+    height: calc(100% - 220px) !important;
+}
+
+.mdlCard1Cont{
+    width: 80%;
+}
+.mdlcardTitle{
+    font-size: .9rem;
+}
+.mdlCard1Income{
+    margin: 15px 0;
+    font-size: 1.7rem;
+}
+.mdlCard1Cont img{
+ width: 50px;
+}
+.mdlminisum{
+    font-size: .7rem ;
 }
 }

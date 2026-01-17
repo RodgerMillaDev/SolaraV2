@@ -79,7 +79,8 @@ a{
  justify-content: center;
  align-items: center;
  width: 100%;
-}.asmAuthBox{
+}
+.asmAuthBox{
     width: 90%;
     overflow: hidden;
     height: fit-content;
@@ -165,4 +166,30 @@ a{
 }
 .asmIcon .faIcon{
     font-size: 22px;
+}
+
+@media (min-width: 992px) and (max-width:1024px){
+    .asmLogo{
+        height:70px;
+    }
+    .asmAuth{
+ height: 70px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+}
+.asmLinks{
+    height: calc(100% - 140px);
+}
+.asmlLink{
+    height: 35px;
+}
+.asmIcon{
+    height: 35px;
+    width: 35px;
+}
+.asmIcon .faIcon{
+    font-size: 18px;
+}
 }

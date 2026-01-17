@@ -14,6 +14,8 @@ export const useSocketStore = create((set, get) => ({
     taskBegan:false,
     taskRespStatus: null,
     taskTime:"0min 0s",
+    completeMethod:null,
+    payOut:null,
     setUid: (uid) => set({uid}),
 
 
@@ -98,9 +100,11 @@ formatTime(time)
 
             }
             if(data.type === "taskComplete"){
-             set({taskComplete:true})
-            
+              set({completeMethod:data.completeMethod})
+              set({payOut:data.payOut})
+              set({taskComplete:true})
             }
+            
             if(data.type === "resumeError"){
              set({taskComplete:true})
             

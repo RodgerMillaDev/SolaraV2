@@ -2,7 +2,6 @@ import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Landing from "./pages/landing";
-import StackedFaqTest from "./pages/test";
 import Auth from "./pages/auth";
 import Jobs from "./pages/jobs";
 import useStore from "./store/zustandstore";
@@ -17,7 +16,6 @@ import Workspace from "./pages/work";
 import Completetask from "./pages/complete";
 function App() {
   const screenLoader = useStore((s) => s.screenLoader);
-  const adminLoader = useStore((s) => s.adminLoader);
   return (
     <div className="App">
       <BrowserRouter>
@@ -27,16 +25,7 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/jobs" element={<Jobs />} />
-          <Route
-            path="/admin"
-            element={
-              <>
-                {adminLoader && <AdminLoader />}
-                <Admin />
-              </>
-            }
-          />
-          <Route path="/complete" element={<Completetask />} />
+          <Route path="/complete/:taskId/:completeMethod/:payOut" element={<Completetask />} />
           <Route
             path="/dashboard"
             element={
@@ -61,8 +50,13 @@ function App() {
               </Protected>
             }
           />
+                    <Route path="/admin" element={<Admin />} />
+
         </Routes>
+
+       
       </BrowserRouter>
+
     </div>
   );
 }

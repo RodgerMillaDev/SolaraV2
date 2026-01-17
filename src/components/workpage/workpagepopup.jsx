@@ -74,12 +74,8 @@ useEffect(() => {
             type:"startTask",
             taskId:urlParam.taskId,
             userId:userID,
-
         })
-        console.log(urlParam.taskId)
-        console.log(userID)
-
-  
+       
     }
 
 
@@ -110,13 +106,21 @@ useEffect(() => {
                         <img src={humanLaptop} alt="" />
                     </div>
                     <div className="wpcInstructions">
+                        <div className="wpcInstructionsIntro">
                         <span>Before You Begin</span>
-                        <ul>
+                        </div>
+                        <div className="wpcInstructionsIntroActInstruction">
+                         <ul>
+                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci, cupiditate!</li>
+                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci, cupiditate!</li>
+                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci, cupiditate!</li>
                             <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci, cupiditate!</li>
                             <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci, cupiditate!</li>
                             <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci, cupiditate!</li>
                             <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci, cupiditate!</li>
                         </ul>
+                        </div>
+                       
                     </div>
                     <div className="wpcBUtton">
                         <button onClick={toActWork}>Proceed</button>

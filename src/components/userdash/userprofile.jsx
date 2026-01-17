@@ -113,7 +113,7 @@ function Userprofile() {
           </div>
           <div className="recentTrx">
             <div className="rtXIntro">
-              <p>Recent Withdrawals</p>
+              <span>Recent Withdrawals</span>
             </div>
             <div className="rtxWrapper">
               <div className="rtxTramsaction">

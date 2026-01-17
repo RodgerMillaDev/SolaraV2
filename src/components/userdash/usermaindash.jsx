@@ -128,7 +128,7 @@ function Maindash() {
                       <p>{task.type}</p>
                     </div>
                     <div className="aacTaskPay">
-                      <p>Pay ${task.pay}</p>
+                      <p>Pay <span>${task.pay}</span> </p>
                     </div>
                     <div
                       className={`aacTaskStatus  ${

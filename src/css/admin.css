@@ -116,3 +116,86 @@
 .admin-AITaskActive{
   right:2%;
 }
+
+
+
+
+
+@media (min-width:993px) and (max-width:1024px) {
+    .statusTxt{
+        font-size: 1rem !important;
+        line-height: 50px;
+    }
+    .adminDashTop{
+        height: 50px;
+    }
+    .adminDashDrawer{
+    width: 100%;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    height: calc(100% - 50px);
+}
+.adminDashTop span{
+  font-family: Telex;
+  font-size: 1rem;
+  color: var(--sec3-color);
+  letter-spacing: .01px;
+
+}
+.adnotify{
+    width: 35px;
+    height: 35px;
+     background: rgb(255, 255, 255);
+    box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.1); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: relative;
+    font-size: 20px;
+
+
+}
+.newAlert{
+    width: 7px;
+    height: 7px;
+    background: rgb(1, 206, 1);
+    top: 5%;
+    right: 5%;
+    position: absolute;
+    border-radius: 50%;
+
+}
+.admin-Dash{
+    width: 98%;
+    height:100% ;
+    transition: .3s ease-in-out;
+    position: absolute;
+    background: #F3F3F3;
+    
+    right: -105%;
+    
+}
+.admin-AITask{
+    width: 98%;
+    height:100% ;
+    transition: .3s ease-in-out;
+    position: absolute;
+        right: -105%;
+
+    background: #F3F3F3;
+    border-radius: 20px;
+     background: rgb(255, 255, 255);
+    box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.admin-DashActive,
+.admin-AITaskActive{
+  right:2%;
+}
+
+}

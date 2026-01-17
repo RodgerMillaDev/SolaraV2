@@ -169,3 +169,12 @@
     font-weight: 100;
 }
 }
+
+@media (min-width:993px) and (max-width: 1024px){
+    .user-dashDrawerWrap{
+    width: 100%;
+    height: calc(100% - 50px);
+    position: relative;
+}
+   
+}

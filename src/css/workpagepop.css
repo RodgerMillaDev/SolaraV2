@@ -40,19 +40,29 @@
 }
 .wpcimg{
     width: 100%;
-    height: 200px;
+    height: 170px;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .wpcimg img{
-    width: 180px;
+    width: 150px;
+}
+.wpcInstructionsIntro{
+    height: 50px;
 }
 .wpcInstructions{
-    height: 300px;
+    height: 350px;
     width: 100%;
+    overflow: hidden;
     overflow-x: auto;
+}
+.wpcInstructionsIntroActInstruction{
+    height: 300px;
+    overflow-y: auto;
+    width: 100%;
+    overflow-x: hidden;
 }
 .wpcInstructionsComplete{
     height: 200px !important;
@@ -84,7 +94,7 @@
 
 }
 .wpcInstructions ul{
-   margin-top: 20px;
+ padding: 10px 0;   
 
 }
 

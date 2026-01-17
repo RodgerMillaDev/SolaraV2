@@ -67,6 +67,9 @@ function Admin(){
     },[])
 
     return(
+
+        <div>
+            {!adminLoader && (
         <div className="adminWrap">
             <div className="adminMenuWrap">
                <AdminMenu />
@@ -90,7 +93,9 @@ function Admin(){
                     </div>
                 </div>
             </div>
+        </div>)}
         </div>
+
     )
 }
 
