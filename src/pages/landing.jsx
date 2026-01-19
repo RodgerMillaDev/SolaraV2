@@ -278,11 +278,10 @@ splitTypes.forEach((char, i)=>{
           <div className="fonMenuLinks">
 
              <a href="/Jobs">Job Opportunities</a>
-             <a href="/">Dashbboard</a>
-             <a href="/">AI Tasks</a>
+             <a href="/dashboard">Dashbboard</a>
+             <a href="/dashboard">AI Tasks</a>
              <a href="/">Referral Programme</a>
             <button onClick={toAuth}>Get Started</button>
-
           </div>
           
         </div>

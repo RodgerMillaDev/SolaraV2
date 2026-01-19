@@ -5,7 +5,7 @@ import humanLaptop from "../media/undraw_sign-here_lxua.svg"
 import "../css/workpagepop.css"
 import Aos from "aos";
 import useStore from "../store/zustandstore";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 
 function Completetask(){
 
@@ -13,6 +13,7 @@ function Completetask(){
     const urlParam = useParams()
     const [cm,setCm] = useState("")
     const [po,setPayOut] =useState("")
+    const navigate= useNavigate()
 
     useEffect(()=>{
          hideScreenLoader()
@@ -33,9 +34,7 @@ function Completetask(){
         <div className="workPopUpWrap">
             <div className="workPopUpPlacer" data-aos="zoom-in">
                 <div className="workPopCont">
-                    <div className="wpcancel">
-                        <Icon className="faIcon" icon="solar:arrow-left-linear"/>
-                    </div>
+           
                     <div className="wpcimg">
                         <img src={humanLaptop} alt="" />
                     </div>
@@ -57,9 +56,9 @@ function Completetask(){
                              
                         </div>
                     </div>
-                    <div className="wpcBUttons">
-                        <button >Dashboard</button>
-                        <button>Next Task</button>
+                    <div className="wpcBUttons wpcBUttonsS">
+                        <button onClick={()=>navigate("/dashboard")}>Done</button>
+                        {/* <button onClick={}>Next Task</button> */}
 
                     </div>
              

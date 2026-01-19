@@ -14,6 +14,7 @@ function Protected({children}){
    const setUserName = usefbStore((s) => s.setUserName)
    const setHasTasks = usefbStore((s)=>s.setHasTasks)
    const setTaskArray = usefbStore((s)=>s.setTaskArray)
+   const setAccountBalance = usefbStore((s)=>s.setAccountBalance)
 
 
     useEffect(()=>{
@@ -25,9 +26,11 @@ function Protected({children}){
             const uname = userSnap.data().name;
             var al = userSnap.data().accountLevel;
             var ht = userSnap.data().hasTasks;
+            var ab = userSnap.data().accountBalance;
             setAccountLevel(al)
             setUserName(uname)
             setHasTasks(ht)
+            setAccountBalance(ab)
 
            }
         }else if(authStatus=="unauthenticated"){

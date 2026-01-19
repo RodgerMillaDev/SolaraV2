@@ -23,10 +23,34 @@ function Workspace() {
   const completeMethod = useSocketStore((s)=>s.completeMethod)
   const connect = useSocketStore((S) => S.connect);
   const [contentBlock, setContent] = useState("");
-  const payOut = useSocketStore((s)=>s.payOut)
+  const payOut = useSocketStore((s)=>s.payOut);
   const hideScreenLoader = useStore((s) => s.hideScreenLoader);
   const [submitTestLoader, setsubmitTestLoader] = useState(false);
-  const rText= useRef("")
+  const taskCanceled = useSocketStore((s)=>s.taskCanceled);
+    const hasTasks = usefbStore((s) => s.hasTasks);
+      const taskArray = usefbStore((s) => s.taskArray);
+
+
+  const rText= useRef(null);
+
+  useEffect(()=>{
+    if(taskCanceled==true){
+      navigate("/dashboard")
+    }
+  },[taskCanceled])
+
+
+    useEffect(()=>{
+    if(!hasTasks && !taskArray) return;
+    taskArray.forEach((task)=>{
+      var taskSt = task.status;
+      if(taskSt == "Canceled"){
+        navigate(`/dashboard`)
+      }
+    })
+
+    
+  },[hasTasks,taskArray])
 
   useEffect(() => {
     // Only connect if userID exists
@@ -73,7 +97,13 @@ function Workspace() {
       cancelButtonColor: "#6a5acd",
     }).then((result) => {
       if (result.isConfirmed) {
-        navigate("/dashboard");
+          const socket = useSocketStore.getState();
+          socket.send({
+              type:"cancelTask",
+              taskId:urlParam.taskId,
+              uid:userID,
+
+          })
       }
     });
   };
@@ -93,8 +123,8 @@ function Workspace() {
     socket.send({
         type:"submitTask",
         taskId:urlParam.taskId,
-        userId:userID,
-        originaltext:contentBlock,
+        uid:userID,
+        originalText:contentBlock,
         refinedText:rText.current.value,
 
 
@@ -116,18 +146,7 @@ function Workspace() {
         </div>
         <div className="workSpaceCont">
           <div className="workspaceDesk">
-            {/* <div className="wsdQuestion">
-                            <div className="wsdQuestionTtile">
-                                <span>Instruction</span>
-
-                            </div>
-                            <div className="wsdQuestionTtile">
-                                <p>Correct the below statement and make it sound correct gramartically. <b>DO NOT</b> change the meaning. </p>
-
-                            </div>
-
-
-                        </div> */}
+        
             <div className="wsdContent">
               <div className="wsdContentitle">
                 <span>Content</span>

@@ -114,6 +114,24 @@
     justify-content: space-between;
     align-items: end;
 }
+.wpcBUttonsS{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+.wpcBUttonsS button{
+    cursor: pointer;
+    width: 100% !important;
+    border: none !important;
+    border-radius: 40px;
+
+    font-size: .9rem;
+    height: 40px;
+    color: aliceblue !important;
+    background: var(--sec5-color) !important;
+}
 .wpcBUtton{
     width: 100%;
     height: 80px;
@@ -136,7 +154,7 @@
     border: none;
     border-radius: 40px;
     font-size: .9rem;
-
+    
     height: 40px;
 }
 .wpcBUtton button:nth-child(1){

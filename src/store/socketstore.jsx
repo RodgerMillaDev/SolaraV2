@@ -16,6 +16,8 @@ export const useSocketStore = create((set, get) => ({
     taskTime:"0min 0s",
     completeMethod:null,
     payOut:null,
+    taskResp:null,
+    taskCanceled:false,
     setUid: (uid) => set({uid}),
 
 
@@ -91,8 +93,8 @@ connect: (taskId) => {
             if(data.type === "timerUpdate"){
               const time = data.remainingTime
               function formatTime(time) {
-  const mins = Math.floor(time / 60);
-  const secs = time % 60;
+              const mins = Math.floor(time / 60);
+              const secs = time % 60;
 
    set({taskTime:`${mins}mins ${secs.toString().padStart(2, "0")}s`});
 }
@@ -103,8 +105,12 @@ formatTime(time)
               set({completeMethod:data.completeMethod})
               set({payOut:data.payOut})
               set({taskComplete:true})
+              set({taskResp:data.taskResp})
             }
-            
+            if(data.type === "taskCanceled"){
+              set({taskCanceled:true})
+
+            }
             if(data.type === "resumeError"){
              set({taskComplete:true})
             

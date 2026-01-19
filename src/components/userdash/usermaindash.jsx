@@ -20,10 +20,9 @@ function Maindash() {
   const taskRespStatus = useSocketStore((s) => s.taskRespStatus);
   const taskRespCont = useSocketStore((s) => s.taskRespCont);
   const taskArray = usefbStore((s) => s.taskArray);
-
   const isDesktopLeftDashActive = useStore((s)=> s.isDesktopLeftDashActive)
   const isDesktopRightDashActive = useStore((s)=> s.isDesktopRightDashActive)
-
+  const accountBalance = usefbStore((s)=>s.accountBalance)
 
 
   useEffect(() => {
@@ -74,10 +73,10 @@ function Maindash() {
             <div className="mdlCard1Cont">
               <img src={lineGraphImg} alt="" />
               <span className="mdlcardTitle">Earnings</span>
-              <span className="mdlCard1Income">$146</span>
+              <span className="mdlCard1Income">${accountBalance}</span>
               <span className="mdlminisum">
                 {" "}
-                <span className="percentEarn">+ 10%</span> from last month
+                <span className="percentEarn">+3%</span> from last month
               </span>
             </div>
           </div>
