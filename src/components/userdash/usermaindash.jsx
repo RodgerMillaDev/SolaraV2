@@ -23,6 +23,7 @@ function Maindash() {
   const isDesktopLeftDashActive = useStore((s)=> s.isDesktopLeftDashActive)
   const isDesktopRightDashActive = useStore((s)=> s.isDesktopRightDashActive)
   const accountBalance = usefbStore((s)=>s.accountBalance)
+  const accountLevel = usefbStore((s)=>s.accountLevel)
 
 
   useEffect(() => {
@@ -47,6 +48,7 @@ function Maindash() {
 
   useEffect(()=>{
     if(!hasTasks && !taskArray) return;
+
     taskArray.forEach((task)=>{
       var taskSt = task.status;
       if(taskSt == "active"){
@@ -80,7 +82,6 @@ function Maindash() {
               </span>
             </div>
           </div>
-
           <div className="mdlCard2">
             <div className="mdlcard2Wrap">
               <div className="mdlminicard">
@@ -90,7 +91,7 @@ function Maindash() {
                   </div>
                   <div className="mdlminicardContData">
                     <p>Rank</p>
-                    <span>Pro level</span>
+                    <span>{accountLevel}</span>
                   </div>
                 </div>
               </div>
@@ -99,7 +100,7 @@ function Maindash() {
                   <div className="mdlcboxT">
                     <div className="mdlminiCardBox">
                       {/* <Icon className="faIcon" icon="solar:file-text-outline"/> */}
-                      <span className="projTaken">28</span>
+                      <span className="projTaken">{taskArray.length}</span>
                     </div>
                     <div className="mdlminicardContData">
                       <p>Projects</p>

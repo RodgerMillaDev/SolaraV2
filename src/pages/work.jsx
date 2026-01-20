@@ -27,8 +27,8 @@ function Workspace() {
   const hideScreenLoader = useStore((s) => s.hideScreenLoader);
   const [submitTestLoader, setsubmitTestLoader] = useState(false);
   const taskCanceled = useSocketStore((s)=>s.taskCanceled);
-    const hasTasks = usefbStore((s) => s.hasTasks);
-      const taskArray = usefbStore((s) => s.taskArray);
+  
+
 
 
   const rText= useRef(null);
@@ -40,17 +40,7 @@ function Workspace() {
   },[taskCanceled])
 
 
-    useEffect(()=>{
-    if(!hasTasks && !taskArray) return;
-    taskArray.forEach((task)=>{
-      var taskSt = task.status;
-      if(taskSt == "Canceled"){
-        navigate(`/dashboard`)
-      }
-    })
 
-    
-  },[hasTasks,taskArray])
 
   useEffect(() => {
     // Only connect if userID exists
@@ -107,13 +97,19 @@ function Workspace() {
       }
     });
   };
+const isReady =
+  taskComplete === true &&
+  !!urlParam?.taskId &&
+  !!completeMethod &&
+  payOut !== null &&
+  payOut !== undefined;
 
-  useEffect(() => {
-    if (!urlParam.taskId || !completeMethod || !payOut) return;
-    if (taskComplete == true) {
-      navigate(`/complete/${urlParam.taskId}/${completeMethod}/${payOut}`);
-    }
-  }, [taskComplete, urlParam.taskId, completeMethod, payOut]);
+useEffect(() => {
+  if (!isReady) return;
+
+  navigate(`/complete/${urlParam.taskId}/${completeMethod}/${payOut}`);
+}, [isReady]);
+
 
   const submmitAitask = () => {
     if(!userID || !urlParam.taskId) return;
