@@ -108,7 +108,7 @@ function Userprofile() {
             <div className="uprAccBlCont">
               <p>Wallet Balance</p>
               <span>$0</span>
-              <button>Get Paid</button>
+              <button>Request Payment</button>
             </div>
           </div>
           <div className="recentTrx">

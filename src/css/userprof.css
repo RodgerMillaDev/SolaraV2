@@ -203,7 +203,8 @@
     color: aliceblue;
 }
 .uprAccBlCont button{
-    padding: 10px 20px;
+    padding: 0px 20px;
+    height:40px;
     cursor: pointer;
     color: black;
     border-radius: 20px;

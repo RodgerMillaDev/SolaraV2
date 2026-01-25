@@ -16,6 +16,7 @@ function Workspace() {
   const urlParam = useParams();
   const userID = usefbStore((s) => s.userID);
   const navigate = useNavigate();
+  const taskArray = usefbStore((s)=>s.taskArray)
   const setUid = useSocketStore((s) => s.setUid);
   const connected = useSocketStore((s) => s.connected);
   const taskComplete = useSocketStore((s) => s.taskComplete);
@@ -127,6 +128,23 @@ useEffect(() => {
     })
 
   };
+  useEffect(() => {
+  if (!taskArray) return;
+
+  const completedTask = taskArray.find(
+    t =>
+      t.status === "Completed" ||
+      t.status === "Failed" ||
+      t.status === "Timed-out"
+  );
+
+  if (completedTask) {
+    navigate(
+      `/complete/${completedTask.taskId}/${completedTask.status}/0`
+    );
+  }
+}, [taskArray]);
+
 
   return (
     <div className="workSpaceWrapper">
