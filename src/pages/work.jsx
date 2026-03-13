@@ -5,7 +5,7 @@ import "../css/work.css";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Jelly } from "ldrs/react";
-
+import { getAuth,signOut } from "firebase/auth";
 import { useSocketStore } from "../store/socketstore";
 import { useParams } from "react-router-dom";
 import usefbStore from "../store/firebasestore";
@@ -16,21 +16,51 @@ function Workspace() {
   const urlParam = useParams();
   const userID = usefbStore((s) => s.userID);
   const navigate = useNavigate();
-  const taskArray = usefbStore((s)=>s.taskArray)
   const setUid = useSocketStore((s) => s.setUid);
   const connected = useSocketStore((s) => s.connected);
   const taskComplete = useSocketStore((s) => s.taskComplete);
   const taskTime = useSocketStore((s) => s.taskTime);
   const completeMethod = useSocketStore((s)=>s.completeMethod)
   const connect = useSocketStore((S) => S.connect);
+  const aIScore= useSocketStore((s)=>s.aIScore)
   const [contentBlock, setContent] = useState("");
   const payOut = useSocketStore((s)=>s.payOut);
   const hideScreenLoader = useStore((s) => s.hideScreenLoader);
   const [submitTestLoader, setsubmitTestLoader] = useState(false);
   const taskCanceled = useSocketStore((s)=>s.taskCanceled);
+      const forceLogout = useSocketStore((s)=>s.forceLogout)
+     const authStatus = usefbStore((s) => s.authStatus);
+
+        useEffect(()=>{
+        if(authStatus=="unauthenticated"){
+              navigate("/auth")
+        }
+        
+       },[authStatus])
   
-
-
+    
+   useEffect(() => {
+    if (forceLogout) {
+      Swal.fire({
+        title: "Session Ended",
+        text: "Your account has been signed in on another device. For security reasons, this session has been closed.",
+        icon: "warning",
+        timer: 4000,              // ⏱ auto close
+        timerProgressBar: true,
+        showConfirmButton: false, // no blocking
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        didClose: () => {
+   const auth = getAuth()
+                      signOut(auth).then(()=>{
+                          navigate("/auth")
+                      }).catch(()=>{
+                          Swal.fire("Error", "An error occured", "error")
+                      })      }
+      });
+    }
+  }, [forceLogout]);
+  
 
   const rText= useRef(null);
 
@@ -39,9 +69,10 @@ function Workspace() {
       navigate("/dashboard")
     }
   },[taskCanceled])
-
-
-
+  useEffect(()=>{
+  
+    console.log(taskTime)
+  },[taskTime])
 
   useEffect(() => {
     // Only connect if userID exists
@@ -59,7 +90,6 @@ function Workspace() {
   useEffect(() => {
     if (!userID || !urlParam.taskId) return;
     hideScreenLoader();
-
     const docRef = doc(db, "Users", userID, "assignedTasks", urlParam.taskId);
     const unsub = onSnapshot(docRef, (snap) => {
       if (!snap.exists()) return;
@@ -67,12 +97,13 @@ function Workspace() {
       var ct = snap.data().originaltext;
       var assignedAt = snap.data().assignedAt;
       setContent(ct);
-      if (st === "Pending") {
-        navigate(`/workpopup/${urlParam.taskId}`);
-      }
-      if (st === "Complete") {
-        navigate("/complete");
-      }
+
+     // Optional: only redirect if taskCanceled
+if (st === "Pending" && taskCanceled) {
+  navigate(`/workpopup/${urlParam.taskId}`);
+}
+
+   
     });
     return () => unsub;
   }, [urlParam.taskId, userID]);
@@ -98,17 +129,20 @@ function Workspace() {
       }
     });
   };
+const currentTaskId = urlParam.taskId;
+
 const isReady =
   taskComplete === true &&
-  !!urlParam?.taskId &&
+  currentTaskId === urlParam.taskId && // make it task-specific
   !!completeMethod &&
   payOut !== null &&
   payOut !== undefined;
 
+
 useEffect(() => {
   if (!isReady) return;
 
-  navigate(`/complete/${urlParam.taskId}/${completeMethod}/${payOut}`);
+  navigate(`/complete/${urlParam.taskId}/${completeMethod}/${payOut}/${aIScore}`);
 }, [isReady]);
 
 
@@ -123,27 +157,10 @@ useEffect(() => {
         uid:userID,
         originalText:contentBlock,
         refinedText:rText.current.value,
-
-
     })
 
   };
-  useEffect(() => {
-  if (!taskArray) return;
 
-  const completedTask = taskArray.find(
-    t =>
-      t.status === "Completed" ||
-      t.status === "Failed" ||
-      t.status === "Timed-out"
-  );
-
-  if (completedTask) {
-    navigate(
-      `/complete/${completedTask.taskId}/${completedTask.status}/0`
-    );
-  }
-}, [taskArray]);
 
 
   return (

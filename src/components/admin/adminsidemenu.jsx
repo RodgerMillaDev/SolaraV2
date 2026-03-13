@@ -6,6 +6,7 @@ import useStore from "../../store/zustandstore";
 import user from "../../media/user.png"
 import { useEffect, useRef } from "react";
 import usefbStore from "../../store/firebasestore";
+import { useNavigate } from "react-router-dom";
 function AdminMenu(){
 
     const showAdminDashboard=useStore((s)=>s.showAdminDashboard)
@@ -14,6 +15,11 @@ function AdminMenu(){
     const hideAiTask=useStore((s)=>s.hideAiTask)
     const adminNameRef = useRef(null)
     const adminName = usefbStore((s)=>s.adminName)
+    const navigate = useNavigate()
+
+    const toHome =()=>{
+        navigate("/")
+    }
     
 
     useEffect(()=>{
@@ -79,12 +85,12 @@ function AdminMenu(){
                     <p>AI Tasks</p>
 
                 </div>
-                <div className="asmlLink">
+                <div className="asmlLink" onClick={toHome}>
                     <div className="asmIcon">
-                        <Icon className="faIcon" icon="solar:users-group-rounded-linear"/>
+                        <Icon className="faIcon" icon="solar:logout-2-outline"/>
 
                     </div>
-                    <p>Freelancers</p>
+                    <p>Exit</p>
 
                 </div>
 

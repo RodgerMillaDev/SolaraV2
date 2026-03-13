@@ -278,7 +278,7 @@ splitTypes.forEach((char, i)=>{
           <div className="fonMenuLinks">
 
              <a href="/Jobs">Job Opportunities</a>
-             <a href="/dashboard">Dashbboard</a>
+             <a href="/dashboard">Dashboard</a>
              <a href="/dashboard">AI Tasks</a>
              <a href="/">Referral Programme</a>
             <button onClick={toAuth}>Get Started</button>
@@ -304,9 +304,8 @@ splitTypes.forEach((char, i)=>{
               <h1>Work.</h1>
               <h1>Earn.</h1>
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi,
-                molestias? Corrupti saepe recusandae provident? Necessitatibus
-                ipsa dolorum deserunt beatae unde?
+                Find flexible gigs and remote tasks across the United States.  
+      Start earning instantly from your skills and time with trusted platforms.
               </p>
               <button onClick={toJobs}> Get Job</button>
             </div>

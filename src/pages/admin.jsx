@@ -5,7 +5,9 @@ import AdminMenu from "../components/admin/adminsidemenu";
 import "../css/admin.css"
 import { useNavigate } from "react-router-dom";
 import Aitask from "../components/admin/aitask";
+import HeadlineReview from "../components/admin/headlinereview";
 import usefbStore from "../store/firebasestore";
+import AdminLoader from "../components/admin/adminLoader";
 import { doc, getDoc } from "firebase/firestore";
 import {auth,db} from "../firebase/firebase"
 import AdminDashDrawer from "../components/admin/dashdrawer";
@@ -18,18 +20,39 @@ function Admin(){
     const isAItaskActive = useStore((s)=>s.isAItaskActive)
     const navigate = useNavigate()
     const setAdminName = usefbStore((s)=>s.setAdminName)
+    const authStatus =usefbStore((s)=>s.authStatus)
     const setUserID = usefbStore((s)=>s.setUserID)
      const removeAdminLoader = useStore((s)=>s.removeAdminLoader)
     const setAdminLoader = useStore((s)=>s.setAdminLoader)
     const adminLoader = useStore((s)=>s.adminLoader)
+      function getGreetings(){
+    const hours = new Date().getHours()
+    if(hours < 12) return "Good morning,"
+    if(hours < 18) return "Good afternoon,"
+    
+    return "Good evening,"
+  }
+
+       useEffect(()=>{
+    if(authStatus=="unauthenticated"){
+          navigate("/auth")
+    }
+    
+   },[authStatus])
+
+    useEffect(()=>{
+        console.log(adminLoader)
+    },[adminLoader])
 
     useEffect(()=>{
         const onResize =()=>{
-            console.log("i am checking orientation")
             if(window.innerWidth > window.innerHeight){
                 removeAdminLoader()
+                            console.log("i am on landscape")
+
             }else{
                 setAdminLoader()
+                console.log("im on mobile")
             }
         } 
         onResize()
@@ -69,14 +92,14 @@ function Admin(){
     return(
 
         <div>
-            {!adminLoader && (
+            {!adminLoader ? (
         <div className="adminWrap">
             <div className="adminMenuWrap">
                <AdminMenu />
             </div>
             <div className="adminDash">
                 <div className="adminDashTop">
-                    <span>Good Morning,</span>
+                    <span>{getGreetings()}</span>
                     <div className="adminTopMini">
                         <div className="adnotify">
                             <div className="newAlert"></div>
@@ -91,9 +114,12 @@ function Admin(){
                     <div className={`admin-AITask ${isAItaskActive ? `admin-AITaskActive` : ""}`}>
                       <Aitask/>
                     </div>
+                    {/* <div className={`admin-AITask ${isAItaskActive ? `admin-AITaskActive` : ""}`}>
+                      <Aitask/>
+                    </div> */}
                 </div>
             </div>
-        </div>)}
+        </div>) : (<AdminLoader/>)}
         </div>
 
     )

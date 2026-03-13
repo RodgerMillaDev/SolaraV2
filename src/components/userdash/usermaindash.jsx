@@ -3,40 +3,70 @@ import "../../css/usermaindash.css";
 import lineGraphImg from "../../media/wave-haikei (2).svg";
 import filesImg from "../../media/undraw_add-files_d04y.svg";
 import { Icon } from "@iconify/react";
+import { collection, onSnapshot} from "firebase/firestore";
+import { db } from "../../firebase/firebase";
 import Swal from "sweetalert2";
 import usefbStore from "../../store/firebasestore";
 import { useRef, useEffect, useState } from "react";
 import { useSocketStore } from "../../store/socketstore";
 import { useNavigate } from "react-router-dom";
-import { doc, setDoc, collection, serverTimestamp } from "firebase/firestore";
-import { db } from "../../firebase/firebase";
 import useStore from "../../store/zustandstore";
+
 function Maindash() {
   const userID = usefbStore((s) => s.userID);
   const taskResp = useRef(null);
   const navigate = useNavigate();
+    const authStatus = usefbStore((s) => s.authStatus);
   const hasTasks = usefbStore((s) => s.hasTasks);
   const taskRespMsg = useSocketStore((s) => s.taskRespMsg);
+    const setHasTasks = usefbStore((s) => s.setHasTasks);
+
   const taskRespStatus = useSocketStore((s) => s.taskRespStatus);
   const taskRespCont = useSocketStore((s) => s.taskRespCont);
   const taskArray = usefbStore((s) => s.taskArray);
-  const isDesktopLeftDashActive = useStore((s)=> s.isDesktopLeftDashActive)
-  const isDesktopRightDashActive = useStore((s)=> s.isDesktopRightDashActive)
-  const accountBalance = usefbStore((s)=>s.accountBalance)
-  const accountLevel = usefbStore((s)=>s.accountLevel)
+    const setTaskArray = usefbStore((s) => s.setTaskArray);
 
+  const isDesktopLeftDashActive = useStore((s) => s.isDesktopLeftDashActive);
+  const isDesktopRightDashActive = useStore((s) => s.isDesktopRightDashActive);
+  const accountBalance = usefbStore((s) => s.accountBalance);
+  const accountLevel = usefbStore((s) => s.accountLevel);
 
+  const [hasNavigated, setHasNavigated] = useState(false);
+
+  // -------------------- Socket Connection --------------------
   useEffect(() => {
     if (!userID) return;
+
     const socket = useSocketStore.getState();
     socket.setUid(userID);
     socket.connect();
   }, [userID]);
 
+  // -------------------- Navigate to Active Task --------------------
+  // useEffect(() => {
+  //   if (!hasTasks || !taskArray || hasNavigated) return;
+
+  //   // Navigate to the first active task if any
+  //   const activeTask = taskArray.find((t) => t.status === "active");
+  //   if (activeTask) {
+  //     navigate(`/workspace/${activeTask.taskId}`);
+  //     setHasNavigated(true);
+  //   }
+  // }, [hasTasks, taskArray, navigate, hasNavigated]);
+
+  // -------------------- Handle Socket Task Responses --------------------
+  useEffect(() => {
+    if (taskRespMsg || taskRespStatus) {
+      Swal.fire(`${taskRespStatus}`, `${taskRespMsg}`, "warning");
+    }
+  }, [taskRespCont, taskRespMsg, taskRespStatus]);
+
+  // -------------------- Accept Task --------------------
   const handleAccept = (taskId) => {
-   navigate(`/workpopup/${taskId}` );
+    navigate(`/workpopup/${taskId}`);
   };
 
+  // -------------------- Request Task from Server --------------------
   const getTask = () => {
     const socket = useSocketStore.getState();
     socket.send({
@@ -44,31 +74,38 @@ function Maindash() {
       uid: userID,
     });
   };
-
-  useEffect(()=>{
-    if(!hasTasks && !taskArray) return;
-
-    taskArray.forEach((task)=>{
-      var taskSt = task.status;
-      if(taskSt == "active"){
-        navigate(`/workspace/${task.taskId}`)
-      }
-    })
-
-    
-  },[hasTasks,taskArray])
-
-
+  
+  // Subscribe to tasks collection
   useEffect(() => {
-    if (taskRespMsg != null || taskRespStatus != null) {
-      Swal.fire(`${taskRespStatus}`, `${taskRespMsg}`, "warning");
-    }
-  }, [taskRespCont]);
+    if (authStatus !== "authenticated" || !userID) return;
 
+    const tasksCol = collection(db, "Users", userID, "assignedTasks");
 
+    const unsub = onSnapshot(tasksCol, (snapshot) => {
+      if (snapshot.empty) {
+        setHasTasks(false);
+        setTaskArray([]);
+      } else {
+        const tasks = snapshot.docs.map((docSnap) => ({
+          taskId: docSnap.id,
+          ...docSnap.data(),
+        }));
+        setHasTasks(true);
+        setTaskArray(tasks);
+      }
+    });
+
+    return () => unsub();
+  }, [userID, authStatus]);
+
+  // -------------------- Render --------------------
   return (
     <div className="mdlminiContWrapper">
-      <div className={`mainDashLeft ${isDesktopLeftDashActive && isDesktopRightDashActive ? "allDashActive" : "" } ${isDesktopLeftDashActive ? "mainDashLeftFonActive-Desk" : "mainDashLeftFonInActive-Desk"}` }>
+      <div
+        className={`mainDashLeft ${
+          isDesktopLeftDashActive && isDesktopRightDashActive ? "allDashActive" : ""
+        } ${isDesktopLeftDashActive ? "mainDashLeftFonActive-Desk" : "mainDashLeftFonInActive-Desk"}`}
+      >
         <div className="mdlTop">
           <div className="mdlCard1">
             <div className="mdlCard1Cont">
@@ -76,7 +113,6 @@ function Maindash() {
               <span className="mdlcardTitle">Earnings</span>
               <span className="mdlCard1Income">${accountBalance}</span>
               <span className="mdlminisum">
-                {" "}
                 <span className="percentEarn">+3%</span> from last month
               </span>
             </div>
@@ -98,7 +134,6 @@ function Maindash() {
                 <div className="mdlminicardCont2">
                   <div className="mdlcboxT">
                     <div className="mdlminiCardBox">
-                      {/* <Icon className="faIcon" icon="solar:file-text-outline"/> */}
                       <span className="projTaken">{taskArray.length}</span>
                     </div>
                     <div className="mdlminicardContData">
@@ -114,6 +149,7 @@ function Maindash() {
             </div>
           </div>
         </div>
+
         <div className="mdlBtm">
           <div className="mdlBtmIntro">
             <span>Assigned AI Tasks</span>
@@ -127,10 +163,12 @@ function Maindash() {
                       <p>{task.type}</p>
                     </div>
                     <div className="aacTaskPay">
-                      <p>Pay <span>${task.pay}</span> </p>
+                      <p>
+                        Pay <span>${task.pay}</span>
+                      </p>
                     </div>
                     <div
-                      className={`aacTaskStatus  ${
+                      className={`aacTaskStatus ${
                         task.status === "Pending"
                           ? "aacTaskStatusPending"
                           : "aacTaskStatusComplete"
@@ -140,10 +178,7 @@ function Maindash() {
                     </div>
                     <div className="aacTaskAction">
                       {task.status === "Pending" ? (
-                        <p
-                          className="acceptTaskBtn"
-                          onClick={() => handleAccept(task.taskId)}
-                        >
+                        <p className="acceptTaskBtn" onClick={() => handleAccept(task.taskId)}>
                           Accept
                         </p>
                       ) : (
@@ -156,16 +191,19 @@ function Maindash() {
             ) : (
               <>
                 <img src={aitaskImg} alt="" />
-                <span ref={taskResp}>
-                  Oopps! You have not yet been assigned a task.
-                </span>
+                <span ref={taskResp}>Oopps! You have not yet been assigned a task.</span>
                 <button onClick={getTask}>Get Task</button>
               </>
             )}
           </div>
         </div>
       </div>
-      <div className={`mainDashRight ${isDesktopLeftDashActive && isDesktopRightDashActive ? "allDashActive" : "" } ${isDesktopRightDashActive ? "mainDashRightFonActive-Desk" : "mainDashLeftFonInActive-Desk"}` }>
+
+      <div
+        className={`mainDashRight ${
+          isDesktopLeftDashActive && isDesktopRightDashActive ? "allDashActive" : ""
+        } ${isDesktopRightDashActive ? "mainDashRightFonActive-Desk" : "mainDashLeftFonInActive-Desk"}`}
+      >
         <div className="mdrIntro">
           <p>Applied Jobs</p>
         </div>

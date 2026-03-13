@@ -1,0 +1,67 @@
+[debug] [2026-03-09T16:03:34.481Z] ----------------------------------------------------------------------
+[debug] [2026-03-09T16:03:34.485Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\RODGE\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2026-03-09T16:03:34.486Z] CLI Version:   15.7.0
+[debug] [2026-03-09T16:03:34.486Z] Platform:      win32
+[debug] [2026-03-09T16:03:34.486Z] Node Version:  v20.10.0
+[debug] [2026-03-09T16:03:34.486Z] Time:          Mon Mar 09 2026 19:03:34 GMT+0300 (East Africa Time)
+[debug] [2026-03-09T16:03:34.486Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-03-09T16:03:38.397Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-09T16:03:38.398Z] > authorizing via signed-in user (rodgermilla2003@gmail.com)
+[debug] [2026-03-09T16:03:38.398Z] [iam] checking project solara-ver2 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2026-03-09T16:03:38.400Z] Checked if tokens are valid: false, expires at: 1772992095571
+[debug] [2026-03-09T16:03:38.400Z] Checked if tokens are valid: false, expires at: 1772992095571
+[debug] [2026-03-09T16:03:38.401Z] > refreshing access token with scopes: []
+[debug] [2026-03-09T16:03:38.404Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-03-09T16:03:38.404Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-03-09T16:03:38.810Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-03-09T16:03:38.810Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-03-09T16:03:38.821Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/solara-ver2:testIamPermissions [none]
+[debug] [2026-03-09T16:03:38.822Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/solara-ver2:testIamPermissions  x-goog-user-project=solara-ver2
+[debug] [2026-03-09T16:03:38.822Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/solara-ver2:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-03-09T16:03:40.403Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/solara-ver2:testIamPermissions 403
+[debug] [2026-03-09T16:03:40.403Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/solara-ver2:testIamPermissions {"error":{"code":403,"message":"Caller does not have required permission to use project solara-ver2. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam?project=solara-ver2 and then retry. Propagation of the new permission may take a few minutes.","status":"PERMISSION_DENIED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"USER_PROJECT_DENIED","domain":"googleapis.com","metadata":{"containerInfo":"solara-ver2","service":"cloudresourcemanager.googleapis.com","consoleUrl":"https://console.developers.google.com/iam-admin/iam?project=solara-ver2","consumer":"projects/solara-ver2"}},{"@type":"type.googleapis.com/google.rpc.LocalizedMessage","locale":"en-US","message":"Caller does not have required permission to use project solara-ver2. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam?project=solara-ver2 and then retry. Propagation of the new permission may take a few minutes."},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Google developer console IAM admin","url":"https://console.developers.google.com/iam-admin/iam?project=solara-ver2"}]}]}}
+[debug] [2026-03-09T16:03:40.404Z] [iam] error while checking permissions, command may fail: Request to https://cloudresourcemanager.googleapis.com/v1/projects/solara-ver2:testIamPermissions had HTTP Error: 403, Caller does not have required permission to use project solara-ver2. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam?project=solara-ver2 and then retry. Propagation of the new permission may take a few minutes.
+[debug] [2026-03-09T16:03:40.405Z] Checked if tokens are valid: true, expires at: 1773075817810
+[debug] [2026-03-09T16:03:40.405Z] Checked if tokens are valid: true, expires at: 1773075817810
+[debug] [2026-03-09T16:03:40.406Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/solara-ver2 [none]
+[debug] [2026-03-09T16:03:40.926Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/solara-ver2 403
+[debug] [2026-03-09T16:03:40.926Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/solara-ver2 {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2026-03-09T16:03:40.927Z] Request to https://firebase.googleapis.com/v1beta1/projects/solara-ver2 had HTTP Error: 403, The caller does not have permission
+[debug] [2026-03-09T16:03:41.255Z] FirebaseError: Request to https://firebase.googleapis.com/v1beta1/projects/solara-ver2 had HTTP Error: 403, The caller does not have permission
+    at responseToError (C:\Users\RODGE\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:53:12)
+    at RetryOperation._fn (C:\Users\RODGE\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:330:77)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[error] 
+[error] Error: Failed to get Firebase project solara-ver2. Please make sure the project exists and your account has permission to access it.
+[debug] [2026-03-09T16:04:39.522Z] ----------------------------------------------------------------------
+[debug] [2026-03-09T16:04:39.526Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\RODGE\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2026-03-09T16:04:39.526Z] CLI Version:   15.7.0
+[debug] [2026-03-09T16:04:39.527Z] Platform:      win32
+[debug] [2026-03-09T16:04:39.527Z] Node Version:  v20.10.0
+[debug] [2026-03-09T16:04:39.527Z] Time:          Mon Mar 09 2026 19:04:39 GMT+0300 (East Africa Time)
+[debug] [2026-03-09T16:04:39.527Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-03-09T16:04:41.904Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-09T16:04:41.905Z] > authorizing via signed-in user (rodgermilla2003@gmail.com)
+[debug] [2026-03-09T16:04:41.905Z] [iam] checking project solara-ver2 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2026-03-09T16:04:41.906Z] Checked if tokens are valid: true, expires at: 1773075817810
+[debug] [2026-03-09T16:04:41.907Z] Checked if tokens are valid: true, expires at: 1773075817810
+[debug] [2026-03-09T16:04:41.908Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/solara-ver2:testIamPermissions [none]
+[debug] [2026-03-09T16:04:41.908Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/solara-ver2:testIamPermissions  x-goog-user-project=solara-ver2
+[debug] [2026-03-09T16:04:41.908Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/solara-ver2:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-03-09T16:04:43.524Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/solara-ver2:testIamPermissions 403
+[debug] [2026-03-09T16:04:43.525Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/solara-ver2:testIamPermissions {"error":{"code":403,"message":"Caller does not have required permission to use project solara-ver2. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam?project=solara-ver2 and then retry. Propagation of the new permission may take a few minutes.","status":"PERMISSION_DENIED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"USER_PROJECT_DENIED","domain":"googleapis.com","metadata":{"containerInfo":"solara-ver2","consumer":"projects/solara-ver2","consoleUrl":"https://console.developers.google.com/iam-admin/iam?project=solara-ver2","service":"cloudresourcemanager.googleapis.com"}},{"@type":"type.googleapis.com/google.rpc.LocalizedMessage","locale":"en-US","message":"Caller does not have required permission to use project solara-ver2. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam?project=solara-ver2 and then retry. Propagation of the new permission may take a few minutes."},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Google developer console IAM admin","url":"https://console.developers.google.com/iam-admin/iam?project=solara-ver2"}]}]}}
+[debug] [2026-03-09T16:04:43.525Z] [iam] error while checking permissions, command may fail: Request to https://cloudresourcemanager.googleapis.com/v1/projects/solara-ver2:testIamPermissions had HTTP Error: 403, Caller does not have required permission to use project solara-ver2. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam?project=solara-ver2 and then retry. Propagation of the new permission may take a few minutes.
+[debug] [2026-03-09T16:04:43.526Z] Checked if tokens are valid: true, expires at: 1773075817810
+[debug] [2026-03-09T16:04:43.526Z] Checked if tokens are valid: true, expires at: 1773075817810
+[debug] [2026-03-09T16:04:43.527Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/solara-ver2 [none]
+[debug] [2026-03-09T16:04:44.032Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/solara-ver2 403
+[debug] [2026-03-09T16:04:44.032Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/solara-ver2 {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2026-03-09T16:04:44.033Z] Request to https://firebase.googleapis.com/v1beta1/projects/solara-ver2 had HTTP Error: 403, The caller does not have permission
+[debug] [2026-03-09T16:04:44.349Z] FirebaseError: Request to https://firebase.googleapis.com/v1beta1/projects/solara-ver2 had HTTP Error: 403, The caller does not have permission
+    at responseToError (C:\Users\RODGE\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:53:12)
+    at RetryOperation._fn (C:\Users\RODGE\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:330:77)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[error] 
+[error] Error: Failed to get Firebase project solara-ver2. Please make sure the project exists and your account has permission to access it.

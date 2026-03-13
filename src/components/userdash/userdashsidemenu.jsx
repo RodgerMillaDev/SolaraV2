@@ -3,12 +3,12 @@ import user from "../../media/user.png"
 import { Icon } from "@iconify/react"
 import useStore from "../../store/zustandstore"
 import { useRef,useEffect } from "react"
-
+import { useNavigate } from "react-router-dom"
 import usefbStore from "../../store/firebasestore"
 import { auth } from "../../firebase/firebase"
 import { Navigate } from "react-router-dom"
 import { getAuth, signOut } from "firebase/auth"
-import Swal from "sweetalert2"
+import Swal from "sweetalert2";
 function Userdashmenu(){
     const isUserProfileActive = useStore((s)=>s.isUserProfileActive)
     const showUserProfile = useStore((s)=>s.showUserProfile)
@@ -18,6 +18,9 @@ function Userdashmenu(){
     const hideUserDashboard = useStore((s)=>s.hideUserDashboard)
  const userName = usefbStore((s)=>s.userName)
  const authStatus = usefbStore((s)=>s.authStatus)
+
+    const navigate = useNavigate()
+
  const accountLevel = usefbStore((s)=>s.accountLevel)
  const hideUserDashNav = useStore((s)=>s.hideUserDashNav)
  const showDesktopLeftDash = useStore((s)=>s.showDesktopLeftDash)
@@ -72,7 +75,7 @@ function Userdashmenu(){
                     if(result.isConfirmed){
                     const auth = getAuth()
                     signOut(auth).then(()=>{
-                        Navigate("/auth")
+                        navigate("/auth")
                     }).catch(()=>{
                         Swal.fire("Error", "An error occured", "error")
                     })

@@ -3,18 +3,114 @@
     height: 95%;
 
 }
+select:focus{
+ outline: none;
+}
 .aiJobType{
     width: 100%;
     height: 85px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
+.contentReviewWrapUploader{
+    height: calc(100% - 95px);
+    width: 100%;
+}
+
+.factCheckQuiz{
+    width: 100% ;
+    height: 85px;
+}
+.factCheckQuiz p{
+          height: 35px;
+    overflow: hidden;
+}
+.factCHeckQuizInput{
+ height: 50px;
+         box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+             border-radius:10px;
+overflow: hidden;
+width: 100%;
+}
+.factCHeckQuizInput input{
+    width: 100%;
+    padding-left: 10px;
+    height: 100%;
+}
+.factCHeckQuizInput select{
+    width: 100%;
+    border: none;
+    padding-left: 10px;
+    height: 100%;
+}
+.factCheckcontentInput{
+    height: calc(100% - 170px);
+}
+.factCheckcontentInput p{
+  height: 35px;
+  width: 100%;
+}
+
 .taskPrice{
     width: 100%;
     height: 85px;
-    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.mainTaskHolderContaincer{
+    height: calc(100% - 105px);
+    width: 100%;
+    margin-bottom: 10px;
 }
 .contentInput{
+    height: 100%;
+    width: 100%;
+}
+.translationLang{
+    height: 85px;
+    margin-bottom: 10px;
+}
+.translationLang p{
+      height: 35px;
+    overflow: hidden;
+}
+.translationLangInput{
+    height: 50px;
+    width: 100%;
+    border-radius:10px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
 
+}
+.translationLangInput select{
+    width: 100%;
+    border: none;
+    font-family: Telex;
+    height: 50px;
+    border-radius: 20px;
+    overflow: hidden;
+    padding-left: 10px;
+}
+.translateParagraph p{
+    height: 35px;
+}
+.translateParagraph{
+    width: 100%;
+    height: calc(100% - 95px);
+}
+.translateTxt{
+    height: calc(100% - 35px);
+    border-radius: 10px;
+    width: 100%;
+    overflow: hidden;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+
+}
+.translateParagraph textarea{
+ width: 100%;
+  font-family: Telex;
+  height: 100%;
+  border: none;
+    padding-left: 10px;
+    padding-top: 10px;
+     background: rgb(255, 255, 255);
 }
 .aiJobType p{
     height: 35px;
@@ -22,27 +118,38 @@
 }
 .aitaskselector{
     width: 100%;
-    height: 35px;
+    height: 50px;
+     background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
 
 }
-.contentReviewAiJobWrap{
-    height: calc(100% - 230px);
-    width: 100%;
-}
-.contentInput{
-    height: 100%;
-    width: 100%;
-}
+
+
 .ciTxtArea{
     width: 100%;
     height: calc(100% - 35px);
+    overflow: hidden;
+         border-radius: 10px;
+              background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+
+
+}
+.tpWrap{
+    height: 50px;
+         background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
 }
 .ciTxtArea textarea{
   width: 100%;
   font-family: Telex;
   height: 100%;
   border: none;
-     border-radius: 20px;
     padding-left: 10px;
     padding-top: 10px;
      background: rgb(255, 255, 255);
@@ -52,20 +159,19 @@
 .aitaskselector select,
 .taskPrice input{
     width: 100%;
-    border-radius: 40px;
     border: none;
     font-family: Telex;
     height: 50px;
     border-radius: 20px;
+    overflow: hidden;
     padding-left: 10px;
-     background: rgb(255, 255, 255);
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+
 }
 .aiBtnUpload{
     height: 50px;
     width: 100%;
     border-radius: 50px;
-    margin-top: 20px;
+    margin-top: 10px;
 
 }
 .aiBtnUpload button{
@@ -80,7 +186,7 @@
 }
 .aijobInputs{
     width: 100%;
-    height: calc(100% - 70px);
+    height: calc(100% - 60px);
 }
 .aiBtnUploadLoad{
     display: none;

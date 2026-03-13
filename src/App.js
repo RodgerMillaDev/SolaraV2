@@ -25,7 +25,7 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/jobs" element={<Jobs />} />
-          <Route path="/complete/:taskId/:completeMethod/:payOut" element={<Completetask />} />
+          <Route path="/complete/:taskId/:completeMethod/:payOut/:aIScore" element={<Completetask />} />
           <Route
             path="/dashboard"
             element={

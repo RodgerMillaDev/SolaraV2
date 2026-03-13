@@ -7,16 +7,23 @@ import Maindash from "../components/userdash/usermaindash";
 import Userdashmenu from "../components/userdash/userdashsidemenu";
 import Userprofile from "../components/userdash/userprofile";
 import usefbStore from "../store/firebasestore";
+import { useNavigate } from "react-router-dom";
+import { getAuth,signOut } from "firebase/auth";
 import { useSocketStore } from "../store/socketstore";
+import Swal from "sweetalert2";
 function Userdash(){
 
-    const isUserDashboardActive= useStore((s)=>s.isUserDashboardActive)
-    const isUserProfileActive= useStore((s)=>s.isUserProfileActive)
-    const currentUserUid = usefbStore((s)=>s.userID)
-    const authStatus = usefbStore((s)=>s.authStatus)
-    const showUserDashNav = useStore((s)=>s.showUserDashNav)
- const isUserDashNavActive = useStore((s)=>s.isUserDashNavActive)
+  const isUserDashboardActive= useStore((s)=>s.isUserDashboardActive)
+  const isUserProfileActive= useStore((s)=>s.isUserProfileActive)
+  const currentUserUid = usefbStore((s)=>s.userID)
+  const authStatus = usefbStore((s)=>s.authStatus)
+  const showUserDashNav = useStore((s)=>s.showUserDashNav)
+   const isUserDashNavActive = useStore((s)=>s.isUserDashNavActive)
    const [greetings, setGreetings] = useState("")
+   const forceLogout = useSocketStore((s)=>s.forceLogout)
+   const navigate = useNavigate()
+
+
 
   function getGreetings(){
     const hours = new Date().getHours()
@@ -38,6 +45,28 @@ function Userdash(){
 
 
   
+ useEffect(() => {
+  if (forceLogout) {
+    Swal.fire({
+      title: "Session Ended",
+      text: "Your account has been signed in on another device. For security reasons, this session has been closed.",
+      icon: "warning",
+      timer: 4000,              // ⏱ auto close
+      timerProgressBar: true,
+      showConfirmButton: false, // no blocking
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      didClose: () => {
+ const auth = getAuth()
+                    signOut(auth).then(()=>{
+                        navigate("/auth")
+                    }).catch(()=>{
+                        Swal.fire("Error", "An error occured", "error")
+                    })      }
+    });
+  }
+}, [forceLogout]);
+
     
     useEffect(()=>{
 
@@ -45,7 +74,10 @@ function Userdash(){
         useSocketStore.getState().setUid(currentUserUid)
         useSocketStore.getState().connect()
 
-        }else{
+        }else if(authStatus=="unauthenticated"){
+          navigate("/auth")
+    }
+    else{
             console.log("waiting to authenticate user")
             
         }
