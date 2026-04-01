@@ -76,6 +76,15 @@ body{
 
     z-index: 10;
 }
+.navContWhiteLg{   
+     width: 90% !important;
+    box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 20px 20px;
+    background: rgb(255, 255, 255);
+
+    
+
+}
 .navContWhite{   
      width: 70%;
     box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.1);
@@ -135,8 +144,10 @@ body{
     margin: 40px 0;
 }
 .heroRCont button{
-    width: 200px;
+    width: fit-content;
+    padding: 0 40px;
     height:  45px;
+    margin-right: 10px;
     border-radius: 60px;
     font-family: Telex;
     border: none;
@@ -207,7 +218,6 @@ body{
     color: aliceblue;
     opacity: .7;
     margin-top:5px;
-    font-size: .9rem;
 }
 .cursorDot{
     position: fixed;
@@ -295,7 +305,7 @@ body{
     opacity: .7;
 }
 .actBoxed{
-    width: 90%;
+    width: 100%;
     height:400px;
     display: grid;
     position: relative;
@@ -417,7 +427,7 @@ body{
 .unlock{
     width: 100vw;
     height: fit-content;
-    padding: 7% 0 0 0;
+    padding: 10% 0 0 0;
 
 }
 .secPlacer {
@@ -425,7 +435,7 @@ body{
     margin: 0 auto;
 }
 .unlockIntro{
-    width: 60%;
+    width: 80%;
     height: fit-content;
     margin-bottom: 10vh;
 
@@ -561,7 +571,7 @@ body{
     position: relative;
     width: 95%;
     margin: 0 auto;
-       background: url(../media/pexels-thirdman-7236954\ \(1\).jpg)no-repeat center/cover fixed;
+       background: url(../media/pexels-thirdman-7236954\ \(1\).avif)no-repeat center/cover fixed;
 
 }
 .abstractBox{
@@ -646,7 +656,7 @@ margin: 10% 10% 5% 10%;
     flex-direction: row;
 }
 .penLeft{
-    width:80%;
+    width:90%;
     height: fit-content;
 
 
@@ -748,7 +758,7 @@ flex-direction: row;
 }
 .faqRightB{
     height: 250px;
-    width: 250px;
+    width: 300px;
     background: var(--sec5-color);
     border-radius: 30px;
     display: flex;
@@ -783,7 +793,7 @@ flex-direction: row;
 
 }
 .faqRightBCont{
-    width: 90%;
+    width: 85%;
     height: 80%;
     flex-direction: column;
     justify-content: space-between;
@@ -838,7 +848,7 @@ flex-direction: row;
     font-family: Mont;
 }
 .faqCard p{
-    color: rgba(240, 248, 255, 0.735);
+    color: rgba(240, 248, 255, 0.9);
     width: 80%;
     text-align: center;
 }
@@ -1125,7 +1135,7 @@ footer{
 
 }
 .footerPlacer{
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     height: 100%;
         background: #f2f4f5;
@@ -1137,7 +1147,7 @@ footer{
     display: flex;
     margin-bottom: 50px;
     flex-direction: row;
-    align-items: center;
+    align-items: start;
     justify-content: space-between;
 }
 .footerBtm{
@@ -1157,12 +1167,17 @@ footer{
     font-size: .9rem;
 }
 .ftLeft{
-    width: 35%;
+    width: 30%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
 }
 .ftMid{
-      width: 35%;
+      width: 30%;
     height: 100%;  
+    margin-left: 10%;
     display: flex;
     flex-direction: row;
     align-items: start;
@@ -1172,6 +1187,7 @@ footer{
     height: 100%;  
 
     align-items: start;
+    justify-content: start;
 }
 .ftTT{
     height:60px;
@@ -1191,12 +1207,15 @@ footer{
     justify-content: start;
     align-items: center;
     opacity: .67;
-    padding: 0px 0 10px 0;
-
+    padding: 0px 0 5px 0;
     width: 90%;
     transition: .3s ease;
 
 
+}
+.ftMidLeft{
+    width: 100%;
+    height: fit-content;
 }
 .ftMidLeft .ftBB p:hover,
 .ftMidRight .ftBB p:hover
@@ -1209,9 +1228,6 @@ footer{
     margin-left: 3px;
 }
 
-.ftMidLeft, .ftMidRight{
-    width: 50%;
-}
 .ftTT img{
     width: 100px;
 }

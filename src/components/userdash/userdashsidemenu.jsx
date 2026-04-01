@@ -12,20 +12,20 @@ import Swal from "sweetalert2";
 function Userdashmenu(){
     const isUserProfileActive = useStore((s)=>s.isUserProfileActive)
     const showUserProfile = useStore((s)=>s.showUserProfile)
+    const showAiTasks = useStore((s)=>s.showAiTasks)
     const hideScreenLoader = useStore((s)=>s.hideScreenLoader)
     const isUserDashboardActive = useStore((s)=>s.isUserDashboardActive)
     const showUserDashboard = useStore((s)=>s.showUserDashboard)
     const hideUserDashboard = useStore((s)=>s.hideUserDashboard)
  const userName = usefbStore((s)=>s.userName)
  const authStatus = usefbStore((s)=>s.authStatus)
-
     const navigate = useNavigate()
-
- const accountLevel = usefbStore((s)=>s.accountLevel)
  const hideUserDashNav = useStore((s)=>s.hideUserDashNav)
  const showDesktopLeftDash = useStore((s)=>s.showDesktopLeftDash)
  const hideDesktopLeftDash = useStore((s)=>s.hideDesktopLeftDash)
  const showPayments = useStore((s)=>s.showPayments)
+   const accountPoints = usefbStore((s) => s.accountPoints) || 0;
+
  const userNavLinkActive = useStore((s)=>s.userNavLinkActive)
  const showContracts = useStore((s)=>s.showContracts)
 
@@ -37,12 +37,22 @@ function Userdashmenu(){
  },[authStatus, userName])
 
 
+  function getUserLevel(accountPoints) {
+  if (accountPoints >= 500) return "Pro";
+  if (accountPoints >= 100) return "Intermediate";
+  return "Noob";
+}
  useEffect(()=>{
 
  },[])
     const toUserDash=()=>{
         hideUserDashNav()
         showUserDashboard()
+    }
+    const toAiTasks=()=>{
+        hideUserDashNav()
+        showUserDashboard()
+        showAiTasks()
     }
 
     const toStats=()=>{
@@ -96,13 +106,13 @@ function Userdashmenu(){
                     </div>
                     <div className="userProfDataMini">
                      <span className="udname" >{userName}</span>
-                     <span className="udacctype" >{accountLevel} </span>
+                     <span className="udacctype" >{getUserLevel(accountPoints)} </span>
                     </div>
        
                    </div>
                    <div className="userDashBtm">
                        <div className="userDashLinks" >
-                           <div onClick={toUserDash} className={`udlLink ${userNavLinkActive == "Dashboard" ? "udlLinkActive" : ""}`}>
+                           <div onClick={()=>toUserDash()} className={`udlLink ${userNavLinkActive == "Dashboard" ? "udlLinkActive" : ""}`}>
                                <div className="udlLinkIcon">
                                        <Icon className="faIcon" icon="solar:armchair-2-outline"/>
        
@@ -111,7 +121,7 @@ function Userdashmenu(){
                                    <p>Dashboard</p>
                                </div>
                            </div>
-                           <div className={`udlLink ${userNavLinkActive == "Contracts" ? "udlLinkActive" : ""}`} onClick={toContracts}>
+                           <div className={`udlLink ${userNavLinkActive == "Contracts" ? "udlLinkActive" : ""}`} onClick={()=>toContracts()}>
                                <div className="udlLinkIcon">
                                        <Icon className="faIcon" icon="solar:case-outline"/>
        
@@ -120,7 +130,7 @@ function Userdashmenu(){
                                    <p>Contracts</p>
                                </div>
                            </div>
-                           <div onClick={toStats} className={`udlLink ${userNavLinkActive == "MyStats" ? "udlLinkActive" : ""}`}>
+                           <div onClick={()=>toStats()} className={`udlLink ${userNavLinkActive == "MyStats" ? "udlLinkActive" : ""}`}>
                                <div className="udlLinkIcon">
                                        <Icon className="faIcon" icon="solar:user-linear"/>
                                </div>
@@ -128,12 +138,12 @@ function Userdashmenu(){
                                    <p>My Stats</p>
                                </div>
                            </div>
-                           <div className="udlLink">
+                           <div onClick={()=>toAiTasks()} className={`udlLink ${userNavLinkActive == "AI-Tasks" ? "udlLinkActive" : ""}`}>
                                <div className="udlLinkIcon">
                                        <Icon className="faIcon" icon="solar:square-academic-cap-linear"/>
        
                                </div>
-                               <div className="udlLinkMenu">
+                               <div className="udlLinkMenu" >
                                    <p>AI Tasks</p>
                                </div>
                            </div>

@@ -13,6 +13,17 @@
     margin-right:20px ;
 
 }
+.mdlTopNuetral{
+    height: 250px !important;
+}
+.mdlTopHide{
+    height: 0% !important;
+    overflow: hidden;
+}
+.mdlBtmActive{
+    height: 100% !important;
+    margin-top: -20px;
+}
 .mainDashRight{
     transition: .3s ease;
     width: 35% ;
@@ -112,7 +123,7 @@
     font-size: 2.2rem;
     color: aliceblue;
     font-weight: 700;
-        margin: 20px 0;
+        margin: 10px 0;
 
     font-family: Mont;
 }
@@ -128,8 +139,9 @@
 }
 .mdlBtm{
     width: 100%;
-    height: calc(100% - 270px) !important;
+    height: calc(100% - 270px);
     display: flex;
+    transition: .3s ease;
     flex-direction: column;
 }
 .mdlBtmAITasksAssigned{
@@ -145,7 +157,7 @@
     height: calc(100% - 40px);
 }
 .mdlBtmAITasksAssigned img{
-    width: 150px;
+    width: 100px;
 }
 .mdlBtmIntro{
     height: 30px;
@@ -193,6 +205,7 @@
     justify-content: start;
     flex-direction: row;
     align-items: center;
+    width: 100%;
 }
 .mdlminiCardBox{
     width: 55px;
@@ -230,7 +243,8 @@ align-items: center;
 }
 .mdlminicardContData span{
     opacity: .7;
-    font-size: .7rem;
+    margin-top: 5px;
+    font-size: .8rem;
 }
 .mdlminicardCont2{
      display: flex;
@@ -465,6 +479,10 @@ align-items: center;
 .mdlTop{
     height: 200px !important;
 }
+.mdlTopNuetral{
+        height: 200px !important;
+
+}
 .mdlBtm{
     height: calc(100% - 220px) !important;
 }
@@ -476,7 +494,7 @@ align-items: center;
     font-size: .9rem;
 }
 .mdlCard1Income{
-    margin: 15px 0;
+    margin: 10px 0;
     font-size: 1.7rem;
 }
 .mdlCard1Cont img{

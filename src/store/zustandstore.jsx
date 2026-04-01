@@ -16,6 +16,8 @@ const useStore = create((set) =>({
     isUserDashNavActive:false,
     isDesktopLeftDashActive:true,
     isDesktopRightDashActive:true,
+    isDesktopLeftBottomActive:false,
+    isJobUploadActive:false,
     userNavLinkActive:"Dashboard",
     leftProfActive:true,
     rightProfActive:true,
@@ -28,13 +30,16 @@ const useStore = create((set) =>({
     hideSignAuth: () => set({signActive: false}),
     hideScreenLoader: () => set({screenLoader: false}),
     showScrenLoader: () =>set({screenLoader:true}),
-    showAdminDashboard:() => set({isAdminDashActive:true, isAItaskActive:false}),
+    showAdminDashboard:() => set({isAdminDashActive:true, isAItaskActive:false,isJobUploadActive:false,}),
     hideAdminDashboard: () => set({isAdminDashActive:false,}),
-    showAiTask:() => set({isAItaskActive:true, isAdminDashActive:false}),
+    showAiTask:() => set({ isAItaskActive:true, isAdminDashActive:false,isJobUploadActive:false,}),
     hideAiTask: () => set({isAItaskActive:false}),
+    showJobUpload:() => set({isJobUploadActive:true, isAItaskActive:false, isAdminDashActive:false}),
+    hideJobUpload: () => set({showJobUpload:false}),
     showUserProfile: () => set({userNavLinkActive:"MyStats",isUserProfileActive: true, isUserDashboardActive:false,rightProfActive:true, leftProfActive:true}),
-    showUserDashboard: ()=> set({userNavLinkActive:"Dashboard",isUserDashboardActive: true, isUserProfileActive:false, isDesktopLeftDashActive:true,isDesktopRightDashActive:true}),
+    showUserDashboard: ()=> set({userNavLinkActive:"Dashboard",isDesktopLeftBottomActive:false,isUserDashboardActive: true, isUserProfileActive:false, isDesktopLeftDashActive:true,isDesktopRightDashActive:true}),
     showContracts: ()=> set({userNavLinkActive:"Contracts",isContracts:true,isUserDashboardActive: true, isUserProfileActive:false}),
+    showAiTasks: ()=> set({userNavLinkActive:"Ai-tasks",isDesktopLeftBottomActive:true,isContracts:false,isUserDashboardActive: true, isUserProfileActive:false}),
     hideUserDashboard: ()=> set({isUserDashboardActive: false}),
     hideUserDashNav: ()=> set({isUserDashNavActive: false}),
     showUserDashNav: ()=> set({isUserDashNavActive: true}),
@@ -44,6 +49,5 @@ const useStore = create((set) =>({
     removeAdminLoader: ()=>set({adminLoader:false}),
     setAdminLoader: ()=>set({adminLoader:true})
 }))
-
 
 export default useStore;

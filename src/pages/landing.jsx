@@ -8,8 +8,9 @@ import "aos/dist/aos.css";
 import Footer from "../components/footer";
 import "../css/landing.css";
 import blob from "../media/blob.svg";
-import userP from "../media/pexels-tima-miroshnichenko-5198252.jpg";
-import userP2 from "../media/user.png";
+import userP from "../media/pexels-gustavo-fring-4972205.avif";
+import userP3 from "../media/pexels-shah-47-14865961-6317963.avif";
+import userP2 from "../media/pexels-olly-3801703.avif";
 import lines from "../media/lines.webp";
 import zigzag from "../media/zigzag.svg";
 import { useRef, useState, useEffect, forwardRef } from "react";
@@ -22,11 +23,11 @@ import "../css/landingresp.css"
 import SplitType from 'split-type'; // ← ADD THIS LINE
 import useStore from "../store/zustandstore";
 import { useNavigate } from "react-router-dom";
+import usefbStore from "../store/firebasestore";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 gsap.registerPlugin(useGSAP);
-
 
 
 
@@ -57,6 +58,9 @@ function Landing() {
 
       const toJobs=()=>{
         navigate("/jobs")
+      }
+      const toDash=()=>{
+        navigate("/dashboard")
       }
 
 
@@ -103,38 +107,38 @@ function Landing() {
     );
   });
 
-  const faqCards = [
+const faqCards = [
 
-    {    
-        id:1,
-        cardImgL:"cardImgTL",
-        cardImgR:"cardImgBR",
-        cardQ:"What is your service?",
-        cardA:"We provide digital task solutions."
-    },
-    {    
-        id:2,
-        cardImgL:"cardImgBL",
-        cardImgr:"cardImgTR",
-        cardQ:"How do I get paid?",
-        cardA:"Payments are processed after approval."
-    },
-    {    
-        id:3,
-          cardImgL:"cardImgTL",
-        cardImgR:"cardImgBR",
-        cardQ:"Is this remote?",
-        cardA:"Yes, all tasks are done online."
-    },
-    {    
-        id:4,
-   cardImgL:"cardImgBL",
-        cardImgr:"cardImgTR",
-        cardQ:"When can I withdraw?",
-        cardA:"After reaching the minimum payout."
-    }
+  {    
+      id:1,
+      cardImgL:"cardImgTL",
+      cardImgR:"cardImgBR",
+      cardQ:"What is your service?",
+      cardA:"We provide a platform where you can access remote jobs and complete AI-powered tasks to earn online from one place."
+  },
+  {    
+      id:2,
+      cardImgL:"cardImgBL",
+      cardImgr:"cardImgTR",
+      cardQ:"How do I get paid?",
+      cardA:"Payments are processed securely after task or job approval, ensuring you receive your earnings quickly and reliably."
+  },
+  {    
+      id:3,
+      cardImgL:"cardImgTL",
+      cardImgR:"cardImgBR",
+      cardQ:"Is this remote?",
+      cardA:"Yes, all tasks and job opportunities are fully remote, allowing you to work from anywhere with internet access."
+  },
+  {    
+      id:4,
+      cardImgL:"cardImgBL",
+      cardImgr:"cardImgTR",
+      cardQ:"When can I withdraw?",
+      cardA:"You can withdraw your earnings once you reach the minimum payout threshold, with a simple and transparent process."
+  }
 
-  ]
+]
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -246,8 +250,8 @@ useEffect(() => {
 const splitTypes = document.querySelectorAll(".reveal-type")
 
 splitTypes.forEach((char, i)=>{
-  const text = new SplitType(char, {types: "chars"})
-  gsap.from(text.chars,{
+  const text = new SplitType(char, {types: "words"})
+  gsap.from(text.words,{
     scrollTrigger:{
       trigger: char,
       start: 'top 80%',
@@ -304,10 +308,13 @@ splitTypes.forEach((char, i)=>{
               <h1>Work.</h1>
               <h1>Earn.</h1>
               <p>
-                Find flexible gigs and remote tasks across the United States.  
-      Start earning instantly from your skills and time with trusted platforms.
+              Built for freelancers who want flexibility, consistent work, and smarter ways to earn online.  
               </p>
-              <button onClick={toJobs}> Get Job</button>
+              
+              <div className="heroBtns">
+              <button onClick={()=>toDash()}>AI Task</button>
+
+              </div>
             </div>
             <div className="heroContImg">
               <img className="blob1" src={blob} alt="" />
@@ -315,8 +322,9 @@ splitTypes.forEach((char, i)=>{
               <div className="heroUsersCont" data-aos="fade-left">
                 <div className="heroUsers">
                   <img src={userP} alt="" />
-                  <img src={userP} alt="" />
                   <img src={userP2} alt="" />
+
+                  <img src={userP3} alt="" />
                 </div>
            <div className="heroUserActCont">
       <motion.span >{countOneDis}</motion.span> {/* ✅ Works! */}
@@ -334,15 +342,14 @@ splitTypes.forEach((char, i)=>{
             <span className="miniIntroIntro">Work Now</span>
             <h2>Are You a <span>Freelancer</span>?</h2>
             <p>
-              Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet. consectetur
-              adipisicing elit. Dolore, aspernatur?
+              One platform. Real work. AI-powered tasks and freelance opportunities designed to help you earn faster.
             </p>
           </div>
           <div className="actBoxed">
             <div className="actBox1" data-aos="fade-up">
               <div className="actBoxCont">
                 <div className="ab1T">
-                  <h3>Instant Transfers</h3>
+                  <h3>Grow Your Skills</h3>
                 </div>
                 <div className="ab1B">
                   <Icon className="faIcon" icon="solar:arrow-right-up-linear" />
@@ -352,15 +359,14 @@ splitTypes.forEach((char, i)=>{
             <div className="actBox2" data-aos="fade-up">
               <div className="actBox2Cont">
                 <div className="actBoxIcon">
-                  <Icon
-                    className="faIcon"
-                    icon="solar:diagram-up-linear"
-                  />
-                </div>
-                <span>Real-time Alerts</span>
+                    <Icon
+                      className="faIcon"
+                      icon="solar:laptop-minimalistic-linear"
+                    />
+                  </div>
+                <span>Find Remote Work</span>
                 <p>
-                  Lorem ipsum dolor sittur adipisicing elit. Accusantium, modi
-                  nihil. Consequuntur id quis tempora?
+                 Access a wide range of remote jobs across industries, from coding to creative freelance opportunities.
                 </p>
               </div>
             </div>
@@ -370,10 +376,9 @@ splitTypes.forEach((char, i)=>{
                   <div className="actBoxIcon">
                     <Icon className="faIcon" icon="solar:user-rounded-linear" />
                   </div>
-                  <span>Real-time Alerts</span>
+                  <span>Earn With AI Tasks</span>
                   <p>
-                    Lorem adipisicing elit. Accusantium, modi nihil.
-                    Consequuntur id quis tempora?
+                   Complete simple AI-powered tasks anytime and get paid quickly while building useful digital experience.
                   </p>
                 </div>
               </div>
@@ -384,13 +389,12 @@ splitTypes.forEach((char, i)=>{
                   <div className="actBoxIcon">
                     <Icon
                       className="faIcon"
-                      icon="solar:laptop-minimalistic-linear"
+                      icon="solar:clock-circle-outline"
                     />
                   </div>
-                  <span>Real-time Alerts</span>
+                  <span>Flexible Schedule</span>
                   <p>
-                    Lorem ipsum dolouing t. Accusantium, modi nihil.
-                    Consequuntur id quis tempora?
+                   Work when you want, choose tasks that fit your time, and stay in control of your workflow.
                   </p>
                 </div>
               </div>
@@ -402,104 +406,74 @@ splitTypes.forEach((char, i)=>{
         <div className="secPlacer">
           <div className="unlockIntro">
             <h2>
-              Lorem ipsum <span>dolor sit</span> amet, consectg elit.{" "}
+              Solara in Numbers: <span>Freelancers and Opportunities</span> 
             </h2>
           </div>
           <div className="actUnlock" ref={unlock}>
             <div className="actUnlockLeft" ref={unlockleft}>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem
-                consectetur illum beatae ea nobis voluptate.
+                Remote opportunities span tech, creative, and digital fields for flexible work.
               </p>
-              <button onClick={toAuth}>Sign Up</button>
+              <button onClick={()=>toDash()}>Get Started</button>
             </div>
             <div className="actUnlockRight" ref={unlockright}>
               <div className="unlockGrid" data-aos="fade-up">
                 <div className="ug1">
                   <div className="ugcont">
                     <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Odio, atque totam esse debitis incidunt facilis mollitia
-                      eaque iure voluptatibus, dolor eos quas natus, illum ab?
-                      Expedita ea ipsum illum. Accusamus.
+We’ve already seen over 3,500 tasks completed on the platform, showing strong early traction and consistent freelancer engagement.
                     </p>
                     <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Odio, atque totam esse debitis incidunt facilis mollitia
-                      eaque iure voluptatibus, dolor eos quas natus, illum ab?
-                      Expedita ea ipsum illum. Accusamus.
+As more users join and contribute daily, this number continues to grow, reflecting real work being done and real value being created.
                     </p>
                     <div className="unlockNumbers">
                       <div className="arrUp">
                         <Icon className="faIcon" icon="solar:arrow-up-linear" />
                       </div>
-                      <motion.h2>4k +</motion.h2>
+                      <motion.h2>3.5k +</motion.h2>
                     </div>
                   </div>
                 </div>
                 <div className="ug2">
                   <div className="ugcont">
                     <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Odio, atque totam esse debitis incidunt facilis mollitia
-                      eaque iure voluptatibus, dolor eos quas natus, illum ab?
-                      Expedita ea ipsum illum. Accusamus.
-                    </p>
+Our freelancers maintain a 92% task completion rate, consistently delivering quality work on time.                    </p>
                     <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Odio, atque totam esse debitis incidunt facilis mollitia
-                      eaque iure voluptatibus, dolor eos quas natus, illum ab?
-                      Expedita ea ipsum illum. Accusamus.
-                    </p>
+This reliability ensures smooth workflows, builds trust across the platform, and demonstrates the growing dedication and efficiency of our active freelancer community every day.                    </p>
                     <div className="unlockNumbers">
                       <div className="arrUp">
                         <Icon className="faIcon" icon="solar:arrow-up-linear" />
                       </div>
-                      <h2>300k +</h2>
+                      <h2>92%</h2>
                     </div>
                   </div>
                 </div>
                 <div className="ug3">
                   <div className="ugcont">
                     <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Odio, atque totam esse debitis incidunt facilis mollitia
-                      eaque iure voluptatibus, dolor eos quas natus, illum ab?
-                      Expedita ea ipsum illum. Accusamus.
-                    </p>
+We have over 1,200 remote jobs have been posted on our platform, providing diverse opportunities across tech, creative, and digital fields. Submit your CV and you're all set.                   </p>
                     <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Odio, atque totam esse debitis incidunt facilis mollitia
-                      eaque iure voluptatibus, dolor eos quas natus, illum ab?
-                      Expedita ea ipsum illum. Accusamus.
-                    </p>
+This steady flow of work allows freelancers to find tasks matching their skills and earn reliably on their own schedule.                    </p>
                     <div className="unlockNumbers">
                       <div className="arrUp">
                         <Icon className="faIcon" icon="solar:arrow-up-linear" />
                       </div>
-                      <h2>300k +</h2>
+                      <h2>1,200</h2>
                     </div>
                   </div>
                 </div>
                 <div className="ug4">
                   <div className="ugcont">
                     <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Odio, atque totam esse debitis incidunt facilis mollitia
-                      eaque iure voluptatibus, dolor eos quas natus, illum ab?
-                      Expedita ea ipsum illum. Accusamus.
+                    Over 950 payments have already been processed, ensuring freelancers receive their earnings quickly and reliably.
                     </p>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Odio, atque totam esse debitis incidunt facilis mollitia
-                      eaque iure voluptatibus, dolor eos quas natus, illum ab?
-                      Expedita ea ipsum illum. Accusamus.
+                    <p>Transparent payout system supports trust, encourages consistent work, and demonstrates our commitment to helping freelancers get paid on time for every completed task.
                     </p>
                     <div className="unlockNumbers">
                       <div className="arrUp">
                         <Icon className="faIcon" icon="solar:arrow-up-linear" />
                       </div>
-                      <h2>300k +</h2>
+                      <h2>950 +</h2>
                     </div>
                   </div>
                 </div>
@@ -521,7 +495,7 @@ splitTypes.forEach((char, i)=>{
             </div>
             <div className="abCont">
                 <h2>Work From Anywhere</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem recusandae culpa eum molestiae mollitia velit nulla ipsum deleniti neque veritatis distinctio, soluta officia enim laudantium.</p>
+                <p>Complete tasks, tackle projects, and earn income on your schedule, giving freelancers the flexibility to balance work, life, and growth without being tied to a single location.</p>
             </div>
                 </div>
            
@@ -535,66 +509,65 @@ splitTypes.forEach((char, i)=>{
       <div className="ContHeight" ref={ContHeight}>
          
       <section className="penDraw" >
-        <div className="penDrawPlacer">
-            <div className="penDrawIntro">
-                <span>Our Solutions</span>
-                
-            </div>
-            <div className="penDrawerCont">
-                <div className="penLeft">
+     <div className="penDrawPlacer">
+    <div className="penDrawIntro">
+        <span>Our Solutions</span>
+    </div>
+    <div className="penDrawerCont">
+        <div className="penLeft">
 
-                    <div className="penSol">
-                        <span>01</span>
-                        <h2 className="reveal-type">Lorem ipsum dolor si Lorem ipsum dolor t amet consectetur.</h2>
-                    </div>
-                    <div className="penSol">
-                        <span>02</span>
-                        <h2 className="reveal-type">Lorem ipsum dolor si Lorem ipsum dolor t amet consectetur.</h2>
-                    </div>
-                    <div className="penSol">
-                        <span>03</span>
-                        <h2 className="reveal-type">Lorem ipsum dolor si Lorem ipsum dolor t amet consectetur.</h2>
-                    </div>
-                    <div className="penSol">
-                        <span>04</span>
-                        <h2 className="reveal-type">Lorem ipsum dolor si Lorem ipsum dolor t amet consectetur.</h2>
-                    </div>
-                </div>
-                <div className="penRight">
-                </div>
+            <div className="penSol">
+                <span>01</span>
+                <h2 className="reveal-type">Access remote freelance jobs tailored to your skills and schedule.</h2>
+            </div>
+            <div className="penSol">
+                <span>02</span>
+                <h2 className="reveal-type">Complete AI-powered tasks efficiently and earn consistently online.</h2>
+            </div>
+            <div className="penSol">
+                <span>03</span>
+                <h2 className="reveal-type">Discover diverse opportunities across tech, creative, and digital industries.</h2>
+            </div>
+            <div className="penSol">
+                <span>04</span>
+                <h2 className="reveal-type">Build skills, gain experience, and grow your freelance career with us.</h2>
             </div>
         </div>
+        <div className="penRight">
+            {/* You can add an image, illustration, or animation here */}
+        </div>
+    </div>
+</div>
       </section>
       <section className="faq">
 
         <div className="faqPlacer">
             <div className="faqLeft">
-                <div className="faqLeftCont">
-                <p>Lorem, ipsum dolor.</p>
-        <div className="faqLeftIcon">
-                        <Icon className="faIcon" icon="solar:like-linear" />
-
-                </div>
-                </div>
+               
         
             </div>
             <div className="faqRight">
 
-                <div className="faqRightT">
-                    <h2>Lorem <span>Ipsum</span> </h2>
-                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto praesentium ad magni libero quia deserunt optio enim? A, magnam velit?</p>
-                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto praesentium ad magni libero quia deserunt optio enim? A, magnam velit?</p>
-                </div>
-                <div className="faqRightB" data-aos="fade-in">
-                    <div className="faqRightBCont">
-                        <h2>45%</h2>
-                        <p>Lorem ipsum dolor sit.</p>
-                    </div>
-                    
-                </div>
+    <div className="faqRightT">
+        <h2>Work <span>Smarter</span></h2>
 
+        <p>
+            Our platform combines remote job opportunities with AI-powered tasks, giving you multiple ways to earn from a single place. Whether you're looking for long-term projects or quick income, everything is designed for flexibility and efficiency.
+        </p>
 
-            </div>
+        <p>
+            Skip the limitations of traditional freelancing. With a steady flow of tasks and curated job listings, you can stay productive, build real experience, and scale your earnings without constantly searching for your next opportunity.
+        </p>
+    </div>
+
+    <div className="faqRightB" data-aos="fade-in">
+        <div className="faqRightBCont">
+            <h2>2x</h2>
+            <p>More opportunities with jobs and AI tasks </p>
+        </div>
+    </div>
+
+</div>
         </div>
 
       </section>
@@ -626,14 +599,18 @@ splitTypes.forEach((char, i)=>{
       <section className="Affiliate">
         <div className="affPlacer">
           <div className="afCont">
-            <div className="afLeft">
-              <span>Join Us</span>
-              <h3>Refer a Freelancer</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, tenetur. Velit ratione voluptatibus alias tempora laborum, soluta qui eos! Neque.</p>
-              <button>Refer a Freelancer                 
-                  <Icon className="faIcon" icon="solar:user-rounded-linear" /></button>
-
-            </div>
+     <div className="afLeft">
+  <span>Join Us</span>
+  <h3>Refer and Earn</h3>
+  <p>
+    Invite freelancers to join the platform and earn rewards as they complete tasks and jobs. 
+    It’s a simple way to grow your network while generating passive income from every successful referral.
+  </p>
+  <button>
+    Start Referring
+    <Icon className="faIcon" icon="solar:user-rounded-linear" />
+  </button>
+</div>
             <div className="afRight">
 <div className="container">
     <div className="planet">

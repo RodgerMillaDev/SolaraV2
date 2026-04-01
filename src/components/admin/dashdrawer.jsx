@@ -11,6 +11,7 @@ function AdminDashDrawer(){
     const adminGraph = useRef(null)
     const adminNameRef = useRef(null)
     const adminName = usefbStore((s)=>s.adminName)
+    const accountBalance = usefbStore((s)=>s.accountBalance) || 0;
     
 
     useEffect(()=>{
@@ -20,15 +21,20 @@ function AdminDashDrawer(){
     useEffect(()=>{
     var options = {
           series: [{
-          name: 'Applicants',
+          name: 'Content Review',
           data: [31, 40, 28, 51, 42, 109, 100]
         }, {
-          name: 'Tasked',
+          name: 'Fact Check',
           data: [11, 32, 45, 32, 34, 52, 41]
+        },
+         {
+          name: 'Fact Check',
+          data: [76, 45, 3, 32, 134, 13, 96]
         }],
         colors:[
             "#5EA7FA",
-            "#2332DF"
+            "#2332DF",
+            "#dfad23"
         ],
           chart: {
           height: "100%",
@@ -74,7 +80,7 @@ chart.render();
                 <div className="ad-miniWallet">
                       <div className="adMiniPlacer">
                         <div className="miniCashBlc">
-                            <span>$230</span>
+                            <span>${accountBalance}</span>
                             <p>Wallet Balance</p>
                         </div>
                         <div className="miniBlcActions">
@@ -109,143 +115,6 @@ chart.render();
                         </div>
                         <div className="apProf">
                             <p>Virtual Assistant</p>
-
-                        </div>
-                        <div className="apDate">
-                            <p>1st Jun '26</p>
-
-                        </div>
-                       
-                    </div>
-                    <div className="adminApplicant">
-                        <div className="apName">
-
-                            <p>Rodger Milla</p>
-
-
-                        </div>
-                        <div className="apProf">
-                            <p>Virtual Assistant</p>
-
-                        </div>
-                        <div className="apDate">
-                            <p>1st Jun '26</p>
-
-                        </div>
-                       
-                    </div>
-                    <div className="adminApplicant">
-                        <div className="apName">
-
-                            <p>Rodger Milla</p>
-
-
-                        </div>
-                        <div className="apProf">
-                            <p>Virtual Assistant</p>
-
-                        </div>
-                        <div className="apDate">
-                            <p>1st Jun '26</p>
-
-                        </div>
-                       
-                    </div>
-                    <div className="adminApplicant">
-                        <div className="apName">
-
-                            <p>Rodger Milla</p>
-
-
-                        </div>
-                        <div className="apProf">
-                            <p>Virtual Assistant</p>
-
-                        </div>
-                        <div className="apDate">
-                            <p>1st Jun '26</p>
-
-                        </div>
-                       
-                    </div>
-                    <div className="adminApplicant">
-                        <div className="apName">
-
-                            <p>Rodger Milla</p>
-
-
-                        </div>
-                        <div className="apProf">
-                            <p>Virtual Assistant</p>
-
-                        </div>
-                        <div className="apDate">
-                            <p>1st Jun '26</p>
-
-                        </div>
-                       
-                    </div>
-                    <div className="adminApplicant">
-                        <div className="apName">
-
-                            <p>Rodger Milla</p>
-
-
-                        </div>
-                        <div className="apProf">
-                            <p>Virtual Assistant</p>
-
-                        </div>
-                        <div className="apDate">
-                            <p>1st Jun '26</p>
-
-                        </div>
-                       
-                    </div>
-                    <div className="adminApplicant">
-                        <div className="apName">
-
-                            <p>Rodger Milla</p>
-
-
-                        </div>
-                        <div className="apProf">
-                            <p>Virtual Assistant</p>
-
-                        </div>
-                        <div className="apDate">
-                            <p>1st Jun '26</p>
-
-                        </div>
-                       
-                    </div>
-                    <div className="adminApplicant">
-                        <div className="apName">
-
-                            <p>Rodger Milla</p>
-
-
-                        </div>
-                        <div className="apProf">
-                            <p>Virtual Assistant</p>
-
-                        </div>
-                        <div className="apDate">
-                            <p>1st Jun '26</p>
-
-                        </div>
-                       
-                    </div>
-                    <div className="adminApplicant">
-                        <div className="apName">
-
-                            <p>Rodger Milla</p>
-
-
-                        </div>
-                        <div className="apProf">
-                            <p>Virtual Assistant</p>
-
                         </div>
                         <div className="apDate">
                             <p>1st Jun '26</p>

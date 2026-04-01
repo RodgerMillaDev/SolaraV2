@@ -53,7 +53,7 @@ function Aitask(){
                     Swal.fire("Uploaded",result.msg, "success")
                 aiBtnUploadLoadRef.current.style.display="none"
                 aiBtnUploadRef.current.style.display="block"
-                   jobType.current.value='';
+                   setSelectedTask("Content Review")
                    jobPay.current.value= '';
                    contentRef.current.value = '';
 
@@ -72,8 +72,12 @@ function Aitask(){
             Swal.fire("Invalid","All inputs are required", "warning")
         }        
     }
+    useEffect(()=>{
+const width = window.innerWidth;
+const height = window.innerHeight;
 
-
+console.log("helo rodger " + width, height);
+    },[])
     const uploadContentTranslationTask= async ()=>{
         const jp = Number(jobPay.current.value);
         const tl = (trnsLang.current.value);
@@ -100,7 +104,7 @@ function Aitask(){
                     Swal.fire("Uploaded",result.msg, "success")
                 aiBtnUploadLoadRef.current.style.display="none"
                 aiBtnUploadRef.current.style.display="block"
-                   jobType.current.value='';
+                   setSelectedTask('Content Translation')
                    jobPay.current.value= '';
                    trnsLang.current.value = '';
                    trnsCont.current.value = '';
@@ -150,7 +154,7 @@ function Aitask(){
                     Swal.fire("Uploaded",result.msg, "success")
                 aiBtnUploadLoadRef.current.style.display="none"
                 aiBtnUploadRef.current.style.display="block"
-                   jobType.current.value='';
+                   setSelectedTask("Fact Check")
                    jobPay.current.value= '';
                    factCheckQ.current.value = '';
                    factCheckV.current.value = '';

@@ -9,21 +9,19 @@ function AuthProvider(){
     const setUnAuthenticated = usefbStore((s)=>s.setUnAuthenticated)
 
 
-    useEffect(()=>{
-       const unsub = auth.onAuthStateChanged(async(user)=>{
-        if(!user){
-            setUserID(null)
-            setUnAuthenticated()
-        
-           
-        }else{
-           setUserID(user.uid)
-           setAuthenticated()
-        }
-       })
-       return ()=> unsub();
-    },[userID])
+useEffect(() => {
+  const unsub = auth.onAuthStateChanged((user) => {
+    if (!user) {
+      setUserID(null);
+      setUnAuthenticated();
+    } else {
+      setUserID(user.uid);
+      setAuthenticated();
+    }
+  });
 
+  return () => unsub();
+}, []);
 
 
     return null;

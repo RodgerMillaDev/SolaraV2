@@ -1,0 +1,227 @@
+.preScreen{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+}
+.preScrenCont{
+    width: 70%;
+    height: fit-content;
+    margin:  0 auto;
+    padding: 10vh 0;
+
+}
+.testWrapPlacer{
+    width: 98% !important;
+    margin: 0 auto;
+    height: 90vh;
+    overflow-y: auto;
+}
+.preScreenImg{
+    width: 100%;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.preScreenImg img{
+    width:  170px;
+
+}
+.preScreenImg h2{
+    color: var(--pri-Color);
+    margin: 20px 0;
+    text-align: center;
+}
+.preScreenCont h3{
+    margin-top: 30px;
+    margin-bottom: 10px ;
+
+}
+
+.preScreenCont p{
+    margin-top: 10px;
+}
+.preScreenCont ul {
+    margin-left: 25px;
+}
+.preScreenCont ul li b {
+    font-weight: 900;
+}
+.preScreenCont button{
+    width: 200px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    background: var(--pri-Color);
+    color: aliceblue;
+    height: 45px;
+    margin:  30px auto 0 auto !important;
+    margin-top: 20px;
+}
+.preScreenCont p b{
+    font-weight: 900;
+}
+
+.twpQuizWrap{
+    width: 100%;
+    height: 100% ;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.quizQuestion{
+    width: 98%;
+    height: 110px;
+    display: flex;
+        font-size: 1rem;
+
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    margin: 0 auto;
+}
+.quizQuestion span{
+     width: fit-content;
+
+    margin-bottom: 20px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    background: #695acd18;
+    color: var(--pri-color);
+
+}
+.quizAnswers{
+    width: 98%;
+    height: calc(100% - 170px);
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    overflow-y: auto;
+    flex-direction: column;
+    margin: 0 auto;
+}
+.quizOpt{
+    width: 98%;
+    padding: 10px 0;
+    display: flex;
+    border-radius: 10px;
+    justify-content: start;
+    align-items: center;
+    cursor: pointer;
+    transition: .3s ease;
+    margin-bottom: 10px;
+
+    
+}
+.quizOpt p{
+    margin-left: 5px;
+}
+.quizOpt:hover{
+            background: #3636360f;
+
+}
+.quizOptActive{
+        background: #eae7f5;
+
+
+}
+.quizSubmit{
+    width: 98%;
+    margin: 0 auto;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.quizSubmit button{
+    width: 100%;
+    height: 45px;
+    border-radius: 70px;
+    background: var(--pri-color);
+    color: aliceblue;
+    border: none;
+    cursor: pointer;
+        font-size: 1rem;
+
+}
+.workSpaceContInst{
+    width: 98%;  
+    margin:  0 auto;
+    font-weight: 900;
+    color: var(--pri-Color);
+    margin: 10px 0;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+.workSpaceContTest{
+    border-radius: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: calc(100% - 45px);
+    overflow-y: auto;
+    background: rgb(255, 255, 255);
+    box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+
+}
+
+.completeScreening{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    flex-direction: column;
+}
+.result-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.completeScreening img{
+    width: 200px;
+}
+.message p{
+    width: 350px;
+    text-align: center;
+    
+    margin: 10px auto;
+}
+.compBtmBtns{
+    display: flex;
+    flex-direction: row;
+}
+.completeScreening button{
+    width: fit-content;
+    padding: 0 20px;
+    margin: 5px;
+    background: var(--pri-Color);
+    color: aliceblue;
+    border: none;
+    height: 50px !important;
+    border-radius: 50px;
+}
+
+@media only screen and (max-width: 992px){
+.preScrenCont{
+    width: 90%;
+}
+.preScreenImg img{
+    width: 100px;
+}
+.preScreenImg h2{
+
+}
+}

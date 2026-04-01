@@ -3,10 +3,11 @@ import { Icon } from "@iconify/react";
 import logo1 from "../media/favIcon.png";
 import { Jelly } from "ldrs/react";
 import Swal from "sweetalert2";
-import { createUserWithEmailAndPassword, getAuth, sendEmailVerification,signInWithEmailAndPassword } from "firebase/auth";
-import { doc,setDoc } from "firebase/firestore";
+import { createUserWithEmailAndPassword,GoogleAuthProvider,signInWithPopup, getAuth,sendPasswordResetEmail, sendEmailVerification,signInWithEmailAndPassword } from "firebase/auth";
+import { doc,setDoc,getDoc } from "firebase/firestore";
 import { db, auth } from "../firebase/firebase";
 import "ldrs/react/Jelly.css";
+import google from "../media/googleImg.png"
 import useStore from "../store/zustandstore";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";
@@ -35,20 +36,103 @@ function Auth(){
         hideScreenLoader();
 
     },[hideScreenLoader])
-
-
     const toLog = () =>{
         showLogAuth()
     }
     const toSign = () =>{
         showSignAuth()
     }
+  const resetPass = async () => {
+    const { value: email } = await Swal.fire({
+      input: "email",
+      text: "Enter your email address",
+      inputPlaceholder: "",
+    });
 
-    const resetPass =()=>{
+    if (!email) return;
 
-    }
+    const actionCodeSettings = {
+      url: "https://solarajobs.com/auth",
+      handleCodeInApp: false,
+    };
+
+    sendPasswordResetEmail(auth, email, actionCodeSettings)
+      .then(() => {
+        Swal.fire(
+          "Email Sent",
+          "Password reset link has been sent to your email.",
+          "success",
+        );
+      })
+      .catch((error) => {
+        Swal.fire("Error", error.message, "error");
+      });
+  };
     
+  const ContinueWithGoogle = async () => {
 
+  const provider = new GoogleAuthProvider();
+
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+
+    const userRef = doc(db, "Users", user.uid);
+    const userSnap = await getDoc(userRef);
+
+    // If user does NOT exist, create profile
+    if (!userSnap.exists()) {
+  
+       const userData = {
+                    name: user.displayName || "",
+        em: user.email,
+                    uid:user.uid,
+                    fonReg:"",
+                    sexReg:"",
+                    photoUrl:"",
+                    profUpdate:false,
+                    accountBalance:0,
+                    jobEligibility:true,
+                    dailyTaskTaken:0,
+                    accountPoints:0,
+                    screeningTest:"undone",
+                      screeningCompleted:false,
+                    screeningScore:0,
+                    screeningActive:false,
+                    quizProgress: [],
+                    quizIds:[],
+                    currentIndex:0,
+                    screeningPercentage:0,
+                    screeningPassed:"",
+                    screeningCompletedAt:"",
+                    screenCount:0,
+                    screeningExpired:false,
+
+
+                    
+                }
+
+      await setDoc(userRef, userData);
+    }
+
+    Swal.fire(
+      "Welcome!",
+      "You have successfully signed in with Google.",
+      "success"
+    ).then(() => {
+      navigate("/"); 
+    });
+
+  } catch (error) {
+    console.error(error);
+
+    Swal.fire(
+      "Google Sign-in Failed",
+      "Please try again.",
+      "error"
+    );
+  }
+};
     
   const SignUp = () =>{
     const fn = signNm.current.value
@@ -64,7 +148,11 @@ function Auth(){
 
         createUserWithEmailAndPassword(auth, em,pass).then((userCred)=>{
             var user = userCred.user;
-            sendEmailVerification(user).then(async ()=>{
+              const actionCodeSettings = {
+            url: "https://solarajobs.com/auth",
+            handleCodeInApp: false,
+          };
+            sendEmailVerification(user,actionCodeSettings).then(async ()=>{
                 const userData = {
                     name:fn,
                     em:em,
@@ -76,7 +164,23 @@ function Auth(){
                     accountBalance:0,
                     jobEligibility:true,
                     dailyTaskTaken:0,
-                    accountLevel:"Beginner"
+                    accountPoints:0,
+                    screeningTest:"undone",
+                    screeningCompleted:false,
+                    screeningScore:0,
+                    screeningActive:false,
+                    quizProgress: [],
+                    quizIds:[],
+                    currentIndex:0,
+                    screeningPercentage:0,
+                    screeningPassed:"",
+                    screeningCompletedAt:"",
+                    screenCount:0,
+                    screeningExpired:false,
+
+
+
+
                     
                 }
                     await setDoc(doc(db, "Users",user.uid), userData).then(()=>{
@@ -110,7 +214,7 @@ function Auth(){
     }
   }
 
-  const LogIn = () =>{
+  const LogIn = async () =>{
 
     logBtn.current.style.display="none"
 
@@ -126,6 +230,10 @@ function Auth(){
         .then((userCred)=>{
             var user = userCred.user;
             if(user.emailVerified){
+                 // 🔐 Get token (optional but useful)
+    const token = user.getIdToken();
+    console.log("User token:", token);
+
                 navigate("/")
 
             }else{
@@ -217,12 +325,24 @@ function Auth(){
                                   color="#6a5acd" 
                                 ></Jelly>
                             </div>
-                            <button ref={logBtn} onClick={LogIn} id="authLogBtn">Sign In</button>
+                            <button ref={logBtn} onClick={()=>LogIn()} id="authLogBtn">Sign In</button>
                            </div>
                            <div className="authOpt">
-                            <p>Create an account? <span onClick={toSign} >Sign Up</span></p>
-                            <p onClick={resetPass}>Reset password</p>
+                            <p>Create an account? <span onClick={()=>toSign()} >Sign Up</span></p>
+                            <p onClick={()=>resetPass()}>Reset password</p>
                            </div>
+                    </div>
+                    <div className="continueWithGoogle" onClick={()=>ContinueWithGoogle()}>
+                        <div className="cwgTop">
+                            <div></div>
+                            <span>OR</span>
+                            <div></div>
+                        </div>
+                        <div className="cwgBtm">
+                            <img src={google} alt="" />
+                            <p>Continue with Google</p>
+                        </div>
+
                     </div>
                 </div>
                 <div  className={`authSign ${signActive ? "authSignActive" : ""}`}>
@@ -266,11 +386,23 @@ function Auth(){
                                   color="#6a5acd" 
                                 ></Jelly>
                             </div>
-                            <button id="authSignBtn" ref={signBtn} onClick={SignUp} >Sign Up</button>
+                            <button id="authSignBtn" ref={signBtn} onClick={()=>SignUp()} >Sign Up</button>
                            </div>
                            <div className="authOpt">
-                            <p>Already have an account? <span onClick={toLog} >Sign In</span></p>
+                            <p>Already have an account? <span onClick={()=>toLog()} >Sign In</span></p>
                            </div>
+                    </div>
+                      <div className="continueWithGoogle" onClick={()=>ContinueWithGoogle()}>
+                        <div className="cwgTop">
+                            <div></div>
+                            <span>OR</span>
+                            <div></div>
+                        </div>
+                        <div className="cwgBtm">
+                            <img src={google} alt="" />
+                            <p>Continue with Google</p>
+                        </div>
+
                     </div>
 
                 </div>

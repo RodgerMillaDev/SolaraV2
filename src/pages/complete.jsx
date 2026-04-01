@@ -84,7 +84,7 @@ useEffect(() => {
 
     return (
         <div className="workPopUpWrap">
-            <div className="workPopUpPlacer" data-aos="zoom-in">
+            <div className="workPopUpPlacerSmall" data-aos="zoom-in">
                 <div className="workPopCont">
            
                     <div className="wpcimg">

@@ -24,21 +24,29 @@ function Workspace() {
   const connect = useSocketStore((S) => S.connect);
   const aIScore= useSocketStore((s)=>s.aIScore)
   const [contentBlock, setContent] = useState("");
+  const [factContent, setfactContent] = useState("");
+  const translatedText = useRef("")
+  const userVerdict = useRef("")
+  const factUserExplanation = useRef("")
+  const [textotranslate,settextotranslate] = useState("")
+  const [inst,setInst] = useState("")
   const payOut = useSocketStore((s)=>s.payOut);
   const hideScreenLoader = useStore((s) => s.hideScreenLoader);
   const [submitTestLoader, setsubmitTestLoader] = useState(false);
+  const [originalverdict, setoriginalVerdict] = useState("");
+  const [textreference, settextreference] = useState("");
+  const [originalExplanation, setoriginalExplanation] = useState("");
   const taskCanceled = useSocketStore((s)=>s.taskCanceled);
-      const forceLogout = useSocketStore((s)=>s.forceLogout)
-     const authStatus = usefbStore((s) => s.authStatus);
+  const forceLogout = useSocketStore((s)=>s.forceLogout)
+  const [taskType, setTaskType] = useState("")
+  const authStatus = usefbStore((s) => s.authStatus);
 
-        useEffect(()=>{
+  useEffect(()=>{
         if(authStatus=="unauthenticated"){
               navigate("/auth")
         }
         
-       },[authStatus])
-  
-    
+  },[authStatus])
    useEffect(() => {
     if (forceLogout) {
       Swal.fire({
@@ -60,19 +68,23 @@ function Workspace() {
       });
     }
   }, [forceLogout]);
-  
 
   const rText= useRef(null);
-
   useEffect(()=>{
     if(taskCanceled==true){
       navigate("/dashboard")
     }
   },[taskCanceled])
+
+
   useEffect(()=>{
-  
-    console.log(taskTime)
-  },[taskTime])
+    if(urlParam.taskType){
+    setTaskType(urlParam.taskType)
+
+    }
+     
+
+  },[urlParam.taskType])
 
   useEffect(() => {
     // Only connect if userID exists
@@ -94,13 +106,25 @@ function Workspace() {
     const unsub = onSnapshot(docRef, (snap) => {
       if (!snap.exists()) return;
       var st = snap.data().status;
-      var ct = snap.data().originaltext;
-      var assignedAt = snap.data().assignedAt;
-      setContent(ct);
+      var task = snap.data().task;
+      var instructions = snap.data().instructions;
+      setInst(instructions)
+      if(urlParam.taskType=="Content Translation"){
+             settextotranslate(task.mainTask.originaltext)
+             settextreference(task.mainTask.translatedText)
+      }
+      if(urlParam.taskType=="Fact Check"){
+             setfactContent(task.mainTask.statement)
+             setoriginalVerdict(task.mainTask.verdict)
+             setoriginalExplanation(task.mainTask.explanation)
+
+      }
+   
+
 
      // Optional: only redirect if taskCanceled
 if (st === "Pending" && taskCanceled) {
-  navigate(`/workpopup/${urlParam.taskId}`);
+  navigate(`/workpopup/${urlParam.taskId}/${urlParam.taskType}`);
 }
 
    
@@ -149,15 +173,58 @@ useEffect(() => {
   const submmitAitask = () => {
     if(!userID || !urlParam.taskId) return;
 
-    setsubmitTestLoader(true);
-    const socket = useSocketStore.getState();
-    socket.send({
-        type:"submitTask",
-        taskId:urlParam.taskId,
-        uid:userID,
-        originalText:contentBlock,
-        refinedText:rText.current.value,
-    })
+    if(urlParam.taskType == "Content Review"){
+      if(!rText.current.value){ 
+        Swal.fire("Missing Content","You cant submit a blank input", "warning") 
+        return;}
+          setsubmitTestLoader(true);
+ const socket = useSocketStore.getState();
+   socket.send({
+    type:"submitTask",
+    taskId:urlParam.taskId,
+    taskType:urlParam.taskType,
+    uid:userID,
+    originalText:contentBlock,
+    refinedText:rText.current.value,
+});
+
+    }
+    if(urlParam.taskType == "Fact Check"){
+        if(!userVerdict.current.value || !factUserExplanation.current.value){ 
+        Swal.fire("Missing Content","You cant submit a blank input", "warning") 
+        return;}
+          setsubmitTestLoader(true);
+          const socket = useSocketStore.getState();
+ socket.send({
+    type:"submitTask",
+    taskId:urlParam.taskId,
+    taskType:urlParam.taskType,
+    uid:userID,
+    originalverdict:originalverdict,
+    originalExplanation:originalExplanation,
+    userVerdict:userVerdict.current.value,
+    userExplanation:factUserExplanation.current.value,
+});
+
+    }
+    if(urlParam.taskType == "Content Translation"){
+       if(!translatedText.current.value){ 
+        Swal.fire("Missing Content","You cant submit a blank input", "warning") 
+        return;}
+          setsubmitTestLoader(true);
+          const socket = useSocketStore.getState();
+  socket.send({
+    type:"submitTask",
+    taskId:urlParam.taskId,
+    taskType:urlParam.taskType,
+    uid:userID,
+    textotranslate:textreference,
+    translatedText:translatedText.current.value,
+});
+
+
+    }
+   
 
   };
 
@@ -176,7 +243,8 @@ useEffect(() => {
           </div>
         </div>
         <div className="workSpaceCont">
-          <div className="workspaceDesk">
+          {/* content review workspace  */}
+          {taskType == "Content Review" &&          <div className="workspaceDesk">
         
             <div className="wsdContent">
               <div className="wsdContentitle">
@@ -199,7 +267,78 @@ useEffect(() => {
                 ></textarea>
               </div>
             </div>
-          </div>
+          </div>}
+          {taskType == "Fact Check" && (
+ <div className="workspaceDesk">
+    <div className="wsdInstructions">
+              <p> <span>TASK:</span> {inst} </p>
+         
+            </div>
+        
+            <div className="wsdFactStatement">
+              <div className="wsdContentitle">
+                <span>Statement</span>
+              </div>
+              <div className="wsdContentFactStatement">
+                <p>{factContent}</p>
+              </div>
+            </div>
+            <div className="wsdContentLittle">
+              <div className="wsdContentitle">
+                <span>Your Verdict</span>
+              </div>
+              <div className="wsdContentParagraphwsdContentLittle">
+                <select name="" id="" ref={userVerdict}>
+                  <option value="">Select verdict</option>
+                  <option value="True">True</option>
+                  <option value="False">False</option>
+                </select>
+              </div>
+            </div>
+            <div className="wsdAnswer">
+              <div className="wsdaAnsTextAreaTitle">
+                <span>Your Explanation</span>
+              </div>
+              <div className="wsdaAnsTextArea">
+                <textarea
+                  name=""
+                  id=""
+                  placeholder="Type your correction here"
+                  ref={factUserExplanation}
+                ></textarea>
+              </div>
+            </div>
+          </div>          )}
+          {taskType == "Content Translation" && ( <div className="workspaceDesk">
+      
+            <div className="wsdInstructions">
+              <p> <span>TASK:</span> {inst} </p>
+         
+            </div>
+            <div className="wsdContent">
+              <div className="wsdContentitle">
+                <span>Original Content</span>
+              </div>
+              <div className="wsdContentParagraph">
+                <textarea name="" readOnly value={textotranslate}></textarea>
+              </div>
+            </div>
+            <div className="wsdAnswer">
+              <div className="wsdaAnsTextAreaTitle">
+                <span>Your Translation</span>
+              </div>
+              <div className="wsdaAnsTextArea">
+                <textarea
+                  name=""
+                  id=""
+                  placeholder="Type your translation here"
+                  ref={translatedText}
+                ></textarea>
+              </div>
+            </div>
+          </div>)}
+
+          {/* fact check workspace  */}
 
           <div className="workspacebtn">
             {submitTestLoader ? (

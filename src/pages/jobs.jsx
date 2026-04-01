@@ -9,20 +9,28 @@ import "../css/landing.css";
 import useStore from "../store/zustandstore";
 import "../css/landingresp.css";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import usefbStore from "../store/firebasestore";
 function Jobs() {
   const navigate = useNavigate();
+  const jobArray =  usefbStore((s)=>s.jobArray)
   const closeFonMenu = useStore((s) => s.closeFonMenu);
   const fonMenuDrawer = useStore((s) => s.fonMenuDrawer);
   const hideScreenLoader = useStore((s)=> s.hideScreenLoader)
+  const [jobs,setJobs] = useState([])
 
-  useEffect(()=>{
-    hideScreenLoader()
-  }, [hideScreenLoader])
+  useEffect(() => {
+  if (!jobArray?.length){
+    return ;
+  } 
+  setJobs(jobArray);
+  console.log(jobArray)
+}, [jobArray]);
 
   const cnclFon = () => {
     closeFonMenu();
   };
+
 
   const toAuth = () => {
     navigate("/auth");
@@ -59,358 +67,44 @@ function Jobs() {
               <input type="text" name="" id="" placeholder="Search Job..." />
             </div>
           </div>
-          <div className="jobsActCont">
-            <div class="actJob">
-              <div class="actJobPlacer">
-                <div class="actJobTop">
-                  <div class="jobIcon">
-                    <img src={logo1} alt="" />
-                  </div>
-                  <div class="jobDet">
-                    <div class="jobDetTit">
-                      <h4>Virtual Assistant Jobs Entry Level Jobdn</h4>
-                    </div>
-                    <div class="fidiProf">
-                      <p>Virtual Assistant</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="actJobBtm">
-                  <div class="jobDetdesc">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Mollitia hic quaerat reiciendis officia facere, maxime
-                      consequatur aut voluptate optio veniam.
-                    </p>
-                  </div>
-
-                  <div class="miniPriceandApplicants">
-                    <div class="miniPrice">
-                      <button>Apply</button>
-                    </div>
-                    <div class="miniApplicants">
-                      <p>$20 - $34 / hour</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        <div className="jobsActCont">
+  {!jobArray?.length ? (
+    <p className="ljobsLoad">Loading jobs</p>
+  ) : (
+    jobs.map((job, index) => (
+      <div className="actJob" key={job.id || index}>
+        <div className="actJobPlacer">
+          <div className="actJobTop">
+            <div className="jobIcon">
+              <img src={logo1} alt="" />
             </div>
-            <div class="actJob">
-              <div class="actJobPlacer">
-                <div class="actJobTop">
-                  <div class="jobIcon">
-                    <img src={logo1} alt="" />
-                  </div>
-                  <div class="jobDet">
-                    <div class="jobDetTit">
-                      <h4>Virtual Assistant Jobs Entry Level Jobdn</h4>
-                    </div>
-                    <div class="fidiProf">
-                      <p>Virtual Assistant</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="actJobBtm">
-                  <div class="jobDetdesc">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Mollitia hic quaerat reiciendis officia facere, maxime
-                      consequatur aut voluptate optio veniam.
-                    </p>
-                  </div>
-
-                  <div class="miniPriceandApplicants">
-                    <div class="miniPrice">
-                      <button>Apply</button>
-                    </div>
-                    <div class="miniApplicants">
-                      <p>$20 - $34 / hour</p>
-                    </div>
-                  </div>
-                </div>
+            <div className="jobDet">
+              <div className="jobDetTit">
+                <h4>{job.jobName}</h4>
               </div>
-            </div>
-            <div class="actJob">
-              <div class="actJobPlacer">
-                <div class="actJobTop">
-                  <div class="jobIcon">
-                    <img src={logo1} alt="" />
-                  </div>
-                  <div class="jobDet">
-                    <div class="jobDetTit">
-                      <h4>Virtual Assistant Jobs Entry Level Jobdn</h4>
-                    </div>
-                    <div class="fidiProf">
-                      <p>Virtual Assistant</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="actJobBtm">
-                  <div class="jobDetdesc">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Mollitia hic quaerat reiciendis officia facere, maxime
-                      consequatur aut voluptate optio veniam.
-                    </p>
-                  </div>
-
-                  <div class="miniPriceandApplicants">
-                    <div class="miniPrice">
-                      <button>Apply</button>
-                    </div>
-                    <div class="miniApplicants">
-                      <p>$20 - $34 / hour</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="actJob">
-              <div class="actJobPlacer">
-                <div class="actJobTop">
-                  <div class="jobIcon">
-                    <img src={logo1} alt="" />
-                  </div>
-                  <div class="jobDet">
-                    <div class="jobDetTit">
-                      <h4>Virtual Assistant Jobs Entry Level Jobdn</h4>
-                    </div>
-                    <div class="fidiProf">
-                      <p>Virtual Assistant</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="actJobBtm">
-                  <div class="jobDetdesc">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Mollitia hic quaerat reiciendis officia facere, maxime
-                      consequatur aut voluptate optio veniam.
-                    </p>
-                  </div>
-
-                  <div class="miniPriceandApplicants">
-                    <div class="miniPrice">
-                      <button>Apply</button>
-                    </div>
-                    <div class="miniApplicants">
-                      <p>$20 - $34 / hour</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="actJob">
-              <div class="actJobPlacer">
-                <div class="actJobTop">
-                  <div class="jobIcon">
-                    <img src={logo1} alt="" />
-                  </div>
-                  <div class="jobDet">
-                    <div class="jobDetTit">
-                      <h4>Virtual Assistant Jobs Entry Level Jobdn</h4>
-                    </div>
-                    <div class="fidiProf">
-                      <p>Virtual Assistant</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="actJobBtm">
-                  <div class="jobDetdesc">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Mollitia hic quaerat reiciendis officia facere, maxime
-                      consequatur aut voluptate optio veniam.
-                    </p>
-                  </div>
-
-                  <div class="miniPriceandApplicants">
-                    <div class="miniPrice">
-                      <button>Apply</button>
-                    </div>
-                    <div class="miniApplicants">
-                      <p>$20 - $34 / hour</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="actJob">
-              <div class="actJobPlacer">
-                <div class="actJobTop">
-                  <div class="jobIcon">
-                    <img src={logo1} alt="" />
-                  </div>
-                  <div class="jobDet">
-                    <div class="jobDetTit">
-                      <h4>Virtual Assistant Jobs Entry Level Jobdn</h4>
-                    </div>
-                    <div class="fidiProf">
-                      <p>Virtual Assistant</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="actJobBtm">
-                  <div class="jobDetdesc">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Mollitia hic quaerat reiciendis officia facere, maxime
-                      consequatur aut voluptate optio veniam.
-                    </p>
-                  </div>
-
-                  <div class="miniPriceandApplicants">
-                    <div class="miniPrice">
-                      <button>Apply</button>
-                    </div>
-                    <div class="miniApplicants">
-                      <p>$20 - $34 / hour</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="actJob">
-              <div class="actJobPlacer">
-                <div class="actJobTop">
-                  <div class="jobIcon">
-                    <img src={logo1} alt="" />
-                  </div>
-                  <div class="jobDet">
-                    <div class="jobDetTit">
-                      <h4>Virtual Assistant Jobs Entry Level Jobdn</h4>
-                    </div>
-                    <div class="fidiProf">
-                      <p>Virtual Assistant</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="actJobBtm">
-                  <div class="jobDetdesc">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Mollitia hic quaerat reiciendis officia facere, maxime
-                      consequatur aut voluptate optio veniam.
-                    </p>
-                  </div>
-
-                  <div class="miniPriceandApplicants">
-                    <div class="miniPrice">
-                      <button>Apply</button>
-                    </div>
-                    <div class="miniApplicants">
-                      <p>$20 - $34 / hour </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="actJob">
-              <div class="actJobPlacer">
-                <div class="actJobTop">
-                  <div class="jobIcon">
-                    <img src={logo1} alt="" />
-                  </div>
-                  <div class="jobDet">
-                    <div class="jobDetTit">
-                      <h4>Virtual Assistant Jobs Entry Level Jobdn</h4>
-                    </div>
-                    <div class="fidiProf">
-                      <p>Virtual Assistant</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="actJobBtm">
-                  <div class="jobDetdesc">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Mollitia hic quaerat reiciendis officia facere, maxime
-                      consequatur aut voluptate optio veniam.
-                    </p>
-                  </div>
-
-                  <div class="miniPriceandApplicants">
-                    <div class="miniPrice">
-                      <button>Apply</button>
-                    </div>
-                    <div class="miniApplicants">
-                      <p>$20 - $34 / hour</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="actJob">
-              <div class="actJobPlacer">
-                <div class="actJobTop">
-                  <div class="jobIcon">
-                    <img src={logo1} alt="" />
-                  </div>
-                  <div class="jobDet">
-                    <div class="jobDetTit">
-                      <h4>Virtual Assistant Jobs Entry Level Jobdn</h4>
-                    </div>
-                    <div class="fidiProf">
-                      <p>Virtual Assistant</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="actJobBtm">
-                  <div class="jobDetdesc">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Mollitia hic quaerat reiciendis officia facere, maxime
-                      consequatur aut voluptate optio veniam.
-                    </p>
-                  </div>
-
-                  <div class="miniPriceandApplicants">
-                    <div class="miniPrice">
-                      <button>Apply</button>
-                    </div>
-                    <div class="miniApplicants">
-                      <p>$20 - $34 / hour</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="actJob">
-              <div class="actJobPlacer">
-                <div class="actJobTop">
-                  <div class="jobIcon">
-                    <img src={logo1} alt="" />
-                  </div>
-                  <div class="jobDet">
-                    <div class="jobDetTit">
-                      <h4>Virtual Assistant Jobs Entry Level Jobdn</h4>
-                    </div>
-                    <div class="fidiProf">
-                      <p>Virtual Assistant</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="actJobBtm">
-                  <div class="jobDetdesc">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Mollitia hic quaerat reiciendis officia facere, maxime
-                      consequatur aut voluptate optio veniam.
-                    </p>
-                  </div>
-
-                  <div class="miniPriceandApplicants">
-                    <div class="miniPrice">
-                      <button>Apply</button>
-                    </div>
-                    <div class="miniApplicants">
-                      <p>$20 - $34 / hour</p>
-                    </div>
-                  </div>
-                </div>
+              <div className="fidiProf">
+                <p>{job.jobminiTtile}</p>
               </div>
             </div>
           </div>
+          <div className="actJobBtm">
+            <div className="jobDetdesc">
+              <p>{job.jobDesc}</p>
+            </div>
+            <div className="miniPriceandApplicants">
+              <div className="miniPrice">
+                <button>Apply</button>
+              </div>
+              <div className="miniApplicants">
+                <p>${job.jobPay} / hour</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))
+  )}
+</div>
         </div>
         <div className="jobRightUi">
           <img src={man} alt="" />

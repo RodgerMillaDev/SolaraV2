@@ -15,39 +15,25 @@ import logo3 from "../media/darkLogo.png"
                 <img src={logo3} alt="" />
               </div>
               <div className="ftBB">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim accusantium unde alias.</p>
-
+                <p>All-in-one platform for remote jobs and AI tasks, built to simplify work and maximize earning potential.</p>
               </div>
-
             </div>
             <div className="ftMid">
               <div className="ftMidLeft">
                      <div className="ftTT">
-                      <p>Links</p>
+                      <p>Menu Links</p>
                       </div>
-
                 <div className="ftBB">
-                               <p>Home                  
-                                 <Icon className="faIcon" icon="solar:arrow-right-up-linear" /></p>
+                <p>Home <Icon className="faIcon" icon="solar:arrow-right-up-linear" /></p>
                 <p>Referral Program   <Icon className="faIcon" icon="solar:arrow-right-up-linear" /></p>
                 <p>Dashboard   <Icon className="faIcon" icon="solar:arrow-right-up-linear" /></p>
                 <p>About Us   <Icon className="faIcon" icon="solar:arrow-right-up-linear" /></p>
+                <p>Terms of Service   <Icon className="faIcon" icon="solar:arrow-right-up-linear" /></p>
+                <p>Privacy Policy   <Icon className="faIcon" icon="solar:arrow-right-up-linear" /></p>
                 </div>
                 
               </div>
-              <div className="ftMidRight">
-                     <div className="ftTT">
-                      <p>Socials</p>
-                      </div>
-
-                <div className="ftBB">
-                <p>Instagram   <Icon className="faIcon" icon="solar:arrow-right-up-linear" /></p>
-                <p>Twitter   <Icon className="faIcon" icon="solar:arrow-right-up-linear" /></p>
-                <p>Dashboard   <Icon className="faIcon" icon="solar:arrow-right-up-linear" /></p>
-                <p>About Us  <Icon className="faIcon" icon="solar:arrow-right-up-linear" /></p>
-                </div>
-                
-              </div>
+            
            
               
             </div>

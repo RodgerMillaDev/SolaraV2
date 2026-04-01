@@ -8,12 +8,23 @@
 
 }
 .workPopUpPlacer{
-    width: 400px;
-    height: 485px;
+    width: 450px;
+    height: 550px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 20px;
+    background: rgb(255, 255, 255);
+    box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+.workPopUpPlacerSmall{
+    width: 450px;
+    height: fit-content !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    padding: 20px 0;
     background: rgb(255, 255, 255);
     box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.1);
 }
@@ -40,7 +51,7 @@
 }
 .wpcimg{
     width: 100%;
-    height: 170px;
+    height: 120px;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -53,13 +64,12 @@
     height: 50px;
 }
 .wpcInstructions{
-    height: 350px;
+    height: calc(100% - 215px);
     width: 100%;
-    overflow: hidden;
-    overflow-x: auto;
+    overflow-y: auto;
 }
 .wpcInstructionsIntroActInstruction{
-    height: 300px;
+    height: calc(100% - 50px);
     overflow-y: auto;
     width: 100%;
     overflow-x: hidden;
@@ -97,7 +107,12 @@
  padding: 10px 0;   
 
 }
+.wpcInstructions ul li b{
+        font-size: .9rem;
 
+    font-weight:900 ;
+    text-align: start !important;
+}
 .wpcInstructions ul{
     font-size: .9rem;
     margin-left: 20px;
@@ -109,7 +124,7 @@
 }
 .wpcBUttons{
     width: 100%;
-    height: 80px;
+    height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: end;
@@ -134,7 +149,7 @@
 }
 .wpcBUtton{
     width: 100%;
-    height: 80px;
+    height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: end;
@@ -201,8 +216,8 @@
 
 @media only screen and (max-width: 992px){
 .workPopUpPlacer{
-    width: 280px;
-    height: 500px;
+    width: 90vw;
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;

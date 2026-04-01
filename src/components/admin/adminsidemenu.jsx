@@ -10,9 +10,11 @@ import { useNavigate } from "react-router-dom";
 function AdminMenu(){
 
     const showAdminDashboard=useStore((s)=>s.showAdminDashboard)
+    const showAiTasks=useStore((s)=>s.showAiTasks)
     const hideAdminDashboard=useStore((s)=>s.hideAdminDashboard)
     const showAiTask=useStore((s)=>s.showAiTask)
     const hideAiTask=useStore((s)=>s.hideAiTask)
+    const showJobUpload = useStore((s)=>s.showJobUpload)
     const adminNameRef = useRef(null)
     const adminName = usefbStore((s)=>s.adminName)
     const navigate = useNavigate()
@@ -21,14 +23,19 @@ function AdminMenu(){
         navigate("/")
     }
     
+    const toUploadScreening = ()=>{
+        navigate("/upload")
+    }
 
     useEffect(()=>{
        adminNameRef.current.innerText=adminName
     },[adminName])
     
-
     const toDash =() =>{
         showAdminDashboard()
+    }
+    const toJobsUpoad =() =>{
+        showJobUpload()
     }
     const toAi =()=>{
         showAiTask()
@@ -54,14 +61,7 @@ function AdminMenu(){
                     <p>Applicants</p>
 
                 </div>
-                <div className="asmlLink">
-                    <div className="asmIcon">
-                        <Icon className="faIcon" icon="solar:wallet-linear"/>
-
-                    </div>
-                    <p>Wallet</p>
-
-                </div>
+                
                 <div className="asmlLink">
                     <div className="asmIcon">
                         <Icon className="faIcon" icon="solar:library-linear"/>
@@ -70,7 +70,7 @@ function AdminMenu(){
                     <p>All Jobs</p>
 
                 </div>
-                <div className="asmlLink">
+                <div className="asmlLink" onClick={()=>toJobsUpoad()}>
                     <div className="asmIcon">
                         <Icon className="faIcon" icon="solar:upload-linear"/>
 
@@ -78,14 +78,22 @@ function AdminMenu(){
                     <p>New Job</p>
 
                 </div>
-                <div className="asmlLink" onClick={toAi}>
+                <div className="asmlLink" onClick={()=>toAi()}>
                     <div className="asmIcon">
                      <Icon className="faIcon" icon="solar:case-round-outline"/>
                     </div>
                     <p>AI Tasks</p>
 
                 </div>
-                <div className="asmlLink" onClick={toHome}>
+                <div className="asmlLink" onClick={()=>toUploadScreening()}>
+                    <div className="asmIcon">
+                        <Icon className="faIcon" icon="solar:layers-minimalistic-linear"/>
+
+                    </div>
+                    <p>Screening Tasks</p>
+
+                </div>
+                <div className="asmlLink" onClick={()=>toHome()}>
                     <div className="asmIcon">
                         <Icon className="faIcon" icon="solar:logout-2-outline"/>
 

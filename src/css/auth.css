@@ -1,115 +1,4 @@
-*{
-    padding: 0;
-    margin: 0;
-}
 
-
-.swal2-title{
-    font-size: 2rem;
-    font-family: Telex;
-    font-weight: 400;
-    letter-spacing: -1px;
-}
-.swal2-popup{
-    font-family: Telex;
-}
-.swal2-cancel{
-    background: #6a5acd;
-    color: aliceblue;
-    /* border: 1px solid #6a5acd; */
-}
-.swal2-cancel{
-    background: #6a5acd;
-    color: aliceblue;
-    border: none;
-    font-family: Telex;
-    border-radius: 40px;
-}
-.swal2-confirm:focus{
-    outline: none;
-}
-.swal2-confirm:hover{
-    color: #6a5acd;
-    background: none;
-}
-.swal2-confirm{
-    background: none;
-        font-family: Telex;
-            border-radius: 40px;
-
-
-    color: #6a5acd;
-    border: 1px solid #6a5acd;
-}
-
-:root{
-    --pri-color:#9E00FF;
-    --sec-color:rgb(14, 0, 77);
-    --ter1-color:#5EA7FA;
-    --ter2-color:#9387FA;
-    --black-text:rgb(26, 26, 26);
-    --grey-text:rgb(55, 55, 55);
-    --sec1-color:#5EA7FA;
-    --sec2-color:#5a00c0;
-    --sec3-color:#0d0a22;
-    --sec4-color:#C35EC1;
-    --sec5-color:#6a5acd;
-    --sec6-color:#2332DF;
-}
-*{
-    margin: 0;
-    padding: 0;
-
-}
-
-@font-face {
-    font-family: MontBold;
-    src: url(../media/montserrat-font/MontserratExtrabold-VGO60.ttf);
-}
-@font-face {
-    font-family: Mont ;
-    src: url(../media/montserrat-font/MontserratRegular-RpK6l.otf);
-}
-
-
-body{
-    font-family: Mont;
-}
-h1{
-    font-size: 5rem;
-    font-family: MontBold;
-
-}
-h2{
-    font-size: 3.5rem;
-    font-family: MontBold;
-}
-h3{
-    font-size: 2.1rem;
-    font-family: MontBold;
-
-}
-p{
-    font-size: 1rem;
-    line-height:28px;
-    font-family: Mont;
-}
-button{
-    font-family: Mont;
-}
-a{
-    font-size: 1rem;
-    font-family: Telex;
-}
-
-input{
-    border: none;
-    background: none;
-    font-family: Telex;
-}
-input:focus{
-    outline: none;
-}
 #AuthWrap{
     width: 100vw;
     display: flex;
@@ -162,7 +51,6 @@ input:focus{
 .authLeftPlacer{
     height: 90%;
     width: 80%;
-    overflow: hidden;
     display: flex;
     position: relative;
     justify-content: start;
@@ -200,7 +88,6 @@ input:focus{
 .authIntro p{
     font-weight: 100;
     color:rgb(97, 97, 97);
-    font-size: 1rem;
     margin-bottom: 10px;
 }
 .authInputsWrap{
@@ -304,7 +191,6 @@ input:focus{
     color: aliceblue;
 }
 .authRightGlass h1 span{
-    color: rgb(22, 9, 70);
     color: var(--sec3-color);
 }
 .authRightGlass p{
@@ -392,4 +278,49 @@ input:focus{
 	100% {
 		transform: translatex(0px);
 	}
+}
+.continueWithGoogle{
+    width: 100%;
+    height: fit-content;
+
+}
+.cwgTop{
+    height:  fit-content;
+    width: 100%;
+    height: fit-content;
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.cwgTop span{
+    font-size: 16px;
+    margin:  0 10px;
+        color:rgb(97, 97, 97);
+
+}
+.cwgTop div{
+    width: 70px;
+    height: 2px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.548);
+}
+.cwgBtm{
+    width:99%;
+    height: 50px;
+    display: flex;
+    background: aliceblue;
+    cursor: pointer;
+    justify-content: center;
+    border-radius: 50px;
+    margin:  0 auto;
+    align-items: center;
+        box-shadow: 0 3px 10px rgba( 31, 38, 135, 0.02 );
+
+
+}
+.cwgBtm img{
+    margin-right: 10px;
+    width:30px;
 }

@@ -15,6 +15,7 @@ import "../../css/workpagepop.css";
 function WorkPopUp() {
   const navigate = useNavigate();
   const { taskId } = useParams();
+  const { taskType } = useParams();
   const userID = usefbStore((s) => s.userID);
   const setUid = useSocketStore((s) => s.setUid);
   const taskBegan = useSocketStore((s) => s.taskBegan);
@@ -47,11 +48,29 @@ function WorkPopUp() {
 
   // Navigate if task started
   useEffect(() => {
-    if (taskBegan && taskId && !hasNavigated) {
-      navigate(`/workspace/${taskId}`);
-      setHasNavigated(true);
+    if (taskBegan && taskId && taskType && !hasNavigated) {
+      if(taskType == "Content Translation") {
+          navigate(`/workspace/${taskId}/${taskType}`);
+                setHasNavigated(true);
+
+          return;
+      }
+      if(taskType == "Fact Check"){
+         navigate(`/workspace/${taskId}/${taskType}`);
+               setHasNavigated(true);
+
+          return;
+      }
+      if(taskType == "Content Review"){
+         navigate(`/workspace/${taskId}/${taskType}`);
+          setHasNavigated(true);
+
+          return;
+      }
+      
+  
     }
-  }, [taskBegan, taskId, hasNavigated]);
+  }, [taskBegan, taskId,taskType, hasNavigated]);
 
   // Firestore listener for this task
   useEffect(() => {
@@ -70,7 +89,7 @@ function WorkPopUp() {
           navigate("/dashboard");
           setHasNavigated(true);
         } else if (status === "active") {
-          navigate(`/workspace/${taskId}`);
+          navigate(`/workspace/${taskId}/${taskType}`);
           setHasNavigated(true);
         }
       }
@@ -146,13 +165,13 @@ const toActWork = () => {
             </div>
             <div className="wpcInstructionsIntroActInstruction">
               <ul>
-                <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
+                                <li><b>Immediate Penalties for Violations. </b>Any confirmed attempt to manipulate results, bypass task rules, or interfere with the evaluation system will result in account termination and forfeiture of all pending earnings.</li>
+
+                <li><b>Strict No-Automation Policy. </b>The use of AI tools, bots, scripts, browser extensions, or automation software to generate or assist with answers is strictly prohibited.</li>
+                <li><b>Activity Monitoring & Verification. </b>Your task behavior, response timing, and interaction patterns are continuously monitored. Suspicious activity may trigger automatic review or account suspension.</li>
+                <li><b>Original Human Responses Only. </b>All answers must be based on your own reasoning and judgment. Copy-pasting responses or using pre-written answers is considered fraudulent activity.</li>
+                <li><b>Single Account Enforcement. </b>Each user is allowed only one account. Creating or operating multiple accounts to increase earnings will lead to permanent removal from the platform.</li>
+
               </ul>
             </div>
           </div>
