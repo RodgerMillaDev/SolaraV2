@@ -80,6 +80,7 @@ function Workspace() {
   useEffect(()=>{
     if(urlParam.taskType){
     setTaskType(urlParam.taskType)
+  
 
     }
      
@@ -109,6 +110,10 @@ function Workspace() {
       var task = snap.data().task;
       var instructions = snap.data().instructions;
       setInst(instructions)
+      if(urlParam.taskType=="Content Review"){
+        setContent(task.mainTask.originaltext)
+        
+      }
       if(urlParam.taskType=="Content Translation"){
              settextotranslate(task.mainTask.originaltext)
              settextreference(task.mainTask.translatedText)

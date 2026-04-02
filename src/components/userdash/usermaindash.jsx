@@ -47,6 +47,8 @@ function Maindash() {
   const effectiveCooldownUntil = cooldownUntil || fbCooldownUntil;
   
   const [remainingCooldownSecs, setRemainingCooldownSecs] = useState(0);
+ 
+
 
   // ✅ Format cooldown time
   const formatCooldownTime = (seconds) => {
@@ -70,7 +72,7 @@ function Maindash() {
       const remaining = Math.max(0, Math.floor((cooldownTime - now) / 1000));
       
       setRemainingCooldownSecs(remaining);
-      
+      console.log(remaining)
       // Cooldown expired - auto refresh
       if (remaining === 0 && effectiveInCooldown) {
         useSocketStore.getState().resetCooldown();
